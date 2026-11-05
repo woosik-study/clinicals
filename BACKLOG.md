@@ -24,7 +24,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Submit this week's progress update | All | Week 6 | ❌ Not started | Gantt charts are ready (Woosik) |
 | Confirm 4 conditions | All | Week 6 | ❌ Not started | Alzheimer's is an optional 5th |
 | Tell the group if your research part is done | All | Week 6 | ❌ Not started | |
-| Weekly progress update | All | Every week | ⏳ Waiting | TA to confirm if one person or everyone submits |
+| Weekly progress update | All | Every week | 🔁 Ongoing | |
 | Abstract | All | Week 3 | ✅ Done | Submitted 10/16 |
 | Group charter | All | Week 3 to 4 | ✅ Done | |
 | Research: ClinicalTrials.gov API and data fields | Woosik | Week 4 to 5 | ✅ Done | Used to build the data pipeline |
@@ -207,8 +207,6 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 - **Unusual labels:** a few standard race tables use variant labels the script does not match, such as "Multiracial or other". Measures titled only "Ethnicity" (16) are skipped.
 
 **Process**
-- **Progress updates:** confirm with the TA whether one member or every member submits each week.
-- **Missed update weeks:** section 2 logs the misses in Weeks 4 and 5, but the TA note says Weeks 5 and 6. Confirm which is right.
 - **Research tasks:** Sanjana, Saurabi, and Sneha to confirm status on the board.
 
 ---
