@@ -7,10 +7,11 @@ for 4 conditions. Saves:
   trials_clean.csv               one row per trial, demographics from the "Total" group
   summary_by_condition.csv       per condition: race reporting rate + participant shares
 
-Run:  python3 fetch_trials.py          (full pull)
-      python3 fetch_trials.py --test   (5 trials per condition, quick check)
+Run:  python3 fetch_trials.py             (full pull)
+      python3 fetch_trials.py --test      (5 trials per condition, quick check)
+      python3 fetch_trials.py --from-raw  (rebuild the CSVs from trials_raw/, no download)
 """
-import csv, json, os, sys, time, urllib.parse, urllib.request, urllib.error
+import csv, json, os, re, sys, time, urllib.parse, urllib.request, urllib.error
 
 CONDITIONS = {
     "breast_cancer": "breast cancer",
@@ -23,6 +24,7 @@ FIELDS = "NCTId,BriefTitle,Phase,StartDate,EnrollmentCount,StudyType,BaselineCha
 ADV = "AREA[StudyType]INTERVENTIONAL AND AREA[StartDate]RANGE[2010-01-01,MAX]"
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEST = "--test" in sys.argv
+FROM_RAW = "--from-raw" in sys.argv
 
 OMB_RACE = ["American Indian or Alaska Native", "Asian", "Native Hawaiian or Other Pacific Islander",
             "Black or African American", "White", "More than one race", "Unknown or Not Reported"]
@@ -97,6 +99,9 @@ def parse(study, cond):
     row["ethnicity_reported"] = 0
     for m in bl.get("measures", []):
         title = (m.get("title") or "").lower()
+        # Whole word only ("contraception" contains "race"). "Race and Ethnicity
+        # Not Collected" means the trial did not report race, so it stays "none".
+        is_race = re.search(r"\brace\b", title) and "not collected" not in title
         cats = {}
         for cl in m.get("classes", []):
             for cat in cl.get("categories", []):
@@ -109,7 +114,7 @@ def parse(study, cond):
             for k, v in cats.items():
                 if k.lower() in ("female", "male"):
                     row[k.lower()] = v
-        elif "race" in title and "nih/omb" in title:
+        elif is_race and "nih/omb" in title:
             row["race_format"] = "omb"
             for r in OMB_RACE:
                 row["race_" + r] = cats.get(r, 0)
@@ -117,7 +122,7 @@ def parse(study, cond):
             row["ethnicity_reported"] = 1
             for e in OMB_ETH:
                 row["eth_" + e] = cats.get(e, 0)
-        elif "race" in title and row["race_format"] == "none":
+        elif is_race and row["race_format"] == "none":
             row["race_format"] = "customized"
         elif title.startswith("age") and "continuous" in title:
             for cl in m.get("classes", []):
@@ -136,10 +141,15 @@ def main():
     rows = []
     for key, q in CONDITIONS.items():
         print(f"{key} ({q})")
-        studies = fetch(q)
-        with open(os.path.join(raw_dir, key + ".jsonl"), "w") as f:
-            for s in studies:
-                f.write(json.dumps(s) + "\n")
+        raw_path = os.path.join(raw_dir, key + ".jsonl")
+        if FROM_RAW:
+            with open(raw_path) as f:
+                studies = [json.loads(line) for line in f]
+        else:
+            studies = fetch(q)
+            with open(raw_path, "w") as f:
+                for s in studies:
+                    f.write(json.dumps(s) + "\n")
         rows += [parse(s, key) for s in studies]
 
     cols = ["nct_id", "condition", "title", "phases", "start_year", "enrollment", "baseline_n", "has_total_group",
