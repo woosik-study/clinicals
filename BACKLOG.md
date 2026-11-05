@@ -42,7 +42,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ⚠️ Partial | For example Home, condition pages, explainers, sources. Basic structure exists in the prototype. |
 | Collect patient demographics per condition | Saurabi | Week 6 | ❌ Not started | **Blocking PPR charts.** NCI SEER for the cancers, CDC for diabetes and heart failure. Match the trial data's race and sex categories. |
-| Resource list (10+ sources) | Saurabi | Through Week 9 | ⚠️ Started | Track every source we use in [RESEARCH.md](RESEARCH.md) |
+| Resource list (10+ sources) | Saurabi | Through Week 9 | ❌ Not started | Track every source we use in [RESEARCH.md](RESEARCH.md) |
 | FDA Snapshots comparison section | Sanjana | Week 7 to 8 | ❌ Not started | |
 | Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8 | ⚠️ Placeholder | Short placeholder text on the site. Sneha to rewrite and expand. |
 | PPR charts | Woosik | Week 7 to 8 | ❌ Not started | Needs prevalence data. Follow the rules in section 5. |
