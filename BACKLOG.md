@@ -4,6 +4,7 @@
 **Team:** Woosik Kim, Sanjana, Saurabi, Sneha
 **Live site:** https://woosik-study.github.io/clinicals
 **Repo:** https://github.com/woosik-study/clinicals
+**Sources:** [RESEARCH.md](RESEARCH.md)
 **Data snapshot:** pulled 11/4/2026. The site does not update itself. New data needs a manual re-run (see section 3).
 
 This file tracks what we have done, how we did it, and what is left. Update it whenever a task moves. It is the source for our final presentation.
@@ -41,7 +42,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ⚠️ Partial | For example Home, condition pages, explainers, sources. Basic structure exists in the prototype. |
 | Collect patient demographics per condition | Saurabi | Week 6 | ❌ Not started | **Blocking PPR charts.** NCI SEER for the cancers, CDC for diabetes and heart failure. Match the trial data's race and sex categories. |
-| Resource list (10+ sources) | Saurabi | Through Week 9 | ❌ Not started | Track every source we use |
+| Resource list (10+ sources) | Saurabi | Through Week 9 | ⚠️ Started | Track every source we use in [RESEARCH.md](RESEARCH.md) |
 | FDA Snapshots comparison section | Sanjana | Week 7 to 8 | ❌ Not started | |
 | Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8 | ⚠️ Placeholder | Short placeholder text on the site. Sneha to rewrite and expand. |
 | PPR charts | Woosik | Week 7 to 8 | ❌ Not started | Needs prevalence data. Follow the rules in section 5. |
@@ -223,6 +224,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/4 | Woosik | Claude | Data pipeline scripts, prototype website, this backlog |
 | 11/4 | Woosik | Claude | Checking code and backlog numbers against the raw data, plain-language project summary, backlog update |
 | 11/4 | Woosik | Claude | README draft, implementing team decisions on overlapping trials, trial locations, unknown race, and wording |
+| 11/5 | Woosik | Claude | RESEARCH.md draft and reading the seeded sources for key findings |
 
 ---
 
