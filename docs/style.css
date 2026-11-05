@@ -31,5 +31,6 @@ th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-a
 th{color:var(--muted);font-weight:600}
 .num{text-align:right;font-variant-numeric:tabular-nums}
 a{color:var(--accent)}
+.also{color:var(--muted);font-size:13px;margin-top:2px}
 .empty{color:var(--muted);font-style:italic}
 footer{color:var(--muted);font-size:14px;padding:24px 16px 48px}
