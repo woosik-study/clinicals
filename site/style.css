@@ -1,0 +1,35 @@
+:root{--bg:#fbfaf7;--card:#fff;--ink:#16161a;--muted:#5d5c58;--line:#e6e3dc;--accent:#2a78d6;--warn:#b5651d;--radius:10px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+.banner{background:#fff4e0;color:#6b4300;text-align:center;padding:8px 16px;font-size:14px}
+header{padding:40px 16px 16px}
+h1{font-size:clamp(28px,5vw,40px);margin:0 0 8px;letter-spacing:-.02em}
+.lede{color:var(--muted);max-width:680px;margin:0}
+h2{font-size:20px;margin:0 0 4px}
+h3{font-size:16px;margin:16px 0 4px}
+.note{color:var(--muted);font-size:14px;margin:0 0 16px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:16px 0}
+.group{display:flex;flex-wrap:wrap;gap:6px}
+.group button{border:1px solid var(--line);background:var(--card);padding:8px 14px;border-radius:999px;font:inherit;cursor:pointer}
+.group button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.phase{font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center}
+select{font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.stat .v{font-size:32px;font-weight:650;letter-spacing:-.02em}
+.stat .l{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.bar{display:grid;grid-template-columns:minmax(120px,240px) 1fr 56px;gap:10px;align-items:center;margin:6px 0;font-size:14px}
+.track{background:#f0eee8;border-radius:4px;height:16px;overflow:hidden}
+.fill{height:100%;background:var(--accent);border-radius:0 4px 4px 0}
+.fill.gray{background:#9a988f}.fill.warn{background:var(--warn)}
+.pct{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+.empty{color:var(--muted);font-style:italic}
+footer{color:var(--muted);font-size:14px;padding:24px 16px 48px}

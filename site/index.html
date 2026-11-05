@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Is in the Trial?</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="banner">Prototype: trial data is live. Comparison with real patient populations (PPR) is coming next.</div>
+<header class="wrap">
+  <h1>Who Is in the Trial?</h1>
+  <p class="lede">Clinical trials decide which treatments reach the public. This site shows who actually took part in trials for four common conditions, and how often trials leave out demographic data entirely. We don't rate any trial. Explore the numbers and draw your own conclusions.</p>
+</header>
+
+<main class="wrap">
+  <section class="controls" aria-label="Filters">
+    <div class="group" role="tablist" id="conds"></div>
+    <label class="phase">Study phase
+      <select id="phase">
+        <option value="">All phases</option>
+        <option value="PHASE1">Phase 1</option>
+        <option value="PHASE2">Phase 2</option>
+        <option value="PHASE3">Phase 3</option>
+        <option value="PHASE4">Phase 4</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="card">
+    <h2>Race of trial participants</h2>
+    <p class="note">Share of all participants in trials that reported race in the standard NIH/OMB categories. Hover a bar for counts.</p>
+    <div id="race"></div>
+  </section>
+
+  <section class="card">
+    <h2>Is demographic data even reported?</h2>
+    <p class="note">Of the trials that posted results, how many reported participants' race at all.</p>
+    <div id="reporting"></div>
+  </section>
+
+  <section class="card">
+    <h2>Trials</h2>
+    <p class="note">Each trial links to its page on ClinicalTrials.gov. Showing the 50 largest.</p>
+    <div class="tablewrap"><table id="trials"><thead><tr><th>Trial</th><th>Phase</th><th>Start</th><th class="num">Participants</th><th>Race reported</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="card explain">
+    <h2>How to read this</h2>
+    <h3>What is a study phase?</h3>
+    <p>Treatments are tested in stages. Phase 1 trials are small safety tests, Phase 2 checks whether the treatment works and at what dose, Phase 3 compares it with existing care in large groups, and Phase 4 follows it after approval.</p>
+    <h3>Coming next: PPR</h3>
+    <p>The Participation to Prevalence Ratio compares a group's share of trial participants with its share of people who actually have the condition. A value below 1 means the group is underrepresented. We are adding prevalence data from the CDC and the National Cancer Institute.</p>
+    <h3>Limits of this data</h3>
+    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart.</p>
+  </section>
+</main>
+<footer class="wrap">Data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>. Built by the Clinicals team.</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
