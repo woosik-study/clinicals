@@ -1,4 +1,4 @@
-"""Turn trials_clean.csv into site/data.js (window.TRIALS = [...]) for the website."""
+"""Turn trials_clean.csv into docs/data.js (window.TRIALS = [...]) for the website."""
 import csv, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 RACES = ["American Indian or Alaska Native", "Asian", "Native Hawaiian or Other Pacific Islander",
@@ -15,6 +15,6 @@ with open(os.path.join(HERE, "trials_clean.csv")) as fh:
             "rf": r["race_format"], "fe": f(r.get("female")), "ma": f(r.get("male")),
             "r": [f(r.get("race_" + x)) or 0 for x in RACES],
         })
-with open(os.path.join(HERE, "site", "data.js"), "w") as fh:
+with open(os.path.join(HERE, "docs", "data.js"), "w") as fh:
     fh.write("window.TRIALS = " + json.dumps(rows, separators=(",", ":")) + ";\n")
-print(f"Wrote site/data.js with {len(rows)} trials")
+print(f"Wrote docs/data.js with {len(rows)} trials")
