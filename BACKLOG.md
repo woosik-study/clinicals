@@ -20,7 +20,8 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 
 | Task | Owner | Planned | Status | Notes |
 |---|---|---|---|---|
-| Submit 2 missed progress updates and this week's update | All | Week 6 | ❌ Not started | Gantt charts are ready (Woosik) |
+| Submit 2 missed progress updates | All | Week 6 | ✅ Done 11/4 | |
+| Submit this week's progress update | All | Week 6 | ❌ Not started | Gantt charts are ready (Woosik) |
 | Confirm 4 conditions | All | Week 6 | ❌ Not started | Alzheimer's is an optional 5th |
 | Tell the group if your research part is done | All | Week 6 | ❌ Not started | |
 | Weekly progress update | All | Every week | ⏳ Waiting | TA to confirm if one person or everyone submits |
@@ -67,6 +68,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 
 ### Week 6 (11/2 to 11/6)
 - 11/4: TA (Uliyaah) flagged the missing Week 5 and Week 6 updates. We confirmed it was a miscommunication and are submitting them.
+- 11/4: The 2 missed progress updates were handled.
 - 11/4: Proposed 4 conditions to focus on.
 - 11/4: Built and ran the data pipeline (4,494 trials).
 - 11/4: Built the working prototype and published it on GitHub Pages.
