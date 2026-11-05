@@ -5,6 +5,9 @@ let cond = "breast_cancer";
 const $ = id => document.getElementById(id);
 const fmt = n => Math.round(n).toLocaleString();
 const pct = (a, b) => b ? (100 * a / b) : 0;
+const UNKNOWN = RACES.indexOf("Unknown or Not Reported");
+const condsByTrial = {};
+data.forEach(r => (condsByTrial[r.id] = condsByTrial[r.id] || []).push(r.c));
 
 function bar(label, p, title, cls="") {
   return `<div class="bar" title="${title}"><span>${label}</span><div class="track"><div class="fill ${cls}" style="width:${Math.max(p,0.5)}%"></div></div><span class="pct">${p.toFixed(1)}%</span></div>`;
@@ -25,6 +28,7 @@ function render() {
   const anyRace = rows.filter(r => r.rf !== "none").length;
   const raceTot = RACES.map((_, i) => omb.reduce((s, r) => s + (r.r[i] || 0), 0));
   const allRace = raceTot.reduce((a, b) => a + b, 0);
+  const unknownRace = raceTot[UNKNOWN], knownRace = allRace - unknownRace;
   const sx = rows.filter(r => r.fe != null || r.ma != null);
   const fe = sx.reduce((s, r) => s + (r.fe || 0), 0), ma = sx.reduce((s, r) => s + (r.ma || 0), 0);
   const people = rows.reduce((s, r) => s + (r.n || 0), 0);
@@ -36,9 +40,11 @@ function render() {
     [(fe + ma) ? pct(fe, fe + ma).toFixed(0) + "%" : "n/a", "of participants were female"],
   ].map(([v, l]) => `<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
 
+  const raceBars = knownRace
+    ? RACES.map((name, i) => i === UNKNOWN ? "" : bar(name, pct(raceTot[i], knownRace), `${fmt(raceTot[i])} of ${fmt(knownRace)} participants with known race`)).join("")
+    : "";
   $("race").innerHTML = allRace
-    ? RACES.map((name, i) => bar(name, pct(raceTot[i], allRace), `${fmt(raceTot[i])} of ${fmt(allRace)} participants`, name.startsWith("Unknown") ? "gray" : "")).join("")
-      + `<p class="note" style="margin-top:12px">Based on ${fmt(omb.length)} trials and ${fmt(allRace)} participants.</p>`
+    ? raceBars + `<p class="note" style="margin-top:12px">${pct(unknownRace, allRace).toFixed(1)}% of participants had unknown race (${fmt(unknownRace)} of ${fmt(allRace)}). Based on ${fmt(omb.length)} trials.</p>`
     : `<p class="empty">No trials in this view reported race in the standard categories.</p>`;
 
   const custom = rows.filter(r => r.rf === "customized").length, none = rows.filter(r => r.rf === "none").length;
@@ -49,8 +55,12 @@ function render() {
 
   const top = [...rows].sort((a, b) => (b.n || 0) - (a.n || 0)).slice(0, 50);
   const lbl = {omb:"Yes", customized:"Own categories", none:"No"};
+  const alsoListed = r => {
+    const others = condsByTrial[r.id].filter(c => c !== r.c).map(c => CONDS[c]);
+    return others.length ? `<div class="also">Also listed under: ${others.join(", ")}</div>` : "";
+  };
   $("trials").querySelector("tbody").innerHTML = top.map(r =>
-    `<tr><td><a href="https://clinicaltrials.gov/study/${r.id}" target="_blank" rel="noopener">${r.id}</a><br>${(r.t || "").replace(/</g,"&lt;")}</td>
+    `<tr><td><a href="https://clinicaltrials.gov/study/${r.id}" target="_blank" rel="noopener">${r.id}</a><br>${(r.t || "").replace(/</g,"&lt;")}${alsoListed(r)}</td>
      <td>${(r.p || "n/a").replaceAll("PHASE","Phase ").replaceAll("|"," / ").replace("EARLY_Phase 1","Early Phase 1").replace("NA","n/a")}</td>
      <td>${r.y || ""}</td><td class="num">${r.n ? fmt(r.n) : ""}</td><td>${lbl[r.rf]}</td></tr>`).join("");
 }

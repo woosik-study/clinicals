@@ -31,12 +31,12 @@
 
   <section class="card">
     <h2>Race of trial participants</h2>
-    <p class="note">Share of all participants in trials that reported race in the standard NIH/OMB categories. Hover a bar for counts.</p>
+    <p class="note">Share of participants with known race, in trials that reported race in the standard NIH/OMB categories. Participants with unknown race are left out of the bars and shown below them. Hover a bar for counts.</p>
     <div id="race"></div>
   </section>
 
   <section class="card">
-    <h2>Is demographic data even reported?</h2>
+    <h2>How often do trials report participants' race?</h2>
     <p class="note">Of the trials that posted results, how many reported participants' race at all.</p>
     <div id="reporting"></div>
   </section>
@@ -52,9 +52,9 @@
     <h3>What is a study phase?</h3>
     <p>Treatments are tested in stages. Phase 1 trials are small safety tests, Phase 2 checks whether the treatment works and at what dose, Phase 3 compares it with existing care in large groups, and Phase 4 follows it after approval.</p>
     <h3>Coming next: PPR</h3>
-    <p>The Participation to Prevalence Ratio compares a group's share of trial participants with its share of people who actually have the condition. A value below 1 means the group is underrepresented. We are adding prevalence data from the CDC and the National Cancer Institute.</p>
+    <p>The Participation to Prevalence Ratio compares a group's share of trial participants with its share of people who actually have the condition. A value of 1.0 means the two shares are equal, and "underrepresented" means a value below 1. We will show each value next to a reference line at 1.0 and will not label individual groups. PPR will use only trials with all sites in the US and will leave participants with unknown race out of the shares. We are adding prevalence data from the CDC and the National Cancer Institute.</p>
     <h3>Limits of this data</h3>
-    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart.</p>
+    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart. Trials listed under more than one condition count fully in each condition's numbers, so adding conditions together would count them twice.</p>
   </section>
 </main>
 <footer class="wrap">Data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>. Built by the Clinicals team.</footer>

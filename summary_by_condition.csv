@@ -1,5 +1,5 @@
-condition,trials,pct_trials_reporting_race_omb,pct_trials_reporting_race_any,participants_in_omb_race_trials,pct_female,pct_American Indian or Alaska Native,pct_Asian,pct_Native Hawaiian or Other Pacific Islander,pct_Black or African American,pct_White,pct_More than one race,pct_Unknown or Not Reported
-breast_cancer,1534,60.1,80.2,168615,95.9,1.0,10.9,0.2,10.8,70.7,0.7,5.7
-prostate_cancer,872,64.3,80.6,66262,6.3,0.6,8.2,0.2,9.5,75.8,0.7,5.1
-type_2_diabetes,1417,43.4,64.2,280167,42.8,2.9,15.6,0.4,8.0,69.1,2.0,2.0
-heart_failure,671,53.8,74.7,157588,41.5,1.2,7.3,0.4,10.8,77.0,1.6,1.8
+condition,trials,pct_trials_reporting_race_omb,pct_trials_reporting_race_any,participants_in_omb_race_trials,participants_known_race,pct_female,pct_American Indian or Alaska Native,pct_Asian,pct_Native Hawaiian or Other Pacific Islander,pct_Black or African American,pct_White,pct_More than one race,pct_unknown_race,trials_with_locations,trials_us_only,trials_any_us_site,trials_us_only_omb
+breast_cancer,1534,60.1,80.2,168615,158986,95.9,1.1,11.5,0.2,11.5,75.0,0.7,5.7,,,,
+prostate_cancer,872,64.3,80.6,66262,62874,6.3,0.6,8.6,0.2,10.0,79.9,0.7,5.1,,,,
+type_2_diabetes,1417,43.4,64.2,280167,274487,42.8,2.9,15.9,0.4,8.2,70.6,2.0,2.0,,,,
+heart_failure,671,53.8,74.7,157588,154751,41.5,1.2,7.4,0.4,11.0,78.4,1.6,1.8,,,,

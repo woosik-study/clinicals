@@ -4,8 +4,9 @@ Clinicals project: pull participant demographics from ClinicalTrials.gov (API v2
 Scope: interventional trials with posted results, started 2010 or later,
 for 4 conditions. Saves:
   trials_raw/<condition>.jsonl   raw API records (for re-processing)
-  trials_clean.csv               one row per trial, demographics from the "Total" group
-  summary_by_condition.csv       per condition: race reporting rate + participant shares
+  trials_clean.csv               one row per trial per condition, demographics from the "Total" group
+                                 and location flags (us_only, any_us_site)
+  summary_by_condition.csv       per condition: race reporting rate, participant shares, location counts
 
 Run:  python3 fetch_trials.py             (full pull)
       python3 fetch_trials.py --test      (5 trials per condition, quick check)
@@ -20,7 +21,7 @@ CONDITIONS = {
     "heart_failure": "heart failure",
 }
 BASE = "https://clinicaltrials.gov/api/v2/studies"
-FIELDS = "NCTId,BriefTitle,Phase,StartDate,EnrollmentCount,StudyType,BaselineCharacteristicsModule"
+FIELDS = "NCTId,BriefTitle,Phase,StartDate,EnrollmentCount,StudyType,LocationCountry,BaselineCharacteristicsModule"
 ADV = "AREA[StudyType]INTERVENTIONAL AND AREA[StartDate]RANGE[2010-01-01,MAX]"
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEST = "--test" in sys.argv
@@ -28,6 +29,8 @@ FROM_RAW = "--from-raw" in sys.argv
 
 OMB_RACE = ["American Indian or Alaska Native", "Asian", "Native Hawaiian or Other Pacific Islander",
             "Black or African American", "White", "More than one race", "Unknown or Not Reported"]
+UNKNOWN_RACE = "Unknown or Not Reported"
+US = "United States"
 OMB_ETH = ["Hispanic or Latino", "Not Hispanic or Latino", "Unknown or Not Reported"]
 
 
@@ -132,7 +135,50 @@ def parse(study, cond):
                             row["age_value"] = num(meas.get("value"))
                             row["age_param"] = m.get("paramType")
     row["has_total_group"] = int(total is not None)
+    locations = ps.get("contactsLocationsModule", {}).get("locations", []) or []
+    countries = sorted({loc["country"] for loc in locations if loc.get("country")})
+    row["location_countries"] = "|".join(countries)
+    if countries:  # stays blank, not 0, when a trial lists no location
+        row["us_only"] = int(countries == [US])
+        row["any_us_site"] = int(US in countries)
     return row
+
+
+def race_shares(rows):
+    """Race shares with unknown race left out of the denominator, as PPR needs them.
+
+    Returns (shares by race, participants with known race, percent of all participants with unknown race).
+    """
+    totals = {x: sum(r.get("race_" + x) or 0 for r in rows) for x in OMB_RACE}
+    everyone = sum(totals.values())
+    known = everyone - totals[UNKNOWN_RACE]
+    shares = {x: round(100 * v / known, 1) if known else None for x, v in totals.items() if x != UNKNOWN_RACE}
+    pct_unknown = round(100 * totals[UNKNOWN_RACE] / everyone, 1) if everyone else None
+    return shares, known, pct_unknown
+
+
+def location_counts(rows):
+    """Trial counts for each location flag. Trials with no listed location have blank flags."""
+    with_loc = [r for r in rows if r.get("location_countries")]
+    if not with_loc:
+        return {"trials_with_locations": None, "trials_us_only": None, "trials_any_us_site": None, "trials_us_only_omb": None}
+    return {"trials_with_locations": len(with_loc),
+            "trials_us_only": sum(r["us_only"] for r in with_loc),
+            "trials_any_us_site": sum(r["any_us_site"] for r in with_loc),
+            "trials_us_only_omb": sum(r["us_only"] and r["race_format"] == "omb" for r in with_loc)}
+
+
+def print_location_report(rows):
+    unique = list({r["nct_id"]: r for r in rows}.values())  # a trial can be listed under two conditions
+    groups = [(key, [r for r in rows if r["condition"] == key]) for key in CONDITIONS] + [("all (unique trials)", unique)]
+    print("\nTrial locations:")
+    if not any(r.get("location_countries") for r in rows):
+        print("  No location data in these records. Run a full pull to get it.")
+        return
+    print(f"  {'condition':<22}{'trials':>8}{'with locations':>16}{'us_only':>9}{'any_us_site':>13}{'us_only + standard race':>25}")
+    for name, rs in groups:
+        c = {k: "n/a" if v is None else v for k, v in location_counts(rs).items()}
+        print(f"  {name:<22}{len(rs):>8}{c['trials_with_locations']:>16}{c['trials_us_only']:>9}{c['trials_any_us_site']:>13}{c['trials_us_only_omb']:>25}")
 
 
 def main():
@@ -154,7 +200,7 @@ def main():
 
     cols = ["nct_id", "condition", "title", "phases", "start_year", "enrollment", "baseline_n", "has_total_group",
             "sex_reported", "female", "male", "race_format"] + ["race_" + r for r in OMB_RACE] + \
-           ["ethnicity_reported"] + ["eth_" + e for e in OMB_ETH] + ["age_value", "age_param"]
+           ["ethnicity_reported"] + ["eth_" + e for e in OMB_ETH] + ["age_value", "age_param", "location_countries", "us_only", "any_us_site"]
     with open(os.path.join(HERE, "trials_clean.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
         w.writeheader()
@@ -165,6 +211,7 @@ def main():
         rs = [r for r in rows if r["condition"] == key]
         omb = [r for r in rs if r["race_format"] == "omb"]
         tot = sum(sum(r.get("race_" + x) or 0 for x in OMB_RACE) for r in omb)
+        shares, known, pct_unknown = race_shares(omb)
         sx = [r for r in rs if r.get("female") is not None or r.get("male") is not None]
         fem = sum(r.get("female") or 0 for r in sx)
         sxt = fem + sum(r.get("male") or 0 for r in sx)
@@ -172,14 +219,18 @@ def main():
              "pct_trials_reporting_race_omb": round(100 * len(omb) / len(rs), 1) if rs else None,
              "pct_trials_reporting_race_any": round(100 * sum(r["race_format"] != "none" for r in rs) / len(rs), 1) if rs else None,
              "participants_in_omb_race_trials": int(tot),
+             "participants_known_race": int(known),
              "pct_female": round(100 * fem / sxt, 1) if sxt else None}
-        for x in OMB_RACE:
-            s["pct_" + x] = round(100 * sum(r.get("race_" + x) or 0 for r in omb) / tot, 1) if tot else None
+        for x, v in shares.items():
+            s["pct_" + x] = v
+        s["pct_unknown_race"] = pct_unknown
+        s.update(location_counts(rs))
         summ.append(s)
     with open(os.path.join(HERE, "summary_by_condition.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(summ[0].keys()))
         w.writeheader()
         w.writerows(summ)
+    print_location_report(rows)
     print("\nDone. Wrote trials_clean.csv and summary_by_condition.csv in", HERE)
 
 

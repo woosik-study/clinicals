@@ -34,7 +34,8 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Pull and clean trial demographic data | Woosik | Week 5 to 6 | ✅ Done 11/4 | 4,494 rows, 4,415 unique trials |
 | Count trials that did not report race | Woosik | Week 6 | ✅ Done 11/4 | Breast 304, prostate 169, type 2 diabetes 507, heart failure 170 (1,140 unique trials) |
 | Fix "Race and Ethnicity Not Collected" label bug | Woosik | Week 6 | ✅ Done 11/4 | 261 rows moved from own categories to not reported |
-| Add trial locations to the data pull | Woosik (proposed) | Before PPR charts | ❌ Not started | Needed to compare with US prevalence (see section 5) |
+| Add trial locations to the data pull | Woosik | Before PPR charts | ⚠️ Code ready | `us_only` and `any_us_site` flags added. Needs a full data pull to fill them and report counts per condition. |
+| Decide if there are enough `us_only` trials for PPR | All | After the data pull | ❌ Not started | Use the counts the data pull reports |
 | Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ahead of schedule. PPR charts still to do. Age and ethnicity are not on the site yet. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ⚠️ Partial | For example Home, condition pages, explainers, sources. Basic structure exists in the prototype. |
@@ -42,7 +43,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Resource list (10+ sources) | Saurabi | Through Week 9 | ❌ Not started | Track every source we use |
 | FDA Snapshots comparison section | Sanjana | Week 7 to 8 | ❌ Not started | |
 | Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8 | ⚠️ Placeholder | Short placeholder text on the site. Sneha to rewrite and expand. |
-| PPR charts | Woosik | Week 7 to 8 | ❌ Not started | Needs prevalence data |
+| PPR charts | Woosik | Week 7 to 8 | ❌ Not started | Needs prevalence data. Follow the rules in section 5. |
 | Team review and edits | All | Week 9 | ❌ | |
 | Final polish, submission, AI chat logs | All | Week 10 to Finals | ❌ | |
 
@@ -72,6 +73,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/4: Created this backlog.
 - 11/4: Checked the backlog numbers against the raw data and found a race label bug. ClinicalTrials.gov lists "Race and Ethnicity Not Collected" as a baseline measure, and the script counted those 261 rows as own categories. Fixed it, rebuilt the data from the saved raw files, and changed the banner from "live" to the snapshot date.
 - 11/4: Set roles and this week's tasks for all 4 members, and agreed how to compare trial and patient data (see section 3).
+- 11/4: Team decided on overlapping trials, US vs global data, unknown race, and neutral wording (see section 5). Implemented the site and script changes.
 
 ---
 
@@ -80,12 +82,14 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 **Step 1: Pull data (`fetch_trials.py`)**
 - ClinicalTrials.gov has an **API**, a way for a program to request data from the site automatically.
 - Filters: one of the 4 conditions, **interventional** trials (testing a treatment), started 2010 or later, with **posted results**.
+- Each trial's location countries are requested too.
 - Raw responses are saved in `trials_raw/`, one JSONL file per condition.
 
 **Step 2: Clean data (same script)**
 - Each trial reports **baseline characteristics**, a table of who enrolled with a "Total" column.
 - From the Total column we take sex, race (standard NIH/OMB categories), ethnicity, and average age.
 - Each trial's race reporting is labeled **standard categories**, **own categories** (custom labels the script does not try to combine), or **not reported**.
+- Each trial gets two location flags: **`us_only`** (all sites in the US) and **`any_us_site`** (at least one US site). Both are blank if the trial lists no location.
 - Output: `trials_clean.csv` (one row per trial per condition) and `summary_by_condition.csv`.
 
 **Step 3: Prepare for the site (`build_site_data.py`)**
@@ -105,7 +109,7 @@ python3 build_site_data.py
 git add . && git commit -m "Refresh data" && git push
 ```
 
-To change only the cleaning logic, run `python3 fetch_trials.py --from-raw` in place of the first command. It rebuilds the CSVs from `trials_raw/` without downloading anything.
+To change only the cleaning logic, run `python3 fetch_trials.py --from-raw` in place of the first command. It rebuilds the CSVs from `trials_raw/` without downloading anything. The script also prints trial counts per condition for each location flag and saves them in `summary_by_condition.csv`.
 
 **How we compare the data**
 
@@ -113,7 +117,9 @@ For each condition we show two numbers side by side:
 1. A group's share of trial participants (Woosik's data)
 2. That group's share of actual patients (Saurabi's data)
 
-PPR = (1) divided by (2). If PPR is below 1, that group is underrepresented in the trials.
+PPR = (1) divided by (2). A value below 1 is what we mean by underrepresented. The site defines that term once in the explainer and does not label individual groups.
+
+For PPR, (1) uses only `us_only` trials with standard race categories and leaves "Unknown or Not Reported" out of the denominator.
 
 Example with made-up numbers: if a group is 10% of trial participants and 20% of patients, its PPR is 0.5.
 
@@ -128,16 +134,16 @@ Example with made-up numbers: if a group is 10% of trial participants and 20% of
 | Type 2 diabetes | 1,417 | 698,473 | 64.2% | 43.4% | 20.8% | 35.8% | 42.8% |
 | Heart failure | 671 | 419,286 | 74.7% | 53.8% | 20.9% | 25.3% | 41.5% |
 
-Each row counts its own condition, so overlapping trials appear twice. Across all 4 conditions there are 4,415 unique trials and 1,596,387 participants.
+Each row counts its own condition, so overlapping trials count in each one. We deduplicate only for totals across conditions. Across all 4 conditions there are 4,415 unique trials and 1,596,387 participants.
 
-Participant race (trials using standard categories, not affected by the bug). AI/AN means American Indian or Alaska Native. Rows do not sum to 100% because Native Hawaiian or Other Pacific Islander and More than one race are not shown here.
+Participant race, from trials in any country using standard categories. Race shares are among participants with known race. The unknown column is a share of all participants in those trials. AI/AN means American Indian or Alaska Native. Race shares do not sum to 100% because Native Hawaiian or Other Pacific Islander and More than one race are not shown here.
 
-| Condition | White | Black | Asian | AI/AN | Unknown |
+| Condition | White | Black | Asian | AI/AN | Unknown race |
 |---|---|---|---|---|---|
-| Breast cancer | 70.7% | 10.8% | 10.9% | 1.0% | 5.7% |
-| Prostate cancer | 75.8% | 9.5% | 8.2% | 0.6% | 5.1% |
-| Type 2 diabetes | 69.1% | 8.0% | 15.6% | 2.9% | 2.0% |
-| Heart failure | 77.0% | 10.8% | 7.3% | 1.2% | 1.8% |
+| Breast cancer | 75.0% | 11.5% | 11.5% | 1.1% | 5.7% |
+| Prostate cancer | 79.9% | 10.0% | 8.6% | 0.6% | 5.1% |
+| Type 2 diabetes | 70.6% | 8.2% | 15.9% | 2.9% | 2.0% |
+| Heart failure | 78.4% | 11.0% | 7.4% | 1.2% | 1.8% |
 
 These are trial participant shares only. They become meaningful once compared with patient prevalence through PPR (Participation to Prevalence Ratio: a group's share of trial participants divided by its share of people with the condition).
 
@@ -147,19 +153,25 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 
 ## 5. Open issues and decisions
 
+**Decisions made (11/4)**
+- **Overlapping trials:** keep trials listed under multiple conditions in each condition's stats. The trial table shows "Also listed under: [condition]", and the data limits explainer says so. Deduplicate only when computing cross-condition totals. For context, 79 trials appear under two conditions (56 of them under both breast and prostate cancer). Those 56 trials hold 5,551 of the 7,587 female participants in prostate cancer. Without them the female share is 1.8%, not 6.3%.
+- **US vs global:** participant charts stay global. `fetch_trials.py` adds location countries and the `us_only` and `any_us_site` flags. PPR will use `us_only` trials.
+- **Unknown race:** exclude "Unknown or Not Reported" from the denominator for race shares used in PPR. The site shows the unknown share separately, as "X% of participants had unknown race". The site's race chart now uses the same denominator, so its shares match the shares PPR will use.
+- **Neutral wording:** "Is demographic data even reported?" is now "How often do trials report participants' race?". Individual groups are not labeled as underrepresented. PPR charts will show each value with a reference line at 1.0, and the explainer defines the term once.
+
+**Next step on these decisions**
+- **Are there enough `us_only` trials?** The stored raw data has no locations, so the counts need a full data pull. Decide once they are in. The pull can also change other numbers if ClinicalTrials.gov has added trials, so check section 4 and the banner date afterward.
+
 **Site wording**
-- **Neutral wording:** we agreed not to push a conclusion. "Is demographic data even reported?" leans toward one. The intro also says trials "leave out demographic data entirely", but that chart only measures race.
+- **Intro text:** the intro says trials "leave out demographic data entirely", but the chart only measures race.
 
 **Decisions for the team**
-- **Overlapping trials:** 79 trials appear under two conditions (56 of them under both breast and prostate cancer). Decide whether to keep, remove, or flag them. Those 56 trials hold 5,551 of the 7,587 female participants in prostate cancer. Without them the female share is 1.8%, not 6.3%. The rest comes from other mixed trials, such as couples studies and multi-cancer trials.
 - **Broad search:** the condition search also returns trials that are not mainly about that condition. Decide whether to narrow it.
 - **Own race categories:** about 1 in 5 trials use their own race labels and are excluded from the race chart. Explain this on the site. Many of these labels look close to the standard ones (Asian, White), so decide whether to map the clear matches.
-- **US vs global for PPR:** many trials run in several countries, but the data pull has no trial locations. Comparing global participants with US prevalence could mislead. Decide how to handle this before building PPR charts. Adding locations means a new data pull.
 - **PPR inputs (Woosik and Saurabi):** agree on these before Saurabi collects the data:
   - **Shares, not rates:** PPR needs each group's share of patients. A rate such as "cases per 100,000 people" in that group is not a share. Record patient counts where possible.
   - **Patient measure:** choose prevalence (people living with the condition) or incidence (new cases), and use the same one across conditions if possible.
   - **Race categories:** a source may combine groups (Asian/Pacific Islander) or mix race with Hispanic origin (White Non-Hispanic). The trial data keeps race and ethnicity separate, so write down how each category maps.
-  - **Unknown race:** decide whether to remove "Unknown or Not Reported" before calculating trial shares. Today it is included in the total.
   - **Diabetes type:** our trials cover type 2. Check whether each CDC figure separates type 2 from all diabetes.
   - **Heart failure source:** confirm that CDC publishes heart failure patients by race and sex. If not, choose another source.
 - **Age and ethnicity:** our topic includes both, but neither is on the site. About 1 in 5 unique trials has no usable average age (827 of 4,415), and the "average" mixes means and medians.
@@ -189,6 +201,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 10/23 to 10/29 | Woosik | Claude | Gantt charts and progress update text |
 | 11/4 | Woosik | Claude | Data pipeline scripts, prototype website, this backlog |
 | 11/4 | Woosik | Claude | Checking code and backlog numbers against the raw data, plain-language project summary, backlog update |
+| 11/4 | Woosik | Claude | README draft, implementing team decisions on overlapping trials, trial locations, unknown race, and wording |
 
 ---
 
