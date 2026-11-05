@@ -34,8 +34,8 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Pull and clean trial demographic data | Woosik | Week 5 to 6 | ✅ Done 11/4 | 4,494 rows, 4,415 unique trials |
 | Count trials that did not report race | Woosik | Week 6 | ✅ Done 11/4 | Breast 304, prostate 169, type 2 diabetes 507, heart failure 170 (1,140 unique trials) |
 | Fix "Race and Ethnicity Not Collected" label bug | Woosik | Week 6 | ✅ Done 11/4 | 261 rows moved from own categories to not reported |
-| Add trial locations to the data pull | Woosik | Before PPR charts | ⚠️ Code ready | `us_only` and `any_us_site` flags added. Needs a full data pull to fill them and report counts per condition. |
-| Decide if there are enough `us_only` trials for PPR | All | After the data pull | ❌ Not started | Use the counts the data pull reports |
+| Add trial locations to the data pull | Woosik | Before PPR charts | ✅ Done 11/4 | `us_only` and `any_us_site` flags filled by a full data pull. Other numbers did not change. |
+| Decide if there are enough `us_only` trials for PPR | All | Week 6 to 7 | ❌ Not started | Counts are in section 4 |
 | Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ahead of schedule. PPR charts still to do. Age and ethnicity are not on the site yet. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ⚠️ Partial | For example Home, condition pages, explainers, sources. Basic structure exists in the prototype. |
@@ -74,6 +74,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/4: Checked the backlog numbers against the raw data and found a race label bug. ClinicalTrials.gov lists "Race and Ethnicity Not Collected" as a baseline measure, and the script counted those 261 rows as own categories. Fixed it, rebuilt the data from the saved raw files, and changed the banner from "live" to the snapshot date.
 - 11/4: Set roles and this week's tasks for all 4 members, and agreed how to compare trial and patient data (see section 3).
 - 11/4: Team decided on overlapping trials, US vs global data, unknown race, and neutral wording (see section 5). Implemented the site and script changes.
+- 11/4: Ran a full data pull with trial locations and counted the trials and participants available for PPR (see section 4).
 
 ---
 
@@ -147,6 +148,25 @@ Participant race, from trials in any country using standard categories. Race sha
 
 These are trial participant shares only. They become meaningful once compared with patient prevalence through PPR (Participation to Prevalence Ratio: a group's share of trial participants divided by its share of people with the condition).
 
+**Trials and participants available for PPR.** PPR will use `us_only` trials (all sites in the US) with standard race categories. `any_us_site` means at least one US site.
+
+| Condition | All trials | With locations | `us_only` | `any_us_site` | Usable for PPR | Participants with known race | Share of those participants in the 10 largest trials |
+|---|---|---|---|---|---|---|---|
+| Breast cancer | 1,534 | 1,506 | 965 | 1,275 | 677 | 85,512 | 46.4% |
+| Prostate cancer | 872 | 862 | 624 | 772 | 455 | 28,509 | 23.7% |
+| Type 2 diabetes | 1,417 | 1,325 | 596 | 947 | 333 | 51,486 | 51.3% |
+| Heart failure | 671 | 668 | 397 | 527 | 247 | 39,548 | 43.2% |
+| All (unique trials) | 4,415 | 4,285 | 2,535 | 3,450 | 1,679 | | |
+
+Participants in those usable trials, by race. These counts are not PPR values and do not show representation until compared with patient data. NHPI means Native Hawaiian or Other Pacific Islander.
+
+| Condition | White | Black | Asian | AI/AN | NHPI | More than one race |
+|---|---|---|---|---|---|---|
+| Breast cancer | 65,481 | 14,853 | 3,433 | 864 | 139 | 742 |
+| Prostate cancer | 23,131 | 4,242 | 718 | 149 | 69 | 200 |
+| Type 2 diabetes | 35,220 | 12,329 | 1,469 | 902 | 493 | 1,073 |
+| Heart failure | 27,780 | 9,502 | 927 | 388 | 161 | 790 |
+
 A few large trials carry a lot of weight in these totals. The 10 largest trials hold 50.5% of heart failure participants, 33.6% for breast cancer, 24.9% for type 2 diabetes, and 14.1% for prostate cancer. The median trial is small (44 to 114 participants).
 
 ---
@@ -160,7 +180,8 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 - **Neutral wording:** "Is demographic data even reported?" is now "How often do trials report participants' race?". Individual groups are not labeled as underrepresented. PPR charts will show each value with a reference line at 1.0, and the explainer defines the term once.
 
 **Next step on these decisions**
-- **Are there enough `us_only` trials?** The stored raw data has no locations, so the counts need a full data pull. Decide once they are in. The pull can also change other numbers if ClinicalTrials.gov has added trials, so check section 4 and the banner date afterward.
+- **Are there enough `us_only` trials?** Counts are in section 4. Decide on a rule for small groups before seeing any PPR values. Keeping only `us_only` trials leaves 18.8% of type 2 diabetes participants with known race, 25.6% for heart failure, 45.3% for prostate cancer, and 53.8% for breast cancer, compared with the global totals.
+- **Small groups:** the smallest counts are NHPI in prostate cancer (69), breast cancer (139), and heart failure (161), and AI/AN in prostate cancer (149). In some cases one trial supplies most of a group: NCT03270436 holds 76.7% of NHPI participants in type 2 diabetes, and NCT04259762 holds 55.7% of AI/AN participants in breast cancer. Decide whether the site should flag values like these.
 
 **Site wording**
 - **Intro text:** the intro says trials "leave out demographic data entirely", but the chart only measures race.
