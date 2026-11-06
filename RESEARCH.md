@@ -94,11 +94,108 @@ Each team member adds their own research to their own section.
 
 ### Key findings
 
+
 ## Sneha
 
 ### Sources
 
+#### Trial diversity research
+
 | Title | Link | Type | Used for | Added by | Date |
 |---|---|---|---|---|---|
+| Racial and Ethnic Inequities in US Oncology Clinical Trial Participation From 2017 to 2022 (JAMA Network Open) | https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2807488 | research | Evidence of racial disparities in cancer trial participation | Sneha | 2026-11-06 |
+| Examining the Representation of Minority Race and Ethnicity Groups in Breast Cancer Clinical Trials in the USA Published 2012–2022 | https://link.springer.com/article/10.1245/s10434-026-19214-y | research | Breast cancer representation and PPR comparisons | Sneha | 2026-11-06 |
+| Improving Representation in Clinical Trials and Research (National Academies, 2022) | https://www.nationalacademies.org/projects/PGA-POLICY-20-19/publication/26479 | research report | Barriers to participation and importance of diversity | Sneha | 2026-11-06 |
+| FDASIA Section 907: Inclusion of Demographic Subgroups in Clinical Trials (FDA) | https://www.fda.gov/regulatory-information/food-and-drug-administration-safety-and-innovation-act-fdasia/fdasia-section-907-inclusion-demographic-subgroups-clinical-trials | official guidance | Why demographic representation matters | Sneha | 2026-11-06 |
+
+#### PPR method
+
+| Title | Link | Type | Used for | Added by | Date |
+|---|---|---|---|---|---|
+| Who Are We Missing? Reporting of Ethnicity, Race, and Sex-Specific Populations in Clinical Trials | https://pubmed.ncbi.nlm.nih.gov/39719416/ | research | PPR methodology and demographic underrepresentation | Sneha | 2026-11-06 |
+
+#### Trial phases and data limitations
+
+| Title | Link | Type | Used for | Added by | Date |
+|---|---|---|---|---|---|
+| Race and Ethnicity Reporting for Clinical Trials in ClinicalTrials.gov and Publications | https://pubmed.ncbi.nlm.nih.gov/33290865/ | research | Missing demographic data and reporting differences | Sneha | 2026-11-06 |
+| Step 3: Clinical Research (FDA) | https://www.fda.gov/patients/drug-development-process/step-3-clinical-research | official guidance | Explaining clinical trial phases | Sneha | 2026-11-06 |
+| ClinicalTrials.gov Glossary | https://clinicaltrials.gov/study-basics/glossary | official guidance | Phase definitions and terminology | Sneha | 2026-11-06 |
+| How to Read Study Results (ClinicalTrials.gov) | https://clinicaltrials.gov/study-basics/how-to-read-study-results | official guidance | Results availability and baseline data limitations | Sneha | 2026-11-06 |
 
 ### Key findings
+
+#### Trial diversity research
+
+- Clinical trials should include participants who reflect the populations likely to use the treatments being studied. Representation matters because researchers need to understand treatment safety and effectiveness across different patient groups. Source: FDA Section 907.
+- A 2023 JAMA Network Open study examined 50,411 patients across five cancer types. Trial participation was lower among Black patients (4.4%) and Latinx patients (4.2%) than White patients (7.2%). Source: JAMA Network Open, 2023.
+- A study of 1,068 US breast cancer trials published from 2012 to 2022 found that 73.5% reported race or ethnicity. Among trials reporting these data, only 5.7% achieved a PPR above 0.8 simultaneously for Asian, Black, and Hispanic participants. Source: Breast Cancer Clinical Trials study, 2026.
+- Barriers to diverse participation include restrictive eligibility requirements, limited research site accessibility, transportation costs, financial burdens, and recruitment practices. Source: National Academies, 2022.
+- Comparing trial enrollment to disease prevalence provides more meaningful context than displaying raw demographic percentages alone. Source: Who Are We Missing?, 2025.
+
+#### PPR method
+
+- PPR stands for Participation-to-Prevalence Ratio. It measures how closely a demographic group's representation in clinical trials matches its representation among people who have the condition being studied. Source: Who Are We Missing?, 2025.
+- PPR = (% of trial participants in a demographic group) / (% of people with the condition in that demographic group).
+- A PPR of 1.0 indicates proportional representation. Below 1.0 indicates underrepresentation, while above 1.0 indicates overrepresentation.
+- Researchers commonly use a PPR range of 0.8 to 1.2 as a suggested benchmark for approximately proportional representation. Source: Who Are We Missing?, 2025.
+- Example: If Black patients make up 20% of trial participants but 40% of people with the disease, the PPR is 0.20 / 0.40 = 0.50, suggesting underrepresentation.
+- A 2025 cardiovascular trial analysis calculated 22 PPR values across demographic groups and conditions. Nineteen were below 0.8, suggesting underrepresentation in those comparisons. Source: Who Are We Missing?, 2025.
+- PPR is more informative than comparing trial enrollment to the entire US population because diseases affect demographic groups at different rates.
+
+#### Clinical trial phases
+
+- Phase 1 primarily evaluates safety, dosage, and how a treatment interacts with the body, generally in smaller groups. Source: FDA Step 3.
+- Phase 2 investigates whether a treatment appears effective for a particular condition while continuing to evaluate safety. Source: FDA Step 3.
+- Phase 3 studies safety and effectiveness in larger populations and provides stronger evidence about treatment benefits and risks. Source: FDA Step 3.
+- Phase 4 takes place after approval and examines additional information about a treatment's safety, effectiveness, or optimal use. Source: FDA Step 3.
+- Some studies are classified as "Not Applicable" because FDA-defined drug trial phases do not apply to them, such as certain behavioral or device studies. Source: ClinicalTrials.gov Glossary.
+
+#### Data limitations
+
+- Not all registered trials have posted results, and not every trial reports complete race, ethnicity, sex, or age information. Source: ClinicalTrials.gov, How to Read Study Results.
+- Missing demographic data does not necessarily indicate that a demographic group was excluded. Data may not have been collected or may not have been reported. Source: Race and Ethnicity Reporting for Clinical Trials.
+- Race and ethnicity categories are not always consistent between trial datasets and disease prevalence datasets, making some comparisons difficult.
+- PPR calculations require comparable disease prevalence data for the same demographic categories and geographic population. Missing information may prevent reliable calculations.
+- A low PPR indicates underrepresentation relative to disease prevalence, but it does not independently establish whether a trial is safe, effective, or fair.
+- Our dashboard should distinguish between underrepresentation and missing information by displaying "Insufficient data" when reliable comparisons cannot be calculated.
+- Transparent reporting of missing demographic information is important so users do not mistake incomplete data for complete representation.
+
+### Draft website explainer text
+
+#### What are clinical trial phases?
+
+Clinical trials evaluate medical treatments in people to understand their safety and effectiveness.
+
+- **Phase 1:** Tests safety and dosage.
+- **Phase 2:** Evaluates preliminary effectiveness and continues safety testing.
+- **Phase 3:** Studies safety and effectiveness in larger patient populations.
+- **Phase 4:** Monitors treatments after approval.
+
+Each phase serves a different purpose, and demographic representation can vary across phases.
+
+Source: FDA Step 3: Clinical Research.
+
+#### What is PPR?
+
+The Participation-to-Prevalence Ratio (PPR) measures whether a demographic group's participation in clinical trials is proportional to its share of the population affected by a disease.
+
+- **Below 0.8:** Suggests underrepresentation.
+- **0.8–1.2:** Approximately proportional representation.
+- **Above 1.2:** Suggests overrepresentation.
+
+For example, if a group represents 10% of trial participants but 20% of people living with the disease, its PPR is 0.5.
+
+PPR helps identify possible representation gaps but is not a complete measure of trial quality.
+
+Source: Who Are We Missing?, 2025.
+
+#### Understanding data limitations
+
+Our dashboard uses publicly available clinical trial information to examine demographic representation across medical conditions.
+
+However, not every trial reports complete demographic information. Differences in how studies collect and report race, ethnicity, age, and sex can make comparisons difficult.
+
+We aim to make these limitations visible and distinguish missing information from actual underrepresentation. When reliable comparisons are unavailable, the dashboard will indicate insufficient data rather than present potentially misleading results.
+
+Source: ClinicalTrials.gov, How to Read Study Results.
