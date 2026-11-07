@@ -80,10 +80,62 @@ Each team member adds their own research to their own section.
 
 ### Sources
 
+#### Existing tools
+
 | Title | Link | Type | Used for | Added by | Date |
 |---|---|---|---|---|---|
+| FDA Drug Trials Snapshots | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots | official data | What Snapshots cover and how they are published | Sanjana | 2026-11-06 |
+| Drug Trials Snapshots Summary Report (2015 and 2016) | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-summary-report-2015-and-2016 | official data | When Snapshots started and what they were for | Sanjana | 2026-11-06 |
+| FDA report highlights need to improve diversity in clinical trials (Clinical Trials Arena, 5/16/2024) | https://www.clinicaltrialsarena.com/news/fda-report-highlights-need-to-improve-diversity-in-clinical-trials/ | news | What the 2023 Snapshots summary report found | Sanjana | 2026-11-06 |
+| ICER Clinical trial Diversity Rating (CDR) | https://icer.org/our-approach/methods-process/icer-clinical-trial-diversity-rating/ | tool | Another tool that measures trial diversity | Sanjana | 2026-11-06 |
+| A framework for evaluating the diversity of clinical trials (ICER) | https://icer.org/news-insights/journal-articles/ | research | How the CDR was designed | Sanjana | 2026-11-06 |
+| GSK announces results from 17-year retrospective study on US clinical trial diversity | https://us.gsk.com/en-us/media/press-releases/gsk-announces-results-from-17-year-retrospective-study-on-us-clinical-trial-diversity/ | press release | A drug company comparing its own trials with patient populations | Sanjana | 2026-11-06 |
+
+#### Research that uses Snapshots data
+
+| Title | Link | Type | Used for | Added by | Date |
+|---|---|---|---|---|---|
+| Longitudinal clinical trial enrollment trends across 341 US FDA-approved drugs and their guiding role in precision medicine strategies (Communications Medicine, 2025) | https://pmc.ncbi.nlm.nih.gov/articles/PMC12680696/ | research | What Snapshots data can and cannot show | Sanjana | 2026-11-06 |
 
 ### Key findings
+
+#### FDA Drug Trials Snapshots
+
+- Snapshots cover only new molecular entities and original biologics approved by CDER, the FDA's drug center. They describe the key trials behind each drug's original approval. Source: FDA Drug Trials Snapshots
+- CDER started publishing Snapshots in January 2015. Source: Drug Trials Snapshots Summary Report (2015 and 2016)
+- Each Snapshot reports sex, race, ethnicity, and age, where the trials were run, and whether benefits or side effects differed between groups. Source: FDA Drug Trials Snapshots
+- Snapshots come out within 30 days of approval and are not updated afterward. Source: FDA Drug Trials Snapshots
+- Each Snapshot is a separate web page for one drug, and the FDA also publishes a yearly summary report as a PDF. The main page does not mention a downloadable dataset. Source: FDA Drug Trials Snapshots
+- The main page does not compare participants with the people who have each disease. Source: FDA Drug Trials Snapshots
+- The 2023 summary report covered 55 drugs and about 44,000 patients. Nine drug programs enrolled less than 10% Black patients, and 18 enrolled less than 10% Hispanic or Latino patients. Source: Clinical Trials Arena
+- The article on the 2023 report says enrollment by race and ethnicity should be read alongside how common the disease is in each group. Source: Clinical Trials Arena
+
+#### What researchers found when using Snapshots data
+
+- A 2025 study used Snapshots for 341 Phase 3 trials behind drugs approved from 2017 to 2023. It excluded 12 Snapshot reports because they had no demographic data. Source: Communications Medicine
+- The study compared participants with the US Census, not with the people who have each disease, and its authors say the Census is not always the right benchmark. Source: Communications Medicine
+- Snapshots give only overall demographics, not the demographics of US sites. The median share of US participants fell from 47% in 2020 to 25% in 2023. Source: Communications Medicine
+- Snapshot data reflect only what was known at approval and cover only approved drugs, so trials for drugs that were not approved are missing. Source: Communications Medicine
+
+#### Other existing tools
+
+- ICER's Clinical trial Diversity Rating is a framework that gives a trial an overall diversity rating. Users download a template after filling out a form. It rates trials, which our site does not do. Source: ICER CDR
+- ICER's scoping review found that only 48% of the studies it reviewed used disease prevalence as the benchmark for diversity. Source: A framework for evaluating the diversity of clinical trials (ICER)
+- GSK compared 495 of its own US trials (108,261 participants, 2002 to 2019) with both Census and disease data. In HIV trials, Black participants were 35.1% of enrollment, compared with 13.4% of the Census and 55.3% of people with HIV. The result depends on which benchmark is used. Source: GSK press release
+- GSK's study covers only GSK's own trials and was published once, in 2023. It is not an ongoing tool. Source: GSK press release
+
+#### How this compares with our site (draft for the Week 7 to 8 section)
+
+| | FDA Snapshots | ICER CDR | GSK study | This site |
+|---|---|---|---|---|
+| Which trials | Key trials behind new drug approvals since 2015 | Any trial a user enters | GSK's own US trials, 2002 to 2019 | Interventional trials since 2010 with posted results on ClinicalTrials.gov, for 4 conditions |
+| Unit | One drug | One trial | One company | One condition, filterable by phase |
+| Compared with patients | No | Not stated on ICER's page (to check in the paper) | Yes, Census and disease data | Planned, with PPR |
+| Shows missing race data | Not stated | Not stated | Not stated | Yes, share of trials that did not report race |
+| Rates trials | No | Yes | No | No |
+| Updated | Once, within 30 days of approval | Not applicable | Once | Manual data refresh |
+
+"Not stated" means the source we read did not say. Check the full reports before putting these cells on the site.
 
 ## Saurabi
 
