@@ -62,6 +62,7 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 | `trials_clean.csv` | One row per trial per condition |
 | `summary_by_condition.csv` | Race reporting rates, participant race shares, unknown race share, female share, and location counts for each condition |
 | `BACKLOG.md` | Task board, work log, findings, open issues, AI usage log, and presentation outline |
+| [`SITE_PLAN.md`](SITE_PLAN.md) | Plan for the final site's pages, with a rough layout of each |
 | [`RESEARCH.md`](RESEARCH.md) | Shared list of sources and key findings for the site's resource list |
 
 ## Refresh the data
