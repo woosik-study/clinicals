@@ -29,7 +29,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Abstract | All | Week 3 | ✅ Done | Submitted 10/16 |
 | Group charter | All | Week 3 to 4 | ✅ Done | |
 | Research: ClinicalTrials.gov API and data fields | Woosik | Week 4 to 5 | ✅ Done | Used to build the data pipeline |
-| Research: FDA Snapshots and existing tools | Sanjana | Week 4 to 5 | ❓ Confirm | |
+| Research: FDA Snapshots and existing tools | Sanjana | Week 4 to 5 | ✅ Done 11/6 | 7 sources and a draft comparison table in [RESEARCH.md](RESEARCH.md) |
 | Research: Disease prevalence data (CDC, NCI) | Saurabi | Week 4 to 5 | ❓ Confirm | |
 | Research: Trial diversity studies and PPR | Sneha | Finish Week 6 | ❓ Confirm | |
 | Pick conditions | All | Week 5 to 6 | ✅ Proposed | Breast cancer, prostate cancer, type 2 diabetes, heart failure. Team to confirm (see above). |
@@ -79,6 +79,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/4: Team decided on overlapping trials, US vs global data, unknown race, and neutral wording (see section 5). Implemented the site and script changes.
 - 11/4: Ran a full data pull with trial locations and counted the trials and participants available for PPR (see section 4).
 - 11/6: Sanjana drafted the site plan and wireframes in [SITE_PLAN.md](SITE_PLAN.md).
+- 11/6: Sanjana added FDA Snapshots and existing tools research to [RESEARCH.md](RESEARCH.md), with a draft comparison table for the Week 7 to 8 section.
 
 ---
 
@@ -227,6 +228,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/4 | Woosik | Claude | README draft, implementing team decisions on overlapping trials, trial locations, unknown race, and wording |
 | 11/5 | Woosik | Claude | RESEARCH.md draft and reading the seeded sources for key findings |
 | 11/6 | Sanjana | Claude | Site plan and wireframe draft |
+| 11/6 | Sanjana | Claude | Finding and reading sources on FDA Snapshots and existing tools |
 
 ---
 
