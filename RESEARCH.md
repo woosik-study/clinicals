@@ -120,6 +120,26 @@ Each team member adds their own research to their own section.
 | SEER Incidence Data, Breast Cancer, 2019 to 2023 (SEER*Explorer) | https://seer.cancer.gov/statistics-network/explorer/ | official data | Breast cancer cases by sex and race for PPR | Saurabi | 2026-11-06 |
 | SEER Incidence Data, Prostate Cancer, 2019 to 2023 (SEER*Explorer) | https://seer.cancer.gov/statistics-network/explorer/ | official data | Prostate cancer cases by race for PPR | Saurabi | 2026-11-06 |
 
+### Key findings
+
+#### Prevalence data
+
+- White patients make up the most cases of both cancers: 63.5 percent of breast cancer cases and 64.1 percent of prostate cancer cases. Source: SEER Incidence Data
+- Black men are the most affected by prostate cancer, with a rate of 200.1 per 100,000. That is about 1.6 times the White rate (122.2) and 3 times the Asian rate (66.6). Source: SEER Incidence Data, Prostate Cancer
+- American Indian/Alaska Native women have the highest breast cancer rate at 199.4 per 100,000, ahead of White (141.3) and Black (132.4) women, even though they are only 0.3 percent of cases. Source: SEER Incidence Data, Breast Cancer
+- Hispanic and Asian women have the lowest breast cancer rates (107.9 and 116.5 per 100,000), but together they are still about 24 percent of cases. Source: SEER Incidence Data, Breast Cancer
+- Men are 0.8 percent of breast cancer cases (5,016 of 603,016). Black men have the highest male rate at 2.0 per 100,000. Source: SEER Incidence Data, Breast Cancer
+
+#### Trial representation compared with SEER
+
+These compare our ClinicalTrials.gov data (`trials_clean.csv`, trials that report NIH/OMB race and only have US sites) with the SEER share of cases. Trial share divided by SEER share is a rough PPR.
+
+- Asian patients are underrepresented in both cancers. They are 4.0 percent of US breast cancer trial participants against 8.7 percent of cases (PPR about 0.46), and 2.5 percent of US prostate cancer trial participants against 4.7 percent of cases (PPR about 0.53). Source: SEER Incidence Data; trials_clean.csv
+- Black men are 14.9 percent of US prostate cancer trial participants against 16.3 percent of cases (PPR about 0.91). Across all trials, including non-US sites, they are only 10.0 percent (PPR about 0.61), so the group most affected by prostate cancer is underrepresented worldwide. Source: SEER Incidence Data; trials_clean.csv
+- Black women are 17.4 percent of US breast cancer trial participants against 11.8 percent of cases (PPR about 1.47). Source: SEER Incidence Data; trials_clean.csv
+- White patients are overrepresented in both: 76.6 percent of US breast cancer trial participants (PPR about 1.21) and 81.1 percent of US prostate cancer trial participants (PPR about 1.27). Source: SEER Incidence Data; trials_clean.csv
+- These PPRs are rough. SEER counts Hispanic as its own group, while trials report Hispanic ethnicity separately from race, so trial White and Black shares include Hispanic patients and are inflated against SEER. Source: SEER Incidence Data; Race and ethnicity results table format
+
 ## Sneha
 
 ### Sources
