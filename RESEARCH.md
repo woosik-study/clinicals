@@ -89,10 +89,26 @@ Each team member adds their own research to their own section.
 
 ### Sources
 
+#### Prevalence data
+
 | Title | Link | Type | Used for | Added by | Date |
 |---|---|---|---|---|---|
+| SEER Incidence Data, Breast Cancer, 2019 to 2023 (SEER*Explorer) | https://seer.cancer.gov/statistics-network/explorer/ | official data | Breast cancer cases by sex and race for PPR | Saurabi | 2026-11-06 |
+| SEER Incidence Data, Prostate Cancer, 2019 to 2023 (SEER*Explorer) | https://seer.cancer.gov/statistics-network/explorer/ | official data | Prostate cancer cases by race for PPR | Saurabi | 2026-11-06 |
 
 ### Key findings
+
+#### Prevalence data
+
+- SEER reports 603,016 breast cancer cases from 2019 to 2023. Source: SEER Incidence Data, Breast Cancer
+- By share of breast cancer cases: White women 63.0 percent (379,654 cases, 141.3 per 100,000), Hispanic women 15.5 percent (93,516, 107.9 per 100,000), Black women 11.7 percent (70,327, 132.4 per 100,000), Asian women 8.6 percent (51,954, 116.5 per 100,000), and American Indian/Alaska Native women 0.3 percent (1,966, 199.4 per 100,000). Source: SEER Incidence Data, Breast Cancer
+- Men make up under 1 percent of breast cancer cases: White men 0.6 percent (3,481 cases, 1.3 per 100,000), Black men 0.1 percent (804, 2.0 per 100,000), Hispanic men 0.1 percent (480, 0.7 per 100,000), and Asian men under 0.1 percent (251, 0.7 per 100,000). Source: SEER Incidence Data, Breast Cancer
+- American Indian/Alaska Native women have the highest breast cancer rate in this data at 199.4 per 100,000, even though they are only 0.3 percent of cases. Source: SEER Incidence Data, Breast Cancer
+- SEER reports 553,816 prostate cancer cases from 2019 to 2023. Source: SEER Incidence Data, Prostate Cancer
+- By share of prostate cancer cases: White 64.1 percent (354,834 cases, 122.2 per 100,000), Black 16.3 percent (90,538, 200.1 per 100,000), Hispanic 11.8 percent (65,222, 92.6 per 100,000), Asian 4.7 percent (25,900, 66.6 per 100,000), and American Indian/Alaska Native 0.2 percent (1,241, 86.7 per 100,000). Source: SEER Incidence Data, Prostate Cancer
+- Black men have the highest prostate cancer rate at 200.1 per 100,000, well above White men at 122.2. Source: SEER Incidence Data, Prostate Cancer
+- The race groups listed cover about 99.9 percent of breast cancer cases and about 97.1 percent of prostate cancer cases, so the rest are other or unknown races. Source: SEER Incidence Data
+- Type 2 diabetes and heart failure: TBD
 
 
 ## Sneha
