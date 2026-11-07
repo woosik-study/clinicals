@@ -40,7 +40,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Decide if there are enough `us_only` trials for PPR | All | Week 6 to 7 | ❌ Not started | Counts are in section 4 |
 | Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ahead of schedule. PPR charts still to do. Age and ethnicity are not on the site yet. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
-| Site pages and wireframe (rough layout) | Sanjana | Week 6 | ⚠️ Partial | For example Home, condition pages, explainers, sources. Basic structure exists in the prototype. |
+| Site pages and wireframe (rough layout) | Sanjana | Week 6 | ✅ Draft 11/6 | See [SITE_PLAN.md](SITE_PLAN.md): 6 pages, a wireframe for each, and where the prototype's sections go. Team to review the questions in its section 5. |
 | Collect patient demographics per condition | Saurabi | Week 6 | ❌ Not started | **Blocking PPR charts.** NCI SEER for the cancers, CDC for diabetes and heart failure. Match the trial data's race and sex categories. |
 | Resource list (10+ sources) | Saurabi | Through Week 9 | ❌ Not started | Track every source we use in [RESEARCH.md](RESEARCH.md) |
 | FDA Snapshots comparison section | Sanjana | Week 7 to 8 | ❌ Not started | |
@@ -78,6 +78,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/4: Set roles and this week's tasks for all 4 members, and agreed how to compare trial and patient data (see section 3).
 - 11/4: Team decided on overlapping trials, US vs global data, unknown race, and neutral wording (see section 5). Implemented the site and script changes.
 - 11/4: Ran a full data pull with trial locations and counted the trials and participants available for PPR (see section 4).
+- 11/6: Sanjana drafted the site plan and wireframes in [SITE_PLAN.md](SITE_PLAN.md).
 
 ---
 
@@ -225,6 +226,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/4 | Woosik | Claude | Checking code and backlog numbers against the raw data, plain-language project summary, backlog update |
 | 11/4 | Woosik | Claude | README draft, implementing team decisions on overlapping trials, trial locations, unknown race, and wording |
 | 11/5 | Woosik | Claude | RESEARCH.md draft and reading the seeded sources for key findings |
+| 11/6 | Sanjana | Claude | Site plan and wireframe draft |
 
 ---
 
