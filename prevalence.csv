@@ -1,11 +1,40 @@
-condition,seer_group,seer_count,seer_total,years,source
-breast_cancer,White (includes Hispanic),,603016,2019-2023,SEER*Explorer incidence counts
-breast_cancer,Black (includes Hispanic),,603016,2019-2023,SEER*Explorer incidence counts
-breast_cancer,Non-Hispanic Asian / Pacific Islander,52205,603016,2019-2023,SEER*Explorer incidence counts (female 51954 + male 251)
-breast_cancer,Non-Hispanic American Indian / Alaska Native,1966,603016,2019-2023,SEER*Explorer incidence counts (female only listed)
-breast_cancer,Hispanic (any race),93996,603016,2019-2023,SEER*Explorer incidence counts (female 93516 + male 480)
-prostate_cancer,White (includes Hispanic),,553816,2019-2023,SEER*Explorer incidence counts
-prostate_cancer,Black (includes Hispanic),,553816,2019-2023,SEER*Explorer incidence counts
-prostate_cancer,Non-Hispanic Asian / Pacific Islander,25900,553816,2019-2023,SEER*Explorer incidence counts
-prostate_cancer,Non-Hispanic American Indian / Alaska Native,1241,553816,2019-2023,SEER*Explorer incidence counts
-prostate_cancer,Hispanic (any race),65222,553816,2019-2023,SEER*Explorer incidence counts
+condition,sex,race_ethnicity,measure,case_count,prevalence_pct,incidence_per_100000,years,source,status
+breast_cancer,all,All,incidence,603016,,,2019-2023,SEER*Explorer,transcribed
+breast_cancer,female,White,incidence,379654,,141.3,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,male,White,incidence,3481,,1.3,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,Black,incidence,70327,,132.4,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,male,Black,incidence,804,,2,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,Hispanic,incidence,93516,,107.9,2019-2023,SEER*Explorer,transcribed
+breast_cancer,male,Hispanic,incidence,480,,0.7,2019-2023,SEER*Explorer,transcribed
+breast_cancer,female,Asian,incidence,51954,,116.5,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,male,Asian,incidence,251,,0.7,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,American Indian / Alaska Native,incidence,1966,,199.4,2019-2023,SEER*Explorer,verify_group_label
+prostate_cancer,male,All,incidence,553816,,,2019-2023,SEER*Explorer,transcribed
+prostate_cancer,male,White,incidence,354834,,122.2,2019-2023,SEER*Explorer,verify_group_label
+prostate_cancer,male,Black,incidence,90538,,200.1,2019-2023,SEER*Explorer,verify_group_label
+prostate_cancer,male,Hispanic,incidence,65222,,92.6,2019-2023,SEER*Explorer,transcribed
+prostate_cancer,male,Asian,incidence,25900,,66.6,2019-2023,SEER*Explorer,verify_group_label
+prostate_cancer,male,American Indian / Alaska Native,incidence,1241,,86.7,2019-2023,SEER*Explorer,verify_group_label
+heart_failure,all,All,prevalence,7700000,2.5,,2021-2023,American Heart Association,source_checked
+heart_failure,male,All,prevalence,4300000,3.0,,2021-2023,American Heart Association,source_checked
+heart_failure,female,All,prevalence,3400000,2.1,,2021-2023,American Heart Association,source_checked
+heart_failure,male,White,prevalence,,3.0,,2021-2023,American Heart Association,verify_source
+heart_failure,male,Black,prevalence,,3.6,,2021-2023,American Heart Association,verify_source
+heart_failure,male,Hispanic,prevalence,,2.3,,2021-2023,American Heart Association,verify_source
+heart_failure,male,Asian,prevalence,,1.3,,2021-2023,American Heart Association,verify_source
+heart_failure,female,White,prevalence,,1.9,,2021-2023,American Heart Association,verify_source
+heart_failure,female,Black,prevalence,,3.5,,2021-2023,American Heart Association,verify_source
+heart_failure,female,Hispanic,prevalence,,2.2,,2021-2023,American Heart Association,verify_source
+heart_failure,female,Asian,prevalence,,0.9,,2021-2023,American Heart Association,verify_source
+diabetes,all,All,diagnosed_prevalence,28800000,,,2023,CDC National Diabetes Statistics Report,source_checked
+diabetes,all,All,diagnosed_incidence,1500000,,640,2023,CDC National Diabetes Statistics Report,source_checked
+diabetes,male,White,prevalence,,11.9,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,female,White,prevalence,,18.9,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,male,Hispanic,prevalence,,12.3,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,female,Hispanic,prevalence,,6.4,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,male,Black,prevalence,,11.9,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,female,Black,prevalence,,12.4,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,male,Asian,prevalence,,10.8,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,female,Asian,prevalence,,8.7,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,male,American Indian / Alaska Native,prevalence,,11.5,,,CDC National Diabetes Statistics Report,verify_source
+diabetes,female,American Indian / Alaska Native,prevalence,,18.9,,,CDC National Diabetes Statistics Report,verify_source
