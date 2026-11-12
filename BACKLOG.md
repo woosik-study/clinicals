@@ -39,14 +39,14 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Fix "Race and Ethnicity Not Collected" label bug | Woosik | Week 6 | ✅ Done 11/4 | 261 rows moved from own categories to not reported |
 | Add trial locations to the data pull | Woosik | Before PPR charts | ✅ Done 11/4 | `us_only` and `any_us_site` flags filled by a full data pull. Other numbers did not change. |
 | Decide if there are enough `us_only` trials for PPR | All | Week 6 to 7 | ❌ Not started | Counts are in section 4 |
-| Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ahead of schedule. PPR charts still to do. Age and ethnicity are not on the site yet. |
+| Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ethnicity and average age charts added 11/11. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ✅ Draft 11/6 | See [SITE_PLAN.md](SITE_PLAN.md): 6 pages, a wireframe for each, and where the prototype's sections go. Team to review the questions in its section 5. |
 | Collect patient demographics per condition | Saurabi | Week 6 | ❌ Not started | **Blocking PPR charts.** NCI SEER for the cancers, CDC for diabetes and heart failure. Match the trial data's race and sex categories. |
 | Resource list (10+ sources) | Saurabi | Through Week 9 | ❌ Not started | Track every source we use in [RESEARCH.md](RESEARCH.md) |
 | FDA Snapshots comparison section | Sanjana | Week 7 to 8 | ❌ Not started | |
 | Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8 | ⚠️ Placeholder | Short placeholder text on the site. Sneha to rewrite and expand. |
-| PPR charts | Woosik | Week 7 to 8 | ❌ Not started | Needs prevalence data. Follow the rules in section 5. |
+| PPR charts | Woosik | Week 7 to 8 | ⚠️ Partial 11/11 | Breast and prostate cancer are on the site. White and Black wait on two SEER counts per cancer. Type 2 diabetes and heart failure wait on patient data. |
 | Team review and edits | All | Week 9 | ❌ | |
 | Final polish, submission, AI chat logs | All | Week 10 to Finals | ❌ | |
 
@@ -82,6 +82,12 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/4: Ran a full data pull with trial locations and counted the trials and participants available for PPR (see section 4).
 - 11/6: Sanjana drafted the site plan and wireframes in [SITE_PLAN.md](SITE_PLAN.md).
 - 11/6: Sanjana added FDA Snapshots and existing tools research to [RESEARCH.md](RESEARCH.md), with a draft comparison table for the Week 7 to 8 section.
+
+### Week 7 (11/9 to 11/13)
+- 11/11: Corrected the submission records, fixed 3 flagged sources, completed citations for all sources, added the required README sections, and passed the location flags to the site.
+- 11/11: Agreed how trial race and ethnicity groups match SEER groups, and to leave trials also listed under breast cancer out of prostate cancer PPR (see section 5).
+- 11/11: Added `build_ppr.py` and `prevalence.csv`, and put PPR for breast and prostate cancer on the site with a reference line at 1.0.
+- 11/11: Added ethnicity and average age charts to the site, and fixed the intro text to match what the site measures.
 
 ---
 
@@ -186,12 +192,13 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 - **Unknown race:** exclude "Unknown or Not Reported" from the denominator for race shares used in PPR. The site shows the unknown share separately, as "X% of participants had unknown race". The site's race chart now uses the same denominator, so its shares match the shares PPR will use.
 - **Neutral wording:** "Is demographic data even reported?" is now "How often do trials report participants' race?". Individual groups are not labeled as underrepresented. PPR charts will show each value with a reference line at 1.0, and the explainer defines the term once.
 
+**Decisions made (11/11)**
+- **Matching trial groups to SEER groups:** White and Black compare with SEER's groups that include Hispanic patients. Asian plus Native Hawaiian or Other Pacific Islander compares with Non-Hispanic Asian / Pacific Islander. American Indian or Alaska Native compares with Non-Hispanic American Indian / Alaska Native. Hispanic or Latino uses the trials' ethnicity data and compares with Hispanic (any race). More than one race has no SEER group, so it gets no PPR. The two Non-Hispanic SEER groups make those comparisons approximate. Full mapping is in `build_ppr.py`.
+- **Prostate cancer overlap:** leave trials also listed under breast cancer out of prostate cancer PPR. That leaves 429 US trials with standard race categories.
+
 **Next step on these decisions**
 - **Are there enough `us_only` trials?** Counts are in section 4. Decide on a rule for small groups before seeing any PPR values. Keeping only `us_only` trials leaves 18.8% of type 2 diabetes participants with known race, 25.6% for heart failure, 45.3% for prostate cancer, and 53.8% for breast cancer, compared with the global totals.
 - **Small groups:** the smallest counts are NHPI in prostate cancer (69), breast cancer (139), and heart failure (161), and AI/AN in prostate cancer (149). In some cases one trial supplies most of a group: NCT03270436 holds 76.7% of NHPI participants in type 2 diabetes, and NCT04259762 holds 55.7% of AI/AN participants in breast cancer. Decide whether the site should flag values like these.
-
-**Site wording**
-- **Intro text:** the intro says trials "leave out demographic data entirely", but the chart only measures race.
 
 **Decisions for the team**
 - **Broad search:** the condition search also returns trials that are not mainly about that condition. Decide whether to narrow it.
@@ -202,7 +209,6 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
   - **Race categories:** a source may combine groups (Asian/Pacific Islander) or mix race with Hispanic origin (White Non-Hispanic). The trial data keeps race and ethnicity separate, so write down how each category maps.
   - **Diabetes type:** our trials cover type 2. Check whether each CDC figure separates type 2 from all diabetes.
   - **Heart failure source:** confirm that CDC publishes heart failure patients by race and sex. If not, choose another source.
-- **Age and ethnicity:** our topic includes both, but neither is on the site. About 1 in 5 unique trials has no usable average age (827 of 4,415), and the "average" mixes means and medians.
 - **Condition list:** confirm the 4 conditions as a team, or add Alzheimer's disease.
 
 **Smaller data checks**
@@ -231,6 +237,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/5 | Woosik | Claude | RESEARCH.md draft and reading the seeded sources for key findings |
 | 11/6 | Sanjana | Claude | Site plan and wireframe draft |
 | 11/6 | Sanjana | Claude | Finding and reading sources on FDA Snapshots and existing tools |
+| 11/11 | Woosik | Claude | Fixing records and sources, README sections, PPR calculation and chart, ethnicity and age charts |
 
 ---
 

@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="banner">Prototype: trial data is a snapshot from November 4, 2026. Comparison with real patient populations (PPR) is coming next.</div>
+<div class="banner">Prototype: trial data is a snapshot from November 4, 2026. Comparison with patients (PPR) is available for breast and prostate cancer. Other groups and conditions are being added.</div>
 <header class="wrap">
   <h1>Who Is in the Trial?</h1>
-  <p class="lede">Clinical trials decide which treatments reach the public. This site shows who actually took part in trials for four common conditions, and how often trials leave out demographic data entirely. We don't rate any trial. Explore the numbers and draw your own conclusions.</p>
+  <p class="lede">Clinical trials decide which treatments reach the public. This site shows who actually took part in trials for four common conditions, and how often those trials reported participants' race. We don't rate any trial. Explore the numbers and draw your own conclusions.</p>
 </header>
 
 <main class="wrap">
@@ -36,6 +36,24 @@
   </section>
 
   <section class="card">
+    <h2>Ethnicity of trial participants</h2>
+    <p class="note">Share of participants with known ethnicity, in trials that reported ethnicity in the standard NIH/OMB categories. Ethnicity is recorded separately from race, so Hispanic participants also appear in the race chart.</p>
+    <div id="ethnicity"></div>
+  </section>
+
+  <section class="card">
+    <h2>Average age of participants, by trial</h2>
+    <p class="note">Each trial reports one average age for its participants. Most report a mean, some report a median, and the two are combined here.</p>
+    <div id="age"></div>
+  </section>
+
+  <section class="card" id="ppr-card">
+    <h2>Trial participants compared with patients (PPR)</h2>
+    <p class="note">PPR is a group's share of trial participants divided by its share of people diagnosed with the condition. The dashed line marks 1.0, where the two shares are equal. Uses only trials with all sites in the US, across all study phases, so the phase filter does not change it.</p>
+    <div id="ppr"></div>
+  </section>
+
+  <section class="card">
     <h2>How often do trials report participants' race?</h2>
     <p class="note">Of the trials that posted results, how many reported participants' race at all.</p>
     <div id="reporting"></div>
@@ -51,14 +69,15 @@
     <h2>How to read this</h2>
     <h3>What is a study phase?</h3>
     <p>Treatments are tested in stages. Phase 1 trials are small safety tests, Phase 2 checks whether the treatment works and at what dose, Phase 3 compares it with existing care in large groups, and Phase 4 follows it after approval.</p>
-    <h3>Coming next: PPR</h3>
-    <p>The Participation to Prevalence Ratio compares a group's share of trial participants with its share of people who actually have the condition. A value of 1.0 means the two shares are equal, and "underrepresented" means a value below 1. We will show each value next to a reference line at 1.0 and will not label individual groups. PPR will use only trials with all sites in the US and will leave participants with unknown race out of the shares. We are adding prevalence data from the CDC and the National Cancer Institute.</p>
+    <h3>What is PPR?</h3>
+    <p>The Participation to Prevalence Ratio compares a group's share of trial participants with its share of people who have the condition. A value of 1.0 means the two shares are equal, and "underrepresented" means a value below 1. Each value is shown next to a reference line at 1.0, and individual groups are not labeled. PPR uses only trials with all sites in the US and leaves participants with unknown race or ethnicity out of the shares. Patient data comes from the National Cancer Institute's SEER program. Data from the CDC for type 2 diabetes and heart failure is being added.</p>
     <h3>Limits of this data</h3>
-    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart. Trials listed under more than one condition count fully in each condition's numbers, so adding conditions together would count them twice.</p>
+    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart. Trials listed under more than one condition count fully in each condition's numbers, so adding conditions together would count them twice. For PPR, prostate cancer leaves out trials that are also listed under breast cancer. SEER counts new cases, not everyone living with a condition. SEER's Asian or Pacific Islander and American Indian or Alaska Native groups leave out Hispanic patients, while the trial groups include them, so those comparisons are approximate.</p>
   </section>
 </main>
-<footer class="wrap">Data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>. Built by the Clinicals team.</footer>
+<footer class="wrap">Data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a> (snapshot November 4, 2026), <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER</a>. Built by the Clinicals team.</footer>
 <script src="data.js"></script>
+<script src="ppr.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

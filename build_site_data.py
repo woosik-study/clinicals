@@ -3,6 +3,7 @@ import csv, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 RACES = ["American Indian or Alaska Native", "Asian", "Native Hawaiian or Other Pacific Islander",
          "Black or African American", "White", "More than one race", "Unknown or Not Reported"]
+ETHNICITIES = ["Hispanic or Latino", "Not Hispanic or Latino", "Unknown or Not Reported"]
 def f(v):
     try: return float(v)
     except Exception: return None
@@ -18,6 +19,9 @@ with open(os.path.join(HERE, "trials_clean.csv")) as fh:
             "rf": r["race_format"], "fe": f(r.get("female")), "ma": f(r.get("male")),
             "r": [f(r.get("race_" + x)) or 0 for x in RACES],
             "uo": flag(r.get("us_only")), "au": flag(r.get("any_us_site")),
+            # ethnicity [Hispanic, not Hispanic, unknown], only when the trial reported it
+            "e": [f(r.get("eth_" + x)) or 0 for x in ETHNICITIES] if r.get("ethnicity_reported") == "1" else None,
+            "ag": f(r.get("age_value")), "ap": r.get("age_param") or None,
         })
 with open(os.path.join(HERE, "docs", "data.js"), "w") as fh:
     fh.write("window.TRIALS = " + json.dumps(rows, separators=(",", ":")) + ";\n")

@@ -18,10 +18,10 @@ Each trial group is compared with the closest SEER group:
   Hispanic or Latino (ethnicity)   -> Hispanic (any race)
   More than one race: no SEER group, so trial share only.
 
-Writes ppr_by_condition.csv. Rows whose SEER count is blank in prevalence.csv get no PPR.
+Writes ppr_by_condition.csv and docs/ppr.js (for the website). Rows whose SEER count is blank in prevalence.csv get no PPR.
 Run:  python3 build_ppr.py
 """
-import csv, os
+import csv, json, os
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -99,7 +99,9 @@ def main():
         w = csv.DictWriter(f, fieldnames=list(out[0]))
         w.writeheader()
         w.writerows(out)
-    print(f"Wrote ppr_by_condition.csv with {len(out)} rows")
+    with open(os.path.join(HERE, "docs", "ppr.js"), "w", encoding="utf-8") as f:
+        f.write("window.PPR = " + json.dumps(out, separators=(",", ":")) + ";\n")
+    print(f"Wrote ppr_by_condition.csv and docs/ppr.js with {len(out)} rows")
     print(f"{'condition':<17}{'group':<34}{'trials':>7}{'people':>8}{'trial %':>9}{'SEER %':>8}{'PPR':>6}{'top trial %':>13}")
     for r in out:
         print(f"{r['condition']:<17}{r['trial_group']:<34}{r['trials_used']:>7}{r['trial_participants']:>8}"
