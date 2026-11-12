@@ -1,0 +1,11 @@
+condition,seer_group,seer_count,seer_total,years,source
+breast_cancer,White (includes Hispanic),,603016,2019-2023,SEER*Explorer incidence counts
+breast_cancer,Black (includes Hispanic),,603016,2019-2023,SEER*Explorer incidence counts
+breast_cancer,Non-Hispanic Asian / Pacific Islander,52205,603016,2019-2023,SEER*Explorer incidence counts (female 51954 + male 251)
+breast_cancer,Non-Hispanic American Indian / Alaska Native,1966,603016,2019-2023,SEER*Explorer incidence counts (female only listed)
+breast_cancer,Hispanic (any race),93996,603016,2019-2023,SEER*Explorer incidence counts (female 93516 + male 480)
+prostate_cancer,White (includes Hispanic),,553816,2019-2023,SEER*Explorer incidence counts
+prostate_cancer,Black (includes Hispanic),,553816,2019-2023,SEER*Explorer incidence counts
+prostate_cancer,Non-Hispanic Asian / Pacific Islander,25900,553816,2019-2023,SEER*Explorer incidence counts
+prostate_cancer,Non-Hispanic American Indian / Alaska Native,1241,553816,2019-2023,SEER*Explorer incidence counts
+prostate_cancer,Hispanic (any race),65222,553816,2019-2023,SEER*Explorer incidence counts
