@@ -1,0 +1,13 @@
+condition,trial_group,trials_used,trial_participants,trial_denominator,trial_share_pct,largest_trial_share_pct,seer_group,seer_share_pct,ppr
+breast_cancer,White,677,65481,85512,76.6,20.1,White (includes Hispanic),,
+breast_cancer,Black or African American,677,14853,85512,17.4,37.2,Black (includes Hispanic),,
+breast_cancer,Asian or Pacific Islander,677,3572,85512,4.2,20.8,Non-Hispanic Asian / Pacific Islander,8.7,0.48
+breast_cancer,American Indian or Alaska Native,677,864,85512,1.0,55.7,Non-Hispanic American Indian / Alaska Native,0.3,3.1
+breast_cancer,More than one race,677,742,85512,0.9,10.9,,,
+breast_cancer,Hispanic or Latino,607,8525,65307,13.1,18.7,Hispanic (any race),15.6,0.84
+prostate_cancer,White,429,20363,25364,80.3,5.2,White (includes Hispanic),,
+prostate_cancer,Black or African American,429,4052,25364,16.0,7.3,Black (includes Hispanic),,
+prostate_cancer,Asian or Pacific Islander,429,648,25364,2.6,6.2,Non-Hispanic Asian / Pacific Islander,4.7,0.55
+prostate_cancer,American Indian or Alaska Native,429,134,25364,0.5,45.5,Non-Hispanic American Indian / Alaska Native,0.2,2.36
+prostate_cancer,More than one race,429,167,25364,0.7,19.2,,,
+prostate_cancer,Hispanic or Latino,317,1290,19329,6.7,14.6,Hispanic (any race),11.8,0.57
