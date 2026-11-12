@@ -6,6 +6,9 @@ RACES = ["American Indian or Alaska Native", "Asian", "Native Hawaiian or Other 
 def f(v):
     try: return float(v)
     except Exception: return None
+def flag(v):
+    """1 or 0 for a location flag, None when the trial lists no location."""
+    return int(v) if v in ("0", "1") else None
 rows = []
 with open(os.path.join(HERE, "trials_clean.csv")) as fh:
     for r in csv.DictReader(fh):
@@ -14,6 +17,7 @@ with open(os.path.join(HERE, "trials_clean.csv")) as fh:
             "y": r["start_year"], "n": f(r["baseline_n"]) or f(r["enrollment"]),
             "rf": r["race_format"], "fe": f(r.get("female")), "ma": f(r.get("male")),
             "r": [f(r.get("race_" + x)) or 0 for x in RACES],
+            "uo": flag(r.get("us_only")), "au": flag(r.get("any_us_site")),
         })
 with open(os.path.join(HERE, "docs", "data.js"), "w") as fh:
     fh.write("window.TRIALS = " + json.dumps(rows, separators=(",", ":")) + ";\n")

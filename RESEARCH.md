@@ -7,7 +7,7 @@ Each team member adds their own research to their own section.
 ## How to add a source
 
 1. Open `RESEARCH.md` on GitHub and click the pencil icon.
-2. Go to your section and add a row to the Sources table. Add a line under Key findings if you found something we should use. Write TBD if you are not sure yet.
+2. Go to your section and add a row to the Sources table. Add a line under Key findings if you found something we should use. Write TBD if you are not sure yet. For Published, use the date on the source. For a web page with no publication date, use its last updated date, or n.d. if it shows none.
 3. Click **Commit changes**.
 
 ## Woosik
@@ -16,32 +16,32 @@ Each team member adds their own research to their own section.
 
 #### Existing tools
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| FDA Drug Trials Snapshots | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots | official data | The existing tool we extend | Woosik | 2026-11-05 |
-| FDA 2024 Drug Trials Snapshots Summary Report | https://www.americanpharmaceuticalreview.com/1315-News/620108-FDA-Releases-2024-Drug-Trials-Snapshots-Summary-Report/ | news | What Snapshots reports each year | Woosik | 2026-11-05 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Drug Trials Snapshots | U.S. Food and Drug Administration | 2026-08-11 | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots | official data | The existing tool we extend | Woosik | 2026-11-05 |
+| FDA Releases 2024 Drug Trials Snapshots Summary Report | American Pharmaceutical Review | n.d. | https://www.americanpharmaceuticalreview.com/1315-News/620108-FDA-Releases-2024-Drug-Trials-Snapshots-Summary-Report/ | news | What Snapshots reports each year | Woosik | 2026-11-05 |
 
 #### Trial diversity research
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| More than half of clinical trials do not report race/ethnicity data (ScienceDaily) | https://ScienceDaily.com/releases/2022/04/220410205932.htm | news | Evidence for our missing data feature | Woosik | 2026-11-05 |
-| Participation of Older Adults in Clinical Trials for New Drug Applications and Biologics License Applications From 2010 Through 2019 (JAMA Network Open) | https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2797323 | research | Background for PPR | Woosik | 2026-11-05 |
-| Racial and Ethnic Diversity in Clinical Studies Reported to ClinicalTrials.gov, 2009 to 2024 (medRxiv) | https://www.medrxiv.org/content/10.1101/2025.07.21.25331865.full.pdf | research (preprint) | Broader context for trial diversity | Woosik | 2026-11-05 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| More than half of clinical trials do not report race/ethnicity data | ScienceDaily, from a Brigham and Women's Hospital release | 2022-04-10 | https://ScienceDaily.com/releases/2022/04/220410205932.htm | news | Evidence for our missing data feature | Woosik | 2026-11-05 |
+| Participation of Older Adults in Clinical Trials for New Drug Applications and Biologics License Applications From 2010 Through 2019 | Lau SWJ, Huang Y, Hsieh J, et al. JAMA Network Open | 2022-10-14 | https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2797323 | research | Background for PPR | Woosik | 2026-11-05 |
+| Racial and Ethnic Diversity in Clinical Studies Reported to ClinicalTrials.gov, 2009-2024 | Aziz M, O'Brien EC, Lusk JB, et al. medRxiv | 2025-07-21 | https://www.medrxiv.org/content/10.1101/2025.07.21.25331865.full.pdf | research (preprint) | Broader context for trial diversity | Woosik | 2026-11-05 |
 
 #### ClinicalTrials.gov data structure
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| Results data element definitions | https://prsinfo.clinicaltrials.gov/results_definitions.html | official guidance | How baseline characteristics are defined | Woosik | 2026-11-05 |
-| Race and ethnicity results table format | https://cdn.clinicaltrials.gov/documents/results_table_layout/DataEntryTable_BaselineRegionRaceEthnicityForm.pdf | official guidance | The NIH/OMB race categories our pipeline uses | Woosik | 2026-11-05 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Results Data Element Definitions for Interventional and Observational Studies | ClinicalTrials.gov | 2024-12-31 | https://clinicaltrials.gov/policy/results-definitions | official guidance | How baseline characteristics are defined | Woosik | 2026-11-05 |
+| Baseline Characteristics Template | ClinicalTrials.gov | 2017-04 | https://cdn.clinicaltrials.gov/documents/results_table_layout/DataEntryTable_BaselineRegionRaceEthnicityForm.pdf | official guidance | The NIH/OMB race categories our pipeline uses | Woosik | 2026-11-05 |
 
 #### Prevalence data
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| SEER Cancer Statistics Review 1975 to 2017, Table 23.11: Cancer of the Prostate (Invasive) | https://seer.cancer.gov/archive/csr/1975_2017/results_single/sect_23_table.11.pdf | official data | Checking how SEER reports cancer data by race | Woosik | 2026-11-05 |
-| CDC National Diabetes Statistics Report | https://www.cdc.gov/diabetes/php/data-research/index.html | official data | Checking how CDC reports diabetes data by race and sex | Woosik | 2026-11-05 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| SEER Cancer Statistics Review, 1975-2017, Table 23.11: Cancer of the Prostate (Invasive) | Howlader N, Noone AM, Krapcho M, et al. (eds). National Cancer Institute | 2020-04-15 | https://seer.cancer.gov/archive/csr/1975_2017/results_single/sect_23_table.11.pdf | official data | Checking how SEER reports cancer data by race | Woosik | 2026-11-05 |
+| National Diabetes Statistics Report | Centers for Disease Control and Prevention | 2024-05-15, updated 2026-09-16 | https://www.cdc.gov/diabetes/php/data-research/index.html | official data | Checking how CDC reports diabetes data by race and sex | Woosik | 2026-11-05 |
 
 ### Key findings
 
@@ -82,20 +82,20 @@ Each team member adds their own research to their own section.
 
 #### Existing tools
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| FDA Drug Trials Snapshots | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots | official data | What Snapshots cover and how they are published | Sanjana | 2026-11-06 |
-| Drug Trials Snapshots Summary Report (2015 and 2016) | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-summary-report-2015-and-2016 | official data | When Snapshots started and what they were for | Sanjana | 2026-11-06 |
-| FDA report highlights need to improve diversity in clinical trials (Clinical Trials Arena, 5/16/2024) | https://www.clinicaltrialsarena.com/news/fda-report-highlights-need-to-improve-diversity-in-clinical-trials/ | news | What the 2023 Snapshots summary report found | Sanjana | 2026-11-06 |
-| ICER Clinical trial Diversity Rating (CDR) | https://icer.org/our-approach/methods-process/icer-clinical-trial-diversity-rating/ | tool | Another tool that measures trial diversity | Sanjana | 2026-11-06 |
-| A framework for evaluating the diversity of clinical trials (ICER) | https://icer.org/news-insights/journal-articles/ | research | How the CDR was designed | Sanjana | 2026-11-06 |
-| GSK announces results from 17-year retrospective study on US clinical trial diversity | https://us.gsk.com/en-us/media/press-releases/gsk-announces-results-from-17-year-retrospective-study-on-us-clinical-trial-diversity/ | press release | A drug company comparing its own trials with patient populations | Sanjana | 2026-11-06 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Drug Trials Snapshots | U.S. Food and Drug Administration | 2026-08-11 | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots | official data | What Snapshots cover and how they are published | Sanjana | 2026-11-06 |
+| Drug Trials Snapshots Summary Report (2015 and 2016) | U.S. Food and Drug Administration, Center for Drug Evaluation and Research | 2017-02-13 | https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-summary-report-2015-and-2016 | official data | When Snapshots started and what they were for | Sanjana | 2026-11-06 |
+| FDA report highlights need to improve diversity in clinical trials | Abigail Beaney, Clinical Trials Arena | 2024-05-16 | https://www.clinicaltrialsarena.com/news/fda-report-highlights-need-to-improve-diversity-in-clinical-trials/ | news | What the 2023 Snapshots summary report found | Sanjana | 2026-11-06 |
+| ICER Clinical Trial Diversity Rating | Institute for Clinical and Economic Review (ICER) | n.d. | https://icer.org/our-approach/methods-process/icer-clinical-trial-diversity-rating/ | tool | Another tool that measures trial diversity | Sanjana | 2026-11-06 |
+| A framework for evaluating the diversity of clinical trials | Agboola F, Wright AC. Journal of Clinical Epidemiology | 2024-05 | https://doi.org/10.1016/j.jclinepi.2024.111299 | research | How the CDR was designed | Sanjana | 2026-11-06 |
+| GSK announces results from 17-year retrospective study on US clinical trial diversity | GSK | 2023-02-06 | https://us.gsk.com/en-us/media/press-releases/gsk-announces-results-from-17-year-retrospective-study-on-us-clinical-trial-diversity/ | press release | A drug company comparing its own trials with patient populations | Sanjana | 2026-11-06 |
 
 #### Research that uses Snapshots data
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| Longitudinal clinical trial enrollment trends across 341 US FDA-approved drugs and their guiding role in precision medicine strategies (Communications Medicine, 2025) | https://pmc.ncbi.nlm.nih.gov/articles/PMC12680696/ | research | What Snapshots data can and cannot show | Sanjana | 2026-11-06 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Longitudinal clinical trial enrollment trends across 341 US FDA-approved drugs and their guiding role in precision medicine strategies | Zaaijer S, Groen SC. Communications Medicine | 2025-12-05 | https://pmc.ncbi.nlm.nih.gov/articles/PMC12680696/ | research | What Snapshots data can and cannot show | Sanjana | 2026-11-06 |
 
 ### Key findings
 
@@ -167,10 +167,10 @@ Each team member adds their own research to their own section.
 
 ### Sources
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| SEER Incidence Data, Breast Cancer, 2019 to 2023 (SEER*Explorer) | https://seer.cancer.gov/statistics-network/explorer/ | official data | Breast cancer cases by sex and race for PPR | Saurabi | 2026-11-06 |
-| SEER Incidence Data, Prostate Cancer, 2019 to 2023 (SEER*Explorer) | https://seer.cancer.gov/statistics-network/explorer/ | official data | Prostate cancer cases by race for PPR | Saurabi | 2026-11-06 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| SEER Incidence Data, Breast Cancer, 2019 to 2023 (SEER*Explorer) | National Cancer Institute, Surveillance Research Program | [data release date] | https://seer.cancer.gov/statistics-network/explorer/ | official data | Breast cancer cases by sex and race for PPR | Saurabi | 2026-11-06 |
+| SEER Incidence Data, Prostate Cancer, 2019 to 2023 (SEER*Explorer) | National Cancer Institute, Surveillance Research Program | [data release date] | https://seer.cancer.gov/statistics-network/explorer/ | official data | Prostate cancer cases by race for PPR | Saurabi | 2026-11-06 |
 
 ### Key findings
 
@@ -198,27 +198,27 @@ These compare our ClinicalTrials.gov data (`trials_clean.csv`, trials that repor
 
 #### Trial diversity research
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| Racial and Ethnic Inequities in US Oncology Clinical Trial Participation From 2017 to 2022 (JAMA Network Open) | https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2807488 | research | Evidence of racial disparities in cancer trial participation | Sneha | 2026-11-06 |
-| Examining the Representation of Minority Race and Ethnicity Groups in Breast Cancer Clinical Trials in the USA Published 2012–2022 | https://link.springer.com/article/10.1245/s10434-026-19214-y | research | Breast cancer representation and PPR comparisons | Sneha | 2026-11-06 |
-| Improving Representation in Clinical Trials and Research (National Academies, 2022) | https://www.nationalacademies.org/projects/PGA-POLICY-20-19/publication/26479 | research report | Barriers to participation and importance of diversity | Sneha | 2026-11-06 |
-| FDASIA Section 907: Inclusion of Demographic Subgroups in Clinical Trials (FDA) | https://www.fda.gov/regulatory-information/food-and-drug-administration-safety-and-innovation-act-fdasia/fdasia-section-907-inclusion-demographic-subgroups-clinical-trials | official guidance | Why demographic representation matters | Sneha | 2026-11-06 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Racial and Ethnic Inequities in US Oncology Clinical Trial Participation From 2017 to 2022 | Pittell H, Calip GS, Pierre A, et al. JAMA Network Open | 2023-07-03 | https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2807488 | research | Evidence of racial disparities in cancer trial participation | Sneha | 2026-11-06 |
+| Examining the Representation of Minority Race and Ethnicity Groups in Breast Cancer Clinical Trials in the USA Published 2012-2022 | Dimaano K, Castillo O Jr, Moazzez A, et al. Annals of Surgical Oncology | 2026-02-23 | https://link.springer.com/article/10.1245/s10434-026-19214-y | research | Breast cancer representation and PPR comparisons | Sneha | 2026-11-06 |
+| Improving Representation in Clinical Trials and Research: Building Research Equity for Women and Underrepresented Groups | National Academies of Sciences, Engineering, and Medicine | 2022 | https://www.nationalacademies.org/projects/PGA-POLICY-20-19/publication/26479 | research report | Barriers to participation and importance of diversity | Sneha | 2026-11-06 |
+| FDASIA Section 907: Inclusion of Demographic Subgroups in Clinical Trials | U.S. Food and Drug Administration | 2018-03-28 | https://www.fda.gov/regulatory-information/food-and-drug-administration-safety-and-innovation-act-fdasia/fdasia-section-907-inclusion-demographic-subgroups-clinical-trials | official guidance | Why demographic representation matters | Sneha | 2026-11-06 |
 
 #### PPR method
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| Who Are We Missing? Reporting of Ethnicity, Race, and Sex-Specific Populations in Clinical Trials | https://pubmed.ncbi.nlm.nih.gov/39719416/ | research | PPR methodology and demographic underrepresentation | Sneha | 2026-11-06 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Who Are We Missing? Reporting of Ethnicity, Race, and Sex-Specific Populations in Clinical Trials | Kohn R, Sheu D, Britez Ferrante E, et al. Journal of the American Heart Association | 2024-12-24 | https://pubmed.ncbi.nlm.nih.gov/39719416/ | research | PPR methodology and demographic underrepresentation | Sneha | 2026-11-06 |
 
 #### Trial phases and data limitations
 
-| Title | Link | Type | Used for | Added by | Date |
-|---|---|---|---|---|---|
-| Race and Ethnicity Reporting for Clinical Trials in ClinicalTrials.gov and Publications | https://pubmed.ncbi.nlm.nih.gov/33290865/ | research | Missing demographic data and reporting differences | Sneha | 2026-11-06 |
-| Step 3: Clinical Research (FDA) | https://www.fda.gov/patients/drug-development-process/step-3-clinical-research | official guidance | Explaining clinical trial phases | Sneha | 2026-11-06 |
-| ClinicalTrials.gov Glossary | https://clinicaltrials.gov/study-basics/glossary | official guidance | Phase definitions and terminology | Sneha | 2026-11-06 |
-| How to Read Study Results (ClinicalTrials.gov) | https://clinicaltrials.gov/study-basics/how-to-read-study-results | official guidance | Results availability and baseline data limitations | Sneha | 2026-11-06 |
+| Title | Author or organization | Published | Link | Type | Used for | Added by | Date added |
+|---|---|---|---|---|---|---|---|
+| Race and ethnicity reporting for clinical trials in ClinicalTrials.gov and publications | Fain KM, Nelson JT, Tse T, Williams RJ. Contemporary Clinical Trials | 2020-12-05 | https://pubmed.ncbi.nlm.nih.gov/33290865/ | research | Missing demographic data and reporting differences | Sneha | 2026-11-06 |
+| Step 3: Clinical Research | U.S. Food and Drug Administration | 2018-01-04 | https://www.fda.gov/patients/drug-development-process/step-3-clinical-research | official guidance | Explaining clinical trial phases | Sneha | 2026-11-06 |
+| ClinicalTrials.gov Glossary Terms | ClinicalTrials.gov | 2026-09-10 | https://clinicaltrials.gov/study-basics/glossary | official guidance | Phase definitions and terminology | Sneha | 2026-11-06 |
+| How to Read Study Results | ClinicalTrials.gov | 2026-09-24 | https://clinicaltrials.gov/study-basics/how-to-read-study-results | official guidance | Results availability and baseline data limitations | Sneha | 2026-11-06 |
 
 ### Key findings
 
