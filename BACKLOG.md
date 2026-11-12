@@ -21,12 +21,13 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 
 | Task | Owner | Planned | Status | Notes |
 |---|---|---|---|---|
-| Submit 2 missed progress updates | All | Week 6 | ✅ Done 11/4 | |
-| Submit this week's progress update | All | Week 6 | ❌ Not started | Gantt charts are ready (Woosik) |
+| Week 4 progress update | All | Week 4 | ❌ Not submitted, scored 0. Emailed professor [date TBD] | |
+| Week 5 progress update | All | Week 5 | ❌ Not submitted, scored 0. Emailed professor [date TBD] | |
+| Week 6 progress update | All | Week 6 | ❌ Not submitted, scored 0. Emailed professor [date TBD] | |
 | Confirm 4 conditions | All | Week 6 | ❌ Not started | Alzheimer's is an optional 5th |
 | Tell the group if your research part is done | All | Week 6 | ❌ Not started | |
 | Weekly progress update | All | Every week | 🔁 Ongoing | |
-| Abstract | All | Week 3 | ✅ Done | Submitted 10/16 |
+| Abstract | All | Week 3 | ❌ Not submitted, scored 0. Emailed professor [date TBD] | |
 | Group charter | All | Week 3 to 4 | ✅ Done | |
 | Research: ClinicalTrials.gov API and data fields | Woosik | Week 4 to 5 | ✅ Done | Used to build the data pipeline |
 | Research: FDA Snapshots and existing tools | Sanjana | Week 4 to 5 | ✅ Done 11/6 | 7 sources and a draft comparison table in [RESEARCH.md](RESEARCH.md) |
@@ -56,7 +57,8 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 ### Week 3 (10/12 to 10/16)
 - Each member pitched a topic idea. Team chose clinical trial representation.
 - Checked for existing tools. FDA Drug Trials Snapshots already shows participant demographics for newly approved drugs, so we justified our project under **added depth**: comparing participants with real patient populations (PPR), showing how often demographic data is missing, and covering trials beyond FDA approved drugs.
-- Submitted the abstract and group charter.
+- Submitted the group charter.
+- Abstract: not submitted, scored 0. Emailed professor [date TBD].
 
 ### Week 4 (10/19 to 10/23)
 - Split research into 4 parts (see status board).
@@ -69,7 +71,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 
 ### Week 6 (11/2 to 11/6)
 - 11/4: TA (Uliyaah) flagged the missing Week 5 and Week 6 updates. We confirmed it was a miscommunication and are submitting them.
-- 11/4: The 2 missed progress updates were handled.
+- Week 4, 5, and 6 progress updates: not submitted, scored 0. Emailed professor [date TBD].
 - 11/4: Proposed 4 conditions to focus on.
 - 11/4: Built and ran the data pipeline (4,494 trials).
 - 11/4: Built the working prototype and published it on GitHub Pages.

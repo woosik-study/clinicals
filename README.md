@@ -49,7 +49,7 @@ PPR is (1) divided by (2). A value below 1 means the group makes up a smaller sh
 
 Each trial's race reporting is labeled `omb` (standard categories), `customized` (the trial's own categories), or `none` (not reported). The site currently uses sex and race. Ethnicity and age are in the CSV only.
 
-**Limits:** the data covers only trials that posted results on ClinicalTrials.gov. Trials can appear under more than one condition and count fully in each one, so they are deduplicated only for totals across conditions. Trials with their own race categories are left out of the race chart. See the site's explainers and the open issues in [BACKLOG.md](BACKLOG.md) for more.
+**Limits:** see [Limitations](#limitations) below, and the open issues in [BACKLOG.md](BACKLOG.md).
 
 ## Repo layout
 
@@ -89,6 +89,37 @@ Other options for `fetch_trials.py`:
 ```bash
 git checkout -- trials_raw trials_clean.csv summary_by_condition.csv
 ```
+
+## Limitations
+
+What the data and the site cannot tell you:
+
+- The data covers only trials with posted results on ClinicalTrials.gov.
+- Trials that report race in their own custom categories are left out of the race charts.
+- About 27% of records have no study phase. ClinicalTrials.gov uses "Not Applicable" for trials without FDA defined phases, such as device or behavioral studies.
+- SEER counts new cases, not people living with a condition.
+- SEER treats Hispanic as a separate group, while trials record Hispanic origin as ethnicity, separately from race. Trial and SEER race groups therefore do not match exactly.
+- Trials listed under two conditions count in each condition.
+
+## Sources
+
+The full resource list is in [RESEARCH.md](RESEARCH.md).
+
+## AI use
+
+We used AI tools (Claude) to help write code and edit text. The team reviewed all of the work. Our AI conversations are included in our final submission.
+
+## Maintenance
+
+- **Last updated:** data snapshot 2026-11-04
+- **Ongoing updates:** [TBD by team]
+- **Contact:** see Contact below
+
+## Contact
+
+[name], [email]
+
+We reply within 24 hours through Friday of finals week.
 
 ## Team
 
