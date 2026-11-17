@@ -91,8 +91,8 @@ function render() {
 
 function renderPPR() {
   const rs = PPR.filter(r => r.condition === cond);
-  if (!rs.length) {
-    $("ppr").innerHTML = `<p class="empty">Patient data for ${CONDS[cond].toLowerCase()} has not been added yet.</p>`;
+  if (!rs.some(r => r.ppr !== "")) {
+    $("ppr").innerHTML = `<p class="empty">Patient data for ${CONDS[cond].toLowerCase()} is pending, so PPR is not shown yet.</p>`;
     return;
   }
   const vals = rs.map(r => +r.ppr).filter(v => v > 0);

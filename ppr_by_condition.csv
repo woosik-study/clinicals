@@ -11,3 +11,15 @@ prostate_cancer,Asian or Pacific Islander,429,648,25364,2.6,6.2,Non-Hispanic Asi
 prostate_cancer,American Indian or Alaska Native,429,134,25364,0.5,45.5,Non-Hispanic American Indian / Alaska Native,0.2,2.36
 prostate_cancer,More than one race,429,167,25364,0.7,19.2,,,
 prostate_cancer,Hispanic or Latino,317,1290,19329,6.7,14.6,Hispanic (any race),11.8,0.57
+type_2_diabetes,White,333,35220,51486,68.4,21.1,pending,,
+type_2_diabetes,Black or African American,333,12329,51486,23.9,13.3,pending,,
+type_2_diabetes,Asian or Pacific Islander,333,1962,51486,3.8,19.3,pending,,
+type_2_diabetes,American Indian or Alaska Native,333,902,51486,1.8,22.9,pending,,
+type_2_diabetes,More than one race,333,1073,51486,2.1,29.7,pending,,
+type_2_diabetes,Hispanic or Latino,267,11047,54803,20.2,18.8,pending,,
+heart_failure,White,247,27780,39548,70.2,6.4,pending,,
+heart_failure,Black or African American,247,9502,39548,24.0,10.2,pending,,
+heart_failure,Asian or Pacific Islander,247,1088,39548,2.8,28.0,pending,,
+heart_failure,American Indian or Alaska Native,247,388,39548,1.0,26.5,pending,,
+heart_failure,More than one race,247,790,39548,2.0,24.8,pending,,
+heart_failure,Hispanic or Latino,152,2284,33727,6.8,11.0,pending,,
