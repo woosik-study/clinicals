@@ -1,0 +1,53 @@
+# Refreshes the trial data from ClinicalTrials.gov and publishes the site.
+# Nothing is committed: the live site gets fresh data, and the repo keeps the last manual snapshot.
+# If any step fails, the deploy job does not run and the live site keeps its previous version.
+name: Daily data refresh
+
+on:
+  schedule:
+    - cron: "37 10 * * *"   # every day at 10:37 UTC
+  workflow_dispatch:          # the "Run workflow" button on the Actions tab
+  push:
+    branches: [main]          # publish site changes when they are pushed to main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Download trial data from ClinicalTrials.gov
+        run: python3 fetch_trials.py
+      - name: Build the site data
+        run: python3 build_site_data.py
+      - name: Compute PPR
+        run: python3 build_ppr.py
+      - name: Safety checks against the committed snapshot
+        run: python3 check_refresh.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
