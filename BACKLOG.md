@@ -5,7 +5,7 @@
 **Live site:** https://woosik-study.github.io/clinicals
 **Repo:** https://github.com/woosik-study/clinicals
 **Sources:** [RESEARCH.md](RESEARCH.md)
-**Data snapshot:** pulled 11/4/2026. The site does not update itself. New data needs a manual re-run (see section 3).
+**Data snapshot:** the files in this repo were pulled 11/4/2026. The live site refreshes its trial data every day once the daily refresh is turned on, and shows its own "Data last updated" time (see section 3).
 
 This file tracks what we have done, how we did it, and what is left. Update it whenever a task moves. It is the source for our final presentation.
 
@@ -42,11 +42,19 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ethnicity and average age charts added 11/11. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ✅ Draft 11/6 | See [SITE_PLAN.md](SITE_PLAN.md): 6 pages, a wireframe for each, and where the prototype's sections go. Team to review the questions in its section 5. |
-| Collect patient demographics per condition | Saurabi | Week 6 | ❌ Not started | **Blocking PPR charts.** NCI SEER for the cancers, CDC for diabetes and heart failure. Match the trial data's race and sex categories. |
-| Resource list (10+ sources) | Saurabi | Through Week 9 | ❌ Not started | Track every source we use in [RESEARCH.md](RESEARCH.md) |
-| FDA Snapshots comparison section | Sanjana | Week 7 to 8 | ❌ Not started | |
-| Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8 | ⚠️ Placeholder | Short placeholder text on the site. Sneha to rewrite and expand. |
-| PPR charts | Woosik | Week 7 to 8 | ⚠️ Partial 11/11 | Breast and prostate cancer are on the site. White and Black wait on two SEER counts per cancer. Type 2 diabetes and heart failure wait on patient data. |
+| Collect patient demographics per condition | Saurabi | Week 6, moved to Week 9 | ⚠️ Partial 11/14 | **Blocking PPR charts.** SEER counts for breast and prostate cancer are in `prevalence.csv` and feed 3 PPR groups each. Still needed: counts for White (includes Hispanic) and Black (includes Hispanic), patient counts or shares for type 2 diabetes and heart failure (the current rows are rates inside each group), and a check of the 29 rows marked verify. |
+| Resource list (10+ sources) | Saurabi | Through Week 9 | ⚠️ Partial | [RESEARCH.md](RESEARCH.md) has 25 unique sources with full citations. Still to do: put the list on the site. |
+| FDA Snapshots comparison section | Sanjana | Week 7 to 8, moved to Week 9 | ⚠️ Draft | A draft comparison table is in [RESEARCH.md](RESEARCH.md). The section is not written yet. |
+| Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8, moved to Week 9 | ⚠️ Draft | Draft text is in Sneha's section of [RESEARCH.md](RESEARCH.md). The site still shows the short placeholder text. |
+| PPR charts | Woosik | Week 7 to 9 | ⚠️ Partial 11/11 | Breast and prostate cancer are on the site. White and Black wait on two SEER counts per cancer. Type 2 diabetes and heart failure wait on patient data. |
+| Make `build_ppr.py` read the new `prevalence.csv` format | Woosik | Week 8 | ✅ Done 11/16 | It crashed after the format change on 11/12. PPR values for breast and prostate cancer are unchanged. Groups and conditions without a usable patient share come out as pending. |
+| AI disclosure on the site | Woosik | Week 8 | ✅ Done 11/16 | Footer line and a paragraph in "How to read this" |
+| README contact and maintenance notes | Woosik | Week 8 | ✅ Done 11/16 | Contact is Woosik. Ongoing updates after finals: undecided. |
+| Daily data refresh (GitHub Actions) | Woosik | Week 8 | ⚠️ Built 11/16 | Needs the Pages source set to GitHub Actions and one test run. See section 3. |
+| Invite instructor and TA as repo collaborators | Woosik | Week 8 | ❓ To check | Required for the final submission |
+| Progress Update #4 | All | Week 8 | ⚠️ Draft | Gantt chart and text are drafted. Decide who submits. |
+| Group Reflection #1 | All | Due 11/22 | ⚠️ Skeleton | [GROUP_REFLECTION_1.md](GROUP_REFLECTION_1.md). Sections due 11/20, one per member. |
+| Group Reflection #2 and outreach email | All | Due 11/30 | ❌ | |
 | Team review and edits | All | Week 9 | ❌ | |
 | Final polish, submission, AI chat logs | All | Week 10 to Finals | ❌ | |
 
@@ -88,6 +96,17 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/11: Agreed how trial race and ethnicity groups match SEER groups, and to leave trials also listed under breast cancer out of prostate cancer PPR (see section 5).
 - 11/11: Added `build_ppr.py` and `prevalence.csv`, and put PPR for breast and prostate cancer on the site with a reference line at 1.0.
 - 11/11: Added ethnicity and average age charts to the site, and fixed the intro text to match what the site measures.
+- 11/11: Woosik emailed Prof. Munyaka about the abstract and progress updates that were never submitted on Canvas.
+- 11/12: Saurabi changed `prevalence.csv` to a new structure and added rows for type 2 diabetes and heart failure.
+- 11/14: Saurabi added 11 hand picked trials in `Clinical Trials.csv` and their participant demographics in `Clinical Trial Demographics.csv`.
+
+### Week 8 (11/16 to 11/22)
+- 11/16: Found that `build_ppr.py` crashed on the new `prevalence.csv` structure. Updated it to read the new structure without changing Saurabi's file. Breast and prostate PPR values are unchanged.
+- 11/16: Added the AI use disclosure to the site.
+- 11/16: Filled the README contact and maintenance notes.
+- 11/16: Built a daily data refresh with safety checks (see section 3). It publishes the site without committing data, so the commit history is not filled with daily data commits.
+- 11/16: Added [GROUP_REFLECTION_1.md](GROUP_REFLECTION_1.md) with the prompt, one section per member, and the Week 9 readings.
+- 11/16: Drafted Progress Update #4 with an updated Gantt chart.
 
 ---
 
@@ -106,22 +125,34 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - Each trial gets two location flags: **`us_only`** (all sites in the US) and **`any_us_site`** (at least one US site). Both are blank if the trial lists no location.
 - Output: `trials_clean.csv` (one row per trial per condition) and `summary_by_condition.csv`.
 
+- The script also writes the download time to `data_updated.txt`.
+
 **Step 3: Prepare for the site (`build_site_data.py`)**
-- Converts the CSV into `docs/data.js`, which the web page loads.
+- Converts the CSV into `docs/data.js`, which the web page loads. It also passes along the download time, which the site shows as "Data last updated".
 
-**Step 4: Website (`docs/`)**
+**Step 4: Compute PPR (`build_ppr.py`)**
+- Reads `trials_clean.csv` and Saurabi's `prevalence.csv`, and writes `ppr_by_condition.csv` and `docs/ppr.js`.
+- It uses a patient row only when the row has a patient count and is not marked `verify_source`. A rate inside one group, such as cases per 100,000 people, cannot be used, because PPR needs each group's share of all patients.
+- A group or condition with no usable patient share comes out as **pending**, with a trial share but no PPR.
+
+**Step 5: Website (`docs/`)**
 - `index.html` (structure), `style.css` (look), `app.js` (filters and recalculation in the browser).
-- The site shows sex and race. Ethnicity and age are in the CSV only.
+- The site shows sex, race, ethnicity, average age, and PPR.
 
-**Step 5: Publish**
-- **GitHub Pages** serves the `docs/` folder as a public site and updates on every push.
+**Step 6: Publish and refresh daily (`.github/workflows/daily-refresh.yml`)**
+- **GitHub Actions** is GitHub's service for running scripts on a schedule. Our job runs every day at 10:37 UTC, when someone clicks "Run workflow" on the Actions tab, and when a change is pushed to `main`.
+- The job runs steps 1 to 4 on a fresh copy of the repo, runs the safety checks in `check_refresh.py`, and publishes `docs/` to GitHub Pages.
+- The job does not commit anything. The live site gets fresh data, and the repo keeps the 11/4 snapshot. This keeps daily data commits out of the commit history.
+- If a check fails, the job stops and the live site keeps its previous data. The checks: no condition may lose more than 10% of its trials compared with the snapshot, no column may be missing, the site data may not be empty, and the PPR values for breast and prostate cancer must still be computed.
 
-**To refresh the data:**
+**To refresh the data by hand:**
 ```bash
 python3 fetch_trials.py
 python3 build_site_data.py
-git add . && git commit -m "Refresh data" && git push
+python3 build_ppr.py
 ```
+
+Then open `docs/index.html` in a browser. To update the snapshot in the repo, also run `git add . && git commit -m "Refresh data snapshot" && git push`.
 
 To change only the cleaning logic, run `python3 fetch_trials.py --from-raw` in place of the first command. It rebuilds the CSVs from `trials_raw/` without downloading anything. The script also prints trial counts per condition for each location flag and saves them in `summary_by_condition.csv`.
 
@@ -196,6 +227,12 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 - **Matching trial groups to SEER groups:** White and Black compare with SEER's groups that include Hispanic patients. Asian plus Native Hawaiian or Other Pacific Islander compares with Non-Hispanic Asian / Pacific Islander. American Indian or Alaska Native compares with Non-Hispanic American Indian / Alaska Native. Hispanic or Latino uses the trials' ethnicity data and compares with Hispanic (any race). More than one race has no SEER group, so it gets no PPR. The two Non-Hispanic SEER groups make those comparisons approximate. Full mapping is in `build_ppr.py`.
 - **Prostate cancer overlap:** leave trials also listed under breast cancer out of prostate cancer PPR. That leaves 429 US trials with standard race categories.
 
+**Decisions made (11/16)**
+- **Which patient rows PPR uses:** only rows with a patient count that are not marked `verify_source`. Rates inside one group are never used. The plain "White" and "Black" SEER rows are not used, because trial counts include Hispanic participants.
+- **Rows marked `verify_group_label`:** the Asian and American Indian / Alaska Native SEER rows still feed 4 PPR values, so the site did not change. The counts for all groups add up to 99.9% of the breast cancer total, which fits the Non-Hispanic labels we assumed. Saurabi still needs to confirm the labels. One setting in `build_ppr.py` (`USE_UNCONFIRMED_GROUP_LABELS`) turns these 4 values to pending.
+- **Daily refresh:** the live site refreshes daily and the repo keeps a manual snapshot. Figures in our reflections and presentation cite the snapshot date.
+- **Contact person:** Woosik Kim.
+
 **Next step on these decisions**
 - **Are there enough `us_only` trials?** Counts are in section 4. Decide on a rule for small groups before seeing any PPR values. Keeping only `us_only` trials leaves 18.8% of type 2 diabetes participants with known race, 25.6% for heart failure, 45.3% for prostate cancer, and 53.8% for breast cancer, compared with the global totals.
 - **Small groups:** the smallest counts are NHPI in prostate cancer (69), breast cancer (139), and heart failure (161), and AI/AN in prostate cancer (149). In some cases one trial supplies most of a group: NCT03270436 holds 76.7% of NHPI participants in type 2 diabetes, and NCT04259762 holds 55.7% of AI/AN participants in breast cancer. Decide whether the site should flag values like these.
@@ -219,6 +256,9 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 
 **Process**
 - **Research tasks:** Sanjana, Saurabi, and Sneha to confirm status on the board.
+- **Updates after finals:** undecided. GitHub pauses scheduled jobs after 60 days with no activity in the repo, so the daily refresh stops on its own unless someone keeps the repo active.
+- **Type 2 diabetes patient data:** the CDC rows in `prevalence.csv` are listed under "diabetes" and cover all diabetes, not only type 2. Decide whether that is an acceptable comparison before using them.
+- **Hand picked trials:** decide how the 11 trials in `Clinical Trials.csv` will be used on the site. One row (NCT03565835) links to a different trial (NCT02854436).
 
 ---
 
@@ -238,6 +278,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/6 | Sanjana | Claude | Site plan and wireframe draft |
 | 11/6 | Sanjana | Claude | Finding and reading sources on FDA Snapshots and existing tools |
 | 11/11 | Woosik | Claude | Fixing records and sources, README sections, PPR calculation and chart, ethnicity and age charts |
+| 11/16 | Woosik | Claude | PPR script fix, AI disclosure, daily data refresh and safety checks, group reflection skeleton, Progress Update #4 draft and Gantt chart |
 
 ---
 
