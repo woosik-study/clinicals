@@ -7,12 +7,14 @@ for 4 conditions. Saves:
   trials_clean.csv               one row per trial per condition, demographics from the "Total" group
                                  and location flags (us_only, any_us_site)
   summary_by_condition.csv       per condition: race reporting rate, participant shares, location counts
+  data_updated.txt               when the data was downloaded (UTC), shown on the site
 
 Run:  python3 fetch_trials.py             (full pull)
       python3 fetch_trials.py --test      (5 trials per condition, quick check)
       python3 fetch_trials.py --from-raw  (rebuild the CSVs from trials_raw/, no download)
 """
 import csv, json, os, re, sys, time, urllib.parse, urllib.request, urllib.error
+from datetime import datetime, timezone
 
 CONDITIONS = {
     "breast_cancer": "breast cancer",
@@ -230,6 +232,9 @@ def main():
         w = csv.DictWriter(f, fieldnames=list(summ[0].keys()))
         w.writeheader()
         w.writerows(summ)
+    if not FROM_RAW:  # record when this download happened, for "Data last updated" on the site
+        with open(os.path.join(HERE, "data_updated.txt"), "w") as f:
+            f.write(datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") + "\n")
     print_location_report(rows)
     print("\nDone. Wrote trials_clean.csv and summary_by_condition.csv in", HERE)
 

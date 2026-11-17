@@ -119,6 +119,18 @@ function renderPPR() {
     `<p class="note" style="margin-top:12px">Patient data: NCI SEER new cases, 2019 to 2023. ${cond === "prostate_cancer" ? "Trials also listed under breast cancer are left out. " : ""}Hispanic or Latino uses the trials' ethnicity data. See "How to read this" for how groups are matched.</p>`;
 }
 
+// "Data last updated": a full UTC time from the daily refresh, or a date for the manual snapshot.
+function updatedText(v) {
+  if (!v) return "not recorded";
+  const dateOnly = v.length === 10;
+  const d = new Date(dateOnly ? v + "T00:00:00Z" : v);
+  if (isNaN(d)) return v;
+  const day = d.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric", timeZone: "UTC"});
+  if (dateOnly) return day + " (manual snapshot)";
+  return `${day}, ${d.toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit", timeZone: "UTC"})} UTC`;
+}
+document.querySelectorAll(".data-updated").forEach(e => { e.textContent = updatedText(window.DATA_UPDATED); });
+
 $("conds").innerHTML = Object.entries(CONDS).map(([k, v]) => `<button role="tab" data-c="${k}">${v}</button>`).join("");
 $("conds").addEventListener("click", e => { if (e.target.dataset.c) { cond = e.target.dataset.c; render(); } });
 $("phase").addEventListener("change", render);

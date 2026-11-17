@@ -1,4 +1,7 @@
-"""Turn trials_clean.csv into docs/data.js (window.TRIALS = [...]) for the website."""
+"""Turn trials_clean.csv into docs/data.js for the website.
+
+Writes window.TRIALS (one record per trial) and window.DATA_UPDATED (when the data
+was downloaded, read from data_updated.txt)."""
 import csv, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 RACES = ["American Indian or Alaska Native", "Asian", "Native Hawaiian or Other Pacific Islander",
@@ -23,6 +26,9 @@ with open(os.path.join(HERE, "trials_clean.csv")) as fh:
             "e": [f(r.get("eth_" + x)) or 0 for x in ETHNICITIES] if r.get("ethnicity_reported") == "1" else None,
             "ag": f(r.get("age_value")), "ap": r.get("age_param") or None,
         })
+stamp = os.path.join(HERE, "data_updated.txt")
+updated = open(stamp).read().strip() if os.path.exists(stamp) else ""
 with open(os.path.join(HERE, "docs", "data.js"), "w") as fh:
     fh.write("window.TRIALS = " + json.dumps(rows, separators=(",", ":")) + ";\n")
-print(f"Wrote docs/data.js with {len(rows)} trials")
+    fh.write("window.DATA_UPDATED = " + json.dumps(updated) + ";\n")
+print(f"Wrote docs/data.js with {len(rows)} trials, data last updated {updated or 'unknown'}")

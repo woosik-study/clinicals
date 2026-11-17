@@ -4,7 +4,7 @@ Clinical trials produce much of the evidence behind which treatments reach the p
 
 **Live site:** https://woosik-study.github.io/clinicals
 
-Current numbers are on the site. This file explains the project and does not repeat them, because they change when the data is refreshed.
+Current numbers are on the site. This file explains the project and does not repeat them, because the site refreshes its trial data every day.
 
 ## What the site shows now
 
@@ -79,6 +79,9 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 | `build_ppr.py` | Computes PPR from `trials_clean.csv` and `prevalence.csv`, and writes `ppr_by_condition.csv` and `docs/ppr.js` |
 | `ppr_by_condition.csv` | PPR, trial share, patient share, and participant counts for each condition and group |
 | `docs/` | The website, published by GitHub Pages: `index.html`, `style.css`, `app.js`, `data.js`, `ppr.js` |
+| `data_updated.txt` | When the trial data was last downloaded. The site shows it as "Data last updated" |
+| `check_refresh.py` | Safety checks that the daily refresh runs before it publishes the site |
+| `.github/workflows/daily-refresh.yml` | The daily refresh job, run by GitHub Actions (GitHub's service for running scripts on a schedule) |
 | `trials_raw/` | Raw API records, one JSONL file per condition (JSONL has one JSON record per line) |
 | `trials_clean.csv` | One row per trial per condition |
 | `summary_by_condition.csv` | Race reporting rates, participant race shares, unknown race share, female share, and location counts for each condition |
@@ -88,16 +91,37 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 
 ## Refresh the data
 
-You need Python 3. The scripts use only the standard library, so there is nothing to install.
+**The live site refreshes itself every day.** A scheduled job downloads the latest trial data from ClinicalTrials.gov, rebuilds the site files, runs safety checks, and publishes the site. It runs at 10:37 UTC, and again whenever a change is pushed to `main`. The site shows the time of its last download as "Data last updated".
+
+The job does not commit anything. The data files in this repo are a manual snapshot, and `data_updated.txt` holds the snapshot's date. That is why the live site can show newer numbers than the files here.
+
+If a safety check fails, the job stops and the live site keeps its previous data. The checks are in `check_refresh.py`: no condition may lose more than 10% of its trials compared with the snapshot, no column may be missing, the site data may not be empty, and the PPR values for breast and prostate cancer must still be computed.
+
+### Run the refresh yourself
+
+You need Python 3. The scripts use only the standard library, so there is nothing to install. From the repo folder, run:
 
 ```bash
 python3 fetch_trials.py
 python3 build_site_data.py
 python3 build_ppr.py
-git add . && git commit -m "Refresh data" && git push
 ```
 
-GitHub Pages updates the site after the push. When new patient counts are added to `prevalence.csv`, run only `python3 build_ppr.py`.
+The download can take a few minutes. Then open `docs/index.html` in a browser. The banner at the top shows the time of your download.
+
+When new patient counts are added to `prevalence.csv`, run only `python3 build_ppr.py`.
+
+### Run the daily job by hand
+
+On GitHub, open the **Actions** tab, choose **Daily data refresh**, and click **Run workflow**.
+
+### Update the snapshot in the repo
+
+Team members only. After running the three commands above:
+
+```bash
+git add . && git commit -m "Refresh data snapshot" && git push
+```
 
 Other options for `fetch_trials.py`:
 
@@ -106,10 +130,10 @@ Other options for `fetch_trials.py`:
 | `python3 fetch_trials.py --from-raw` | Rebuild the CSVs from `trials_raw/` without downloading, for example after changing the cleaning logic |
 | `python3 fetch_trials.py --test` | Pull 5 trials per condition as a quick check |
 
-`--test` overwrites `trials_raw/` and both CSVs with the small sample. To restore the full data afterward, run:
+`--test` overwrites `trials_raw/`, both CSVs, and `data_updated.txt` with the small sample. To restore the full data afterward, run:
 
 ```bash
-git checkout -- trials_raw trials_clean.csv summary_by_condition.csv
+git checkout -- trials_raw trials_clean.csv summary_by_condition.csv data_updated.txt
 ```
 
 ## Limitations
@@ -122,6 +146,7 @@ What the data and the site cannot tell you:
 - SEER counts new cases, not people living with a condition.
 - SEER treats Hispanic as a separate group, while trials record Hispanic origin as ethnicity, separately from race. Trial and SEER race groups therefore do not match exactly.
 - Trials listed under two conditions count in each condition.
+- Numbers change as trials post new results. Figures in our reflections and presentation reflect the snapshot date we cite, so the live site can differ from them.
 
 ## Sources
 
@@ -133,7 +158,8 @@ We used AI tools (Claude) to help write code and edit text. The team reviewed al
 
 ## Maintenance
 
-- **Last updated:** data snapshot 2026-11-04
+- **Last updated:** the live site refreshes its trial data every day and shows the time as "Data last updated". The data files in this repo are a manual snapshot from 2026-11-04.
+- **Daily refresh:** GitHub pauses scheduled jobs in a repo that has had no activity for 60 days. After that, someone on the team has to turn the job back on from the Actions tab.
 - **Ongoing updates:** [TBD by team]
 - **Contact:** see Contact below
 
