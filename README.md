@@ -160,12 +160,12 @@ We used AI tools (Claude) to help write code and edit text. The team reviewed al
 
 - **Last updated:** the live site refreshes its trial data every day and shows the time as "Data last updated". The data files in this repo are a manual snapshot from 2026-11-04.
 - **Daily refresh:** GitHub pauses scheduled jobs in a repo that has had no activity for 60 days. After that, someone on the team has to turn the job back on from the Actions tab.
-- **Ongoing updates:** [TBD by team]
+- **Ongoing updates:** undecided. The team has not decided yet whether to keep updating the site after finals week.
 - **Contact:** see Contact below
 
 ## Contact
 
-[name], [email]
+Woosik Kim, wok017@ucsd.edu
 
 We reply within 24 hours through Friday of finals week.
 
