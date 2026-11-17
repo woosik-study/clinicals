@@ -42,6 +42,8 @@ How trial groups are matched to SEER groups:
 
 The two Non-Hispanic SEER groups leave out Hispanic patients while the trial groups include them, so those two comparisons are approximate. For prostate cancer, trials also listed under breast cancer are left out.
 
+A group or condition shows as pending when `prevalence.csv` has no usable patient count for it. PPR needs each group's share of all patients, so a rate inside one group, such as cases per 100,000 people, cannot be used.
+
 ## Data
 
 **Source:** the [ClinicalTrials.gov API v2](https://clinicaltrials.gov/data-api/api), a way for programs to request trial records directly from ClinicalTrials.gov.
@@ -73,7 +75,7 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 |---|---|
 | `fetch_trials.py` | Downloads trial records, then writes the raw files and both CSVs |
 | `build_site_data.py` | Converts `trials_clean.csv` into `docs/data.js` |
-| `prevalence.csv` | Patient counts from SEER, matched to the trial race and ethnicity groups |
+| `prevalence.csv` | Patient data by condition, sex, and group. `build_ppr.py` uses only rows that have a patient count and are not marked for checking |
 | `build_ppr.py` | Computes PPR from `trials_clean.csv` and `prevalence.csv`, and writes `ppr_by_condition.csv` and `docs/ppr.js` |
 | `ppr_by_condition.csv` | PPR, trial share, patient share, and participant counts for each condition and group |
 | `docs/` | The website, published by GitHub Pages: `index.html`, `style.css`, `app.js`, `data.js`, `ppr.js` |
