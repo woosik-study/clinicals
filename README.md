@@ -8,17 +8,18 @@ Current numbers are on the site. This file explains the project and does not rep
 
 ## What the site shows now
 
-The site is a prototype. It covers breast cancer, prostate cancer, type 2 diabetes, and heart failure.
+It covers breast cancer, prostate cancer, type 2 diabetes, and heart failure. A status line at the top says which comparisons are complete and which are waiting on patient data. It updates itself from the data.
 
-- **Filters:** a tab for each condition and a study phase filter. A study phase is a stage of testing a treatment, from small safety tests to large comparisons with existing care.
+- **Filters:** a button for each condition, a record type filter, and a study phase filter. A study phase is a stage of testing a drug, from small safety tests to large comparisons with existing care. The record type filter shows all records, only trials with a study phase, or only records with no phase listed, such as screening, behavioral, or device studies. All three filters change the summary stats, the charts, and the trial table. They do not change PPR.
 - **Summary stats:** number of trials, number of participants, share of trials that reported race, and share of participants who were female.
 - **Race of participants:** a bar chart of race shares among participants with known race, using only trials that reported race in the standard categories. The share with unknown race is shown separately.
 - **Ethnicity of participants:** Hispanic or Latino share among participants with known ethnicity, in trials that reported ethnicity.
 - **Average age:** how trials are spread across average age ranges. Averages mix means and medians.
-- **PPR:** for breast and prostate cancer, each group's share of trial participants compared with its share of patients, next to a reference line at 1.0. Uses only trials with all sites in the US.
+- **PPR:** for breast and prostate cancer, each group's share of trial participants compared with its share of patients, next to a reference line at 1.0. Uses only trials with all sites in the US. A second, hollow marker shows each value with the single largest trial for that group left out.
 - **Race reporting:** a bar chart of how many trials used standard categories, used their own categories, or did not report race.
 - **Trial table:** the 50 largest trials in the current view, each linked to its ClinicalTrials.gov page. A trial listed under another condition says so.
-- **Explainers:** short notes on study phases, PPR, and the limits of the data.
+- **Sources:** a line under every chart saying which data and filters it uses, plus a "Sources and methods" section that links to this README and to [RESEARCH.md](RESEARCH.md).
+- **Explainers:** short notes on study phases, PPR, the limits of the data, and how we used AI.
 
 ## PPR comparison
 
@@ -28,6 +29,10 @@ The site compares trial participants with real patient populations using the **P
 2. The group's share of people who have the condition, from NCI SEER for the cancers (CDC planned for diabetes and heart failure)
 
 PPR is (1) divided by (2). A value below 1 means the group makes up a smaller share of trial participants than of patients. PPR uses only trials with all sites in the US and leaves participants with unknown race or ethnicity out of the shares. Each value appears next to a reference line at 1.0, and individual groups are not labeled. The participant charts stay global.
+
+PPR uses every US record, whatever the record type and phase filters are set to. We chose this so the values stay fixed and match `ppr_by_condition.csv`, and so the groups do not shrink to a handful of people when a filter is applied.
+
+**How much one trial matters:** for each group, `build_ppr.py` also leaves out the single trial that contributed the most participants to that group and computes the share and PPR again. The site shows both values. When they are far apart, the result depends heavily on one trial.
 
 How trial groups are matched to SEER groups:
 
@@ -77,7 +82,7 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 | `build_site_data.py` | Converts `trials_clean.csv` into `docs/data.js` |
 | `prevalence.csv` | Patient data by condition, sex, and group. `build_ppr.py` uses only rows that have a patient count and are not marked for checking |
 | `build_ppr.py` | Computes PPR from `trials_clean.csv` and `prevalence.csv`, and writes `ppr_by_condition.csv` and `docs/ppr.js` |
-| `ppr_by_condition.csv` | PPR, trial share, patient share, and participant counts for each condition and group |
+| `ppr_by_condition.csv` | PPR, trial share, patient share, and participant counts for each condition and group, plus the same share and PPR with the largest trial left out |
 | `docs/` | The website, published by GitHub Pages: `index.html`, `style.css`, `app.js`, `data.js`, `ppr.js` |
 | `data_updated.txt` | When the trial data was last downloaded. The site shows it as "Data last updated" |
 | `check_refresh.py` | Safety checks that the daily refresh runs before it publishes the site |
@@ -88,6 +93,9 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 | `BACKLOG.md` | Task board, work log, findings, open issues, AI usage log, and presentation outline |
 | [`SITE_PLAN.md`](SITE_PLAN.md) | Plan for the final site's pages, with a rough layout of each |
 | [`RESEARCH.md`](RESEARCH.md) | Shared list of sources and key findings for the site's resource list |
+| [`GROUP_REFLECTION_1.md`](GROUP_REFLECTION_1.md) | Our group reflection on accountability, one section per member |
+| `Clinical Trials.csv` | Saurabi's hand picked sample of 11 trials, with condition, phase, status, enrollment, and eligibility. The site and the scripts do not use it |
+| `Clinical Trial Demographics.csv` | Participant demographics for the same hand picked trials, as reported on each trial's page. The site and the scripts do not use it |
 
 ## Refresh the data
 
@@ -99,15 +107,17 @@ If a safety check fails, the job stops and the live site keeps its previous data
 
 ### Run the refresh yourself
 
-You need Python 3. The scripts use only the standard library, so there is nothing to install. From the repo folder, run:
+You need Python 3.7 or newer and an internet connection. The scripts use only the standard library, so there is nothing to install. In a terminal, run:
 
 ```bash
+git clone https://github.com/woosik-study/clinicals.git
+cd clinicals
 python3 fetch_trials.py
 python3 build_site_data.py
 python3 build_ppr.py
 ```
 
-The download can take a few minutes. Then open `docs/index.html` in a browser. The banner at the top shows the time of your download.
+On Windows, type `python` instead of `python3`. The download can take a few minutes and prints its progress. Then open `docs/index.html` in a browser. The banner at the top shows the time of your download. If you skip the download, the last two commands still work on the snapshot in the repo.
 
 When new patient counts are added to `prevalence.csv`, run only `python3 build_ppr.py`.
 
@@ -117,7 +127,7 @@ On GitHub, open the **Actions** tab, choose **Daily data refresh**, and click **
 
 ### Update the snapshot in the repo
 
-Team members only. After running the three commands above:
+Team members only. After running the commands above:
 
 ```bash
 git add . && git commit -m "Refresh data snapshot" && git push
@@ -142,7 +152,8 @@ What the data and the site cannot tell you:
 
 - The data covers only trials with posted results on ClinicalTrials.gov.
 - Trials that report race in their own custom categories are left out of the race charts.
-- About 27% of records have no study phase. ClinicalTrials.gov uses "Not Applicable" for trials without FDA defined phases, such as device or behavioral studies.
+- About 27% of records have no study phase. ClinicalTrials.gov uses "Not Applicable" for trials without FDA defined phases, such as device or behavioral studies. Some of these are very large, so they can move the totals a lot. The record type filter shows the numbers with or without them.
+- Some PPR values rest on few participants or mostly on one trial. The site shows each value with and without the largest trial so readers can judge this.
 - SEER counts new cases, not people living with a condition.
 - SEER treats Hispanic as a separate group, while trials record Hispanic origin as ethnicity, separately from race. Trial and SEER race groups therefore do not match exactly.
 - Trials listed under two conditions count in each condition.
