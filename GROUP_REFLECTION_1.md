@@ -55,7 +55,13 @@ Guiding questions:
 - What did we automate? The site now refreshes its data every day with no person checking each number, and AI tools helped write the code. What can go wrong without a human in the loop, and what do our safety checks catch or miss?
 - Which point in a Week 9 reading about speed, automation, or infrastructure connects to these choices?
 
-[Write here]
+The data choice that mattered most was leaving out trials that reported race in their own categories. About one in five trials did this. We could not combine their labels with the standard categories, so we left them out of the race charts. Those trials did collect race data, but their participants disappear from our picture. It was the only honest way to keep the categories comparable, but our charts now describe only part of the trials.
+
+We also automated the data refresh, so the site updates every day with no person checking. Our safety checks only catch obvious failures, such as trial counts dropping more than 10% or a missing column. They would not catch a small change in how ClinicalTrials.gov formats its data that makes our code quietly mislabel trials. The site would still look fine, and wrong numbers would go public with nobody noticing.
+
+We have already seen code run with no errors and still be wrong. The first version of our script, written with AI help, undercounted the trials that reported no race. The corrected count was 1,140 unique trials. It was caught by reviewing the results again, not because anything crashed.
+
+America's AI Action Plan, in its section Build an AI Evaluations Ecosystem, says evaluations are how the industry assesses the "performance and reliability" of AI systems. We learned the same thing at a small scale. We cannot treat code written with AI help or automated output as correct just because it works. Someone has to check the numbers.
 
 ## Section 3: Who could be affected by errors or gaps (Saurabi)
 
