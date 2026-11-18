@@ -10,12 +10,20 @@
 <div class="banner">Prototype. Data last updated: <span class="data-updated">November 4, 2026</span>. Comparison with patients (PPR) is available for breast and prostate cancer. Other groups and conditions are being added.</div>
 <header class="wrap">
   <h1>Who Is in the Trial?</h1>
-  <p class="lede">Clinical trials decide which treatments reach the public. This site shows who actually took part in trials for four common conditions, and how often those trials reported participants' race. We don't rate any trial. Explore the numbers and draw your own conclusions.</p>
+  <p class="lede">This site shows who took part in clinical studies for four common conditions, and how often those studies reported participants' race. It uses records from ClinicalTrials.gov for interventional studies, which assign participants to a treatment or other intervention, that started in 2010 or later and posted results. Most records list a study phase, a stage in testing a drug. Others list no phase, such as screening, behavioral, or device studies, and the record type filter lets you include or leave them out. We don't rate any trial. Explore the numbers and draw your own conclusions.</p>
 </header>
 
 <main class="wrap">
   <section class="controls" aria-label="Filters">
     <div class="group" role="tablist" id="conds"></div>
+    <div class="filters">
+    <label class="phase">Record type
+      <select id="kind">
+        <option value="">All records</option>
+        <option value="phased">Trials with a study phase</option>
+        <option value="nophase">No phase listed (for example screening, behavioral, or device studies)</option>
+      </select>
+    </label>
     <label class="phase">Study phase
       <select id="phase">
         <option value="">All phases</option>
@@ -25,6 +33,7 @@
         <option value="PHASE4">Phase 4</option>
       </select>
     </label>
+    </div>
   </section>
 
   <section class="stats" id="stats"></section>
@@ -33,26 +42,26 @@
     <h2>Race of trial participants</h2>
     <p class="note">Share of participants with known race, in trials that reported race in the standard NIH/OMB categories. Participants with unknown race are left out of the bars and shown below them. Hover a bar for counts.</p>
     <div id="race"></div>
-    <p class="src">Source: the baseline table (the table of who enrolled) of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition and phase filters.</p>
+    <p class="src">Source: the baseline table (the table of who enrolled) of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
   </section>
 
   <section class="card">
     <h2>Ethnicity of trial participants</h2>
     <p class="note">Share of participants with known ethnicity, in trials that reported ethnicity in the standard NIH/OMB categories. Ethnicity is recorded separately from race, so Hispanic participants also appear in the race chart.</p>
     <div id="ethnicity"></div>
-    <p class="src">Source: the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition and phase filters.</p>
+    <p class="src">Source: the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
   </section>
 
   <section class="card">
     <h2>Average age of participants, by trial</h2>
     <p class="note">Each trial reports one average age for its participants. Most report a mean, some report a median, and the two are combined here.</p>
     <div id="age"></div>
-    <p class="src">Source: the average age in the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition and phase filters.</p>
+    <p class="src">Source: the average age in the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
   </section>
 
   <section class="card" id="ppr-card">
     <h2>Trial participants compared with patients (PPR)</h2>
-    <p class="note">PPR is a group's share of trial participants divided by its share of people diagnosed with the condition. The dashed line marks 1.0, where the two shares are equal. Uses only trials with all sites in the US, across all study phases, so the phase filter does not change it.</p>
+    <p class="note">PPR is a group's share of trial participants divided by its share of people diagnosed with the condition. The dashed line marks 1.0, where the two shares are equal. It uses every record with all sites in the US, whatever the record type and phase filters are set to, so those two filters do not change it.</p>
     <div id="ppr"></div>
     <p class="src">Sources: trial shares from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>, using trials with all sites in the US. Patient shares from <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER*Explorer</a>, new cases from 2019 to 2023. Method: <a href="https://github.com/woosik-study/clinicals/blob/main/build_ppr.py">build_ppr.py</a>.</p>
   </section>
@@ -61,14 +70,14 @@
     <h2>How often do trials report participants' race?</h2>
     <p class="note">Of the trials that posted results, how many reported participants' race at all.</p>
     <div id="reporting"></div>
-    <p class="src">Source: the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition and phase filters.</p>
+    <p class="src">Source: the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
   </section>
 
   <section class="card">
     <h2>Trials</h2>
     <p class="note">Each trial links to its page on ClinicalTrials.gov. Showing the 50 largest.</p>
     <div class="tablewrap"><table id="trials"><thead><tr><th>Trial</th><th>Phase</th><th>Start</th><th class="num">Participants</th><th>Race reported</th></tr></thead><tbody></tbody></table></div>
-    <p class="src">Source: the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition and phase filters. Participants is the number in the baseline table, or the enrollment count if the table has none.</p>
+    <p class="src">Source: the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters. Participants is the number in the baseline table, or the enrollment count if the table has none.</p>
   </section>
 
   <section class="card explain">
@@ -78,7 +87,7 @@
     <h3>What is PPR?</h3>
     <p>The Participation to Prevalence Ratio compares a group's share of trial participants with its share of people who have the condition. A value of 1.0 means the two shares are equal, and "underrepresented" means a value below 1. Each value is shown next to a reference line at 1.0, and individual groups are not labeled. PPR uses only trials with all sites in the US and leaves participants with unknown race or ethnicity out of the shares. Patient data comes from the National Cancer Institute's SEER program. Data from the CDC for type 2 diabetes and heart failure is being added.</p>
     <h3>Limits of this data</h3>
-    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. The trial data refreshes every day, and numbers change as trials post new results, so figures in our reflections and presentation reflect the snapshot date we cite. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart. Trials listed under more than one condition count fully in each condition's numbers, so adding conditions together would count them twice. For PPR, prostate cancer leaves out trials that are also listed under breast cancer. SEER counts new cases, not everyone living with a condition. SEER's Asian or Pacific Islander and American Indian or Alaska Native groups leave out Hispanic patients, while the trial groups include them, so those comparisons are approximate.</p>
+    <p>We include interventional trials started in 2010 or later that posted results on ClinicalTrials.gov. About a quarter of the records list no study phase. Many of these are screening, behavioral, or device studies, and some are very large, so they can move the totals a lot. Use the record type filter to see the numbers with or without them. The trial data refreshes every day, and numbers change as trials post new results, so figures in our reflections and presentation reflect the snapshot date we cite. Trials that used their own race categories cannot be combined with the standard categories, so they are counted as reporting race but left out of the race chart. Trials listed under more than one condition count fully in each condition's numbers, so adding conditions together would count them twice. For PPR, prostate cancer leaves out trials that are also listed under breast cancer. SEER counts new cases, not everyone living with a condition. SEER's Asian or Pacific Islander and American Indian or Alaska Native groups leave out Hispanic patients, while the trial groups include them, so those comparisons are approximate.</p>
     <h3>Sources and methods</h3>
     <ul class="sources">
       <li><strong>Trial data:</strong> the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>, a public database of clinical studies. We include interventional studies, which assign participants to a treatment or other intervention, that started in 2010 or later and posted results. Each number comes from a study's baseline table, using the column for all participants.</li>

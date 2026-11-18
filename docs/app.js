@@ -16,8 +16,14 @@ function bar(label, p, title, cls="") {
 }
 
 function render() {
-  const phase = $("phase").value;
-  const rows = data.filter(r => r.c === cond && (!phase || (r.p || "").split("|").includes(phase)));
+  // Record type: "phased" has a study phase, "nophase" lists none (blank or "NA" on ClinicalTrials.gov).
+  const kind = $("kind").value;
+  $("phase").disabled = kind === "nophase";
+  const phase = kind === "nophase" ? "" : $("phase").value;
+  const hasPhase = r => (r.p || "").includes("PHASE");
+  const rows = data.filter(r => r.c === cond &&
+    (!kind || (kind === "phased") === hasPhase(r)) &&
+    (!phase || (r.p || "").split("|").includes(phase)));
   document.querySelectorAll("#conds button").forEach(b => b.setAttribute("aria-selected", b.dataset.c === cond));
 
   if (!rows.length) {
@@ -134,4 +140,5 @@ document.querySelectorAll(".data-updated").forEach(e => { e.textContent = update
 $("conds").innerHTML = Object.entries(CONDS).map(([k, v]) => `<button role="tab" data-c="${k}">${v}</button>`).join("");
 $("conds").addEventListener("click", e => { if (e.target.dataset.c) { cond = e.target.dataset.c; render(); } });
 $("phase").addEventListener("change", render);
+$("kind").addEventListener("change", render);
 render();

@@ -13,6 +13,8 @@ h3{font-size:16px;margin:16px 0 4px}
 .group{display:flex;flex-wrap:wrap;gap:6px}
 .group button{border:1px solid var(--line);background:var(--card);padding:8px 14px;border-radius:999px;font:inherit;cursor:pointer}
 .group button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filters{display:flex;flex-wrap:wrap;gap:12px}
+select:disabled{opacity:.55}
 .phase{font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center}
 select{font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
