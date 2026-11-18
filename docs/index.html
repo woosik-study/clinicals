@@ -15,7 +15,7 @@
 
 <main class="wrap">
   <section class="controls" aria-label="Filters">
-    <div class="group" role="tablist" id="conds"></div>
+    <div class="group" role="group" aria-label="Condition" id="conds"></div>
     <div class="filters">
     <label class="phase">Record type
       <select id="kind">
@@ -40,7 +40,7 @@
 
   <section class="card">
     <h2>Race of trial participants</h2>
-    <p class="note">Share of participants with known race, in trials that reported race in the standard NIH/OMB categories. Participants with unknown race are left out of the bars and shown below them. Hover a bar for counts.</p>
+    <p class="note">Share of participants with known race, in trials that reported race in the standard NIH/OMB categories. Participants with unknown race are left out of the bars and shown below them. Hover over a bar to see counts.</p>
     <div id="race"></div>
     <p class="src">Source: the baseline table (the table of who enrolled) of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
   </section>
@@ -76,7 +76,7 @@
   <section class="card">
     <h2>Trials</h2>
     <p class="note">Each trial links to its page on ClinicalTrials.gov. Showing the 50 largest.</p>
-    <div class="tablewrap"><table id="trials"><thead><tr><th>Trial</th><th>Phase</th><th>Start</th><th class="num">Participants</th><th>Race reported</th></tr></thead><tbody></tbody></table></div>
+    <div class="tablewrap"><table id="trials"><caption class="sr">The 50 largest trials in this view</caption><thead><tr><th>Trial</th><th>Phase</th><th>Start</th><th class="num">Participants</th><th>Race reported</th></tr></thead><tbody></tbody></table></div>
     <p class="src">Source: the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters. Participants is the number in the baseline table, or the enrollment count if the table has none.</p>
   </section>
 
