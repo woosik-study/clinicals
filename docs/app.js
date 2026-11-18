@@ -141,6 +141,37 @@ function updatedText(v) {
   if (dateOnly) return day + " (manual snapshot)";
   return `${day}, ${d.toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit", timeZone: "UTC"})} UTC`;
 }
+// Status line in the banner, built from ppr.js so it updates itself when patient data arrives.
+function listText(items) {
+  return items.length < 3 ? items.join(" and ") : items.slice(0, -1).join(", ") + ", and " + items[items.length - 1];
+}
+function statusText() {
+  const names = Object.keys(CONDS).filter(c => data.some(r => r.c === c)).map(c => CONDS[c].toLowerCase());
+  const parts = [`Trial data: complete for ${names.length} conditions.`];
+  const shown = [], allPending = [], somePending = {};
+  for (const c of Object.keys(CONDS)) {
+    const rs = PPR.filter(r => r.condition === c);
+    const done = rs.filter(r => r.status === "computed").length;
+    const waiting = rs.filter(r => r.status === "pending").map(r => r.trial_group);
+    if (done) shown.push([CONDS[c].toLowerCase(), done]);
+    if (!done && waiting.length) allPending.push(CONDS[c].toLowerCase());
+    else if (waiting.length) (somePending[listText(waiting)] = somePending[listText(waiting)] || []).push(CONDS[c].toLowerCase());
+  }
+  if (shown.length) {
+    const same = shown.every(([, n]) => n === shown[0][1]);
+    parts.push(same
+      ? `Comparison with patients (PPR): shown for ${listText(shown.map(([c]) => c))} (${shown[0][1]} groups${shown.length > 1 ? " each" : ""}).`
+      : `Comparison with patients (PPR): shown for ${listText(shown.map(([c, n]) => `${c} (${n} groups)`))}.`);
+  }
+  const waits = Object.entries(somePending).map(([groups, cs]) => `the ${groups} groups for ${listText(cs)}`);
+  if (allPending.length) waits.push(`all groups for ${listText(allPending)}`);
+  // A comma before the last "and", because each item already contains "and".
+  const waitText = waits.length < 2 ? waits.join("") : waits.slice(0, -1).join(", ") + ", and " + waits[waits.length - 1];
+  parts.push(waits.length ? `Waiting on patient data: ${waitText}.` : "All planned comparisons are complete.");
+  return parts.join(" ");
+}
+$("ppr-status").textContent = statusText();
+
 document.querySelectorAll(".data-updated").forEach(e => { e.textContent = updatedText(window.DATA_UPDATED); });
 
 $("conds").innerHTML = Object.entries(CONDS).map(([k, v]) => `<button role="tab" data-c="${k}">${v}</button>`).join("");
