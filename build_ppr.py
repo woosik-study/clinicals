@@ -31,7 +31,12 @@ The plain "White" and "Black" rows in prevalence.csv are not used, because trial
 include Hispanic participants and those rows are not confirmed to include them.
 
 A group or condition without usable patient data is "pending": it gets a trial share
-but no PPR. Type 2 diabetes and heart failure are pending until prevalence.csv has
+but no PPR.
+
+Sensitivity check: for each group, the trial that contributed the most participants to
+that group is found and left out (from both the group count and the denominator), and
+the trial share and PPR are computed again. Readers can compare the two values to see
+how much one trial drives the result. Type 2 diabetes and heart failure are pending until prevalence.csv has
 patient counts by group for them.
 
 Writes ppr_by_condition.csv and docs/ppr.js (for the website).
@@ -68,7 +73,8 @@ NEVER_USE = {"verify_source"}
 USE_UNCONFIRMED_GROUP_LABELS = True
 
 CSV_COLUMNS = ["condition", "trial_group", "trials_used", "trial_participants", "trial_denominator",
-               "trial_share_pct", "largest_trial_share_pct", "seer_group", "seer_share_pct", "ppr"]
+               "trial_share_pct", "largest_trial_share_pct", "seer_group", "seer_share_pct", "ppr",
+               "largest_trial_id", "trial_share_without_largest_pct", "ppr_without_largest"]
 
 
 def num(v):
@@ -126,9 +132,11 @@ def main():
             return sum(num(r[k]) for k in r if k.startswith("race_") and k != "race_format"
                        and k != "race_" + UNKNOWN)
 
+        def known_eth(r):
+            return num(r["eth_Hispanic or Latino"]) + num(r["eth_Not Hispanic or Latino"])
+
         race_den = sum(known_race(r) for r in race_trials)
-        eth_den = sum(num(r["eth_Hispanic or Latino"]) + num(r["eth_Not Hispanic or Latino"])
-                      for r in eth_trials)
+        eth_den = sum(known_eth(r) for r in eth_trials)
 
         # Patient rows for this condition, same measure as its "All" row.
         measure = PATIENT_MEASURE.get(cond)
@@ -137,14 +145,19 @@ def main():
         total_years = {p["years"] for p in cond_patients if p["race_ethnicity"] == "All" and usable(p)}
         cond_patients = [p for p in cond_patients if p["years"] in total_years]
 
-        specs = [(label, race_trials, race_den, lambda r, cols=cols: sum(num(r["race_" + c]) for c in cols), plabel, sg)
+        specs = [(label, race_trials, race_den, lambda r, cols=cols: sum(num(r["race_" + c]) for c in cols),
+                  known_race, plabel, sg)
                  for label, cols, plabel, sg in GROUPS]
         specs.append((ETHNICITY[0], eth_trials, eth_den, lambda r: num(r["eth_Hispanic or Latino"]),
-                      ETHNICITY[1], ETHNICITY[2]))
+                      known_eth, ETHNICITY[1], ETHNICITY[2]))
 
-        for label, trials, den, count, plabel, sg in specs:
+        for label, trials, den, count, known, plabel, sg in specs:
             per_trial = sorted((count(r) for r in trials), reverse=True)
             n = sum(per_trial)
+            # Sensitivity check: leave out the trial with the most participants in this group.
+            top = max(trials, key=count) if trials and n else None
+            den_wo = den - known(top) if top else 0
+            share_wo = (n - count(top)) / den_wo if top and den_wo > 0 else None
             share = n / den if den else None
             group_count = patient_count(cond_patients, plabel, used) if (plabel and total) else None
             seer_share = group_count / total if group_count and group_count <= total else None
@@ -166,6 +179,9 @@ def main():
                 "seer_share_pct": round(100 * seer_share, 1) if seer_share else "",
                 "ppr": round(share / seer_share, 2) if status == "computed" else "",
                 "status": status,
+                "largest_trial_id": top["nct_id"] if top else "",
+                "trial_share_without_largest_pct": round(100 * share_wo, 1) if share_wo is not None else "",
+                "ppr_without_largest": round(share_wo / seer_share, 2) if status == "computed" and share_wo is not None else "",
             })
 
     path = os.path.join(HERE, "ppr_by_condition.csv")
@@ -176,12 +192,12 @@ def main():
     with open(os.path.join(HERE, "docs", "ppr.js"), "w", encoding="utf-8") as f:
         f.write("window.PPR = " + json.dumps(out, separators=(",", ":")) + ";\n")
     print(f"Wrote ppr_by_condition.csv and docs/ppr.js with {len(out)} rows")
-    print(f"{'condition':<17}{'group':<34}{'trials':>7}{'people':>8}{'trial %':>9}{'patient %':>11}{'PPR':>9}{'top trial %':>13}")
+    print(f"{'condition':<17}{'group':<34}{'trials':>7}{'people':>8}{'trial %':>9}{'patient %':>11}{'PPR':>9}{'top trial %':>13}{'PPR w/o top':>13}")
     shown = {"pending": "pending", "no_patient_group": "n/a"}
     for r in out:
         print(f"{r['condition']:<17}{r['trial_group']:<34}{r['trials_used']:>7}{r['trial_participants']:>8}"
               f"{r['trial_share_pct']!s:>9}{r['seer_share_pct']!s:>11}{shown.get(r['status'], r['ppr'])!s:>9}"
-              f"{r['largest_trial_share_pct']!s:>13}")
+              f"{r['largest_trial_share_pct']!s:>13}{r['ppr_without_largest']!s:>13}")
     print(f"\nUsed {len(used)} of {len(patients)} rows in prevalence.csv. The rest are marked for checking, "
           f"give a rate with no patient count, or have a group label that is not matched to a trial group.")
     print("pending = no usable patient share yet. n/a = no matching patient group.")

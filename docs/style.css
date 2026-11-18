@@ -40,7 +40,14 @@ a{color:var(--accent)}
 .ppr-track{position:relative;height:18px;background:#f0eee8;border-radius:4px}
 .ppr-track .ref{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed var(--ink)}
 .ppr-track .dot{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 0 0 1px var(--accent)}
+.ppr-track .dot.hollow{background:#fff;border:2px solid var(--accent);box-shadow:none}
 .ppr-val{font-variant-numeric:tabular-nums;font-weight:600}
+.ppr-val .wo{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);margin:14px 0 0}
+.legend .key{display:inline-flex;align-items:center;gap:6px}
+.dot-key{width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block}
+.dot-key.hollow{background:#fff;border:2px solid var(--accent)}
+.ref-key{width:0;height:14px;border-left:2px dashed var(--ink);display:inline-block}
 .ppr-detail{grid-column:2 / 4;color:var(--muted);font-size:13px}
 .ticks{position:relative;height:18px;color:var(--muted);font-size:12px}
 .ticks span{position:absolute;transform:translateX(-50%)}

@@ -101,7 +101,7 @@ function renderPPR() {
     $("ppr").innerHTML = `<p class="empty">Patient data for ${CONDS[cond].toLowerCase()} is pending, so PPR is not shown yet.</p>`;
     return;
   }
-  const vals = rs.map(r => +r.ppr).filter(v => v > 0);
+  const vals = rs.flatMap(r => [+r.ppr, +r.ppr_without_largest]).filter(v => v > 0);
   const max = Math.max(2, Math.ceil(Math.max(...vals) * 2) / 2);
   const x = v => (100 * v / max).toFixed(2) + "%";
   const ticks = [];
@@ -110,18 +110,24 @@ function renderPPR() {
     const has = r.ppr !== "";
     const detail = `${fmt(r.trial_participants)} participants in ${fmt(r.trials_used)} trials. ` +
       (r.largest_trial_share_pct !== "" ? `${r.largest_trial_share_pct}% are from the largest single trial.` : "");
+    const hasWo = has && r.ppr_without_largest !== "";
     const plot = has
-      ? `<div class="dot" style="left:${x(+r.ppr)}" title="Trial share ${r.trial_share_pct}%, patient share ${r.seer_share_pct}%"></div>`
+      ? (hasWo ? `<div class="dot hollow" style="left:${x(+r.ppr_without_largest)}" title="PPR without the largest trial: ${(+r.ppr_without_largest).toFixed(2)}"></div>` : "") +
+        `<div class="dot" style="left:${x(+r.ppr)}" title="Trial share ${r.trial_share_pct}%, patient share ${r.seer_share_pct}%"></div>`
       : "";
-    const value = has ? (+r.ppr).toFixed(2) : (r.seer_group ? "Patient data pending" : "No matching patient group");
+    const value = has
+      ? `${(+r.ppr).toFixed(2)}${hasWo ? `<span class="wo">${(+r.ppr_without_largest).toFixed(2)} without largest trial</span>` : ""}`
+      : (r.seer_group ? "Patient data pending" : "No matching patient group");
     const p1 = v => (+v).toFixed(1);
-    const shares = has ? `Trials ${p1(r.trial_share_pct)}%, patients ${p1(r.seer_share_pct)}%. ` : `Trials ${p1(r.trial_share_pct)}%. `;
+    const without = r.trial_share_without_largest_pct !== "" ? ` (${p1(r.trial_share_without_largest_pct)}% without the largest trial)` : "";
+    const shares = has ? `Trials ${p1(r.trial_share_pct)}%${without}, patients ${p1(r.seer_share_pct)}%. ` : `Trials ${p1(r.trial_share_pct)}%${without}. `;
     return `<div class="ppr-row"><div class="ppr-label">${r.trial_group}</div>
       <div class="ppr-track"><div class="ref" style="left:${x(1)}"></div>${plot}</div>
       <div class="ppr-val">${value}</div>
       <div class="ppr-detail">${shares}${detail}</div></div>`;
   }).join("");
   $("ppr").innerHTML = `<div class="ppr-axis"><div></div><div class="ticks">${ticks.join("")}</div><div></div></div>` + rowHtml +
+    `<p class="legend"><span class="key"><span class="dot-key"></span>All trials</span><span class="key"><span class="dot-key hollow"></span>Without the largest trial</span><span class="key"><span class="ref-key"></span>1.0, equal shares</span></p>` +
     `<p class="note" style="margin-top:12px">Patient data: NCI SEER new cases, 2019 to 2023. ${cond === "prostate_cancer" ? "Trials also listed under breast cancer are left out. " : ""}Hispanic or Latino uses the trials' ethnicity data. See "How to read this" for how groups are matched.</p>`;
 }
 
