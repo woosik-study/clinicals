@@ -12,7 +12,7 @@ const condsByTrial = {};
 data.forEach(r => (condsByTrial[r.id] = condsByTrial[r.id] || []).push(r.c));
 
 function bar(label, p, title, cls="") {
-  return `<div class="bar" title="${title}"><span>${label}</span><div class="track"><div class="fill ${cls}" style="width:${Math.max(p,0.5)}%"></div></div><span class="pct">${p.toFixed(1)}%</span></div>`;
+  return `<div class="bar" title="${title}"><span>${label}<span class="sr">: ${title}</span></span><div class="track"><div class="fill ${cls}" style="width:${Math.max(p,0.5)}%"></div></div><span class="pct">${p.toFixed(1)}%</span></div>`;
 }
 
 function render() {
@@ -24,7 +24,7 @@ function render() {
   const rows = data.filter(r => r.c === cond &&
     (!kind || (kind === "phased") === hasPhase(r)) &&
     (!phase || (r.p || "").split("|").includes(phase)));
-  document.querySelectorAll("#conds button").forEach(b => b.setAttribute("aria-selected", b.dataset.c === cond));
+  document.querySelectorAll("#conds button").forEach(b => b.setAttribute("aria-pressed", b.dataset.c === cond));
 
   if (!rows.length) {
     $("stats").innerHTML = `<div class="stat"><div class="l">No trials match this filter.</div></div>`;
@@ -174,7 +174,7 @@ $("ppr-status").textContent = statusText();
 
 document.querySelectorAll(".data-updated").forEach(e => { e.textContent = updatedText(window.DATA_UPDATED); });
 
-$("conds").innerHTML = Object.entries(CONDS).map(([k, v]) => `<button role="tab" data-c="${k}">${v}</button>`).join("");
+$("conds").innerHTML = Object.entries(CONDS).map(([k, v]) => `<button type="button" data-c="${k}">${v}</button>`).join("");
 $("conds").addEventListener("click", e => { if (e.target.dataset.c) { cond = e.target.dataset.c; render(); } });
 $("phase").addEventListener("change", render);
 $("kind").addEventListener("change", render);
