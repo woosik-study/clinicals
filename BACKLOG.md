@@ -39,18 +39,23 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Fix "Race and Ethnicity Not Collected" label bug | Woosik | Week 6 | ✅ Done 11/4 | 261 rows moved from own categories to not reported |
 | Add trial locations to the data pull | Woosik | Before PPR charts | ✅ Done 11/4 | `us_only` and `any_us_site` flags filled by a full data pull. Other numbers did not change. |
 | Decide if there are enough `us_only` trials for PPR | All | Week 6 to 7 | ❌ Not started | Counts are in section 4 |
-| Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ethnicity and average age charts added 11/11. |
+| Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ethnicity and average age charts added 11/11. Record type filter added 11/17. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
 | Site pages and wireframe (rough layout) | Sanjana | Week 6 | ✅ Draft 11/6 | See [SITE_PLAN.md](SITE_PLAN.md): 6 pages, a wireframe for each, and where the prototype's sections go. Team to review the questions in its section 5. |
 | Collect patient demographics per condition | Saurabi | Week 6, moved to Week 9 | ⚠️ Partial 11/14 | **Blocking PPR charts.** SEER counts for breast and prostate cancer are in `prevalence.csv` and feed 3 PPR groups each. Still needed: counts for White (includes Hispanic) and Black (includes Hispanic), patient counts or shares for type 2 diabetes and heart failure (the current rows are rates inside each group), and a check of the 29 rows marked verify. |
 | Resource list (10+ sources) | Saurabi | Through Week 9 | ⚠️ Partial | [RESEARCH.md](RESEARCH.md) has 25 unique sources with full citations. Still to do: put the list on the site. |
-| FDA Snapshots comparison section | Sanjana | Week 7 to 8, moved to Week 9 | ⚠️ Draft | A draft comparison table is in [RESEARCH.md](RESEARCH.md). The section is not written yet. |
-| Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8, moved to Week 9 | ⚠️ Draft | Draft text is in Sneha's section of [RESEARCH.md](RESEARCH.md). The site still shows the short placeholder text. |
+| FDA Snapshots comparison section | Sanjana | Week 7 to 8, moved to Week 9 | ⚠️ Draft | A draft comparison table is in [RESEARCH.md](RESEARCH.md). A hidden, marked slot for the section is ready in `docs/index.html`. Sanjana writes the text, removes `hidden`, and commits it herself. |
+| Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8, moved to Week 9 | ⚠️ Draft | Draft text is in Sneha's section of [RESEARCH.md](RESEARCH.md). The site still shows short placeholder text, now marked in `docs/index.html` for Sneha to replace and commit herself. |
 | PPR charts | Woosik | Week 7 to 9 | ⚠️ Partial 11/11 | Breast and prostate cancer are on the site. White and Black wait on two SEER counts per cancer. Type 2 diabetes and heart failure wait on patient data. |
 | Make `build_ppr.py` read the new `prevalence.csv` format | Woosik | Week 8 | ✅ Done 11/16 | It crashed after the format change on 11/12. PPR values for breast and prostate cancer are unchanged. Groups and conditions without a usable patient share come out as pending. |
 | AI disclosure on the site | Woosik | Week 8 | ✅ Done 11/16 | Footer line and a paragraph in "How to read this" |
 | README contact and maintenance notes | Woosik | Week 8 | ✅ Done 11/16 | Contact is Woosik. Ongoing updates after finals: undecided. |
-| Daily data refresh (GitHub Actions) | Woosik | Week 8 | ⚠️ Built 11/16 | Needs the Pages source set to GitHub Actions and one test run. See section 3. |
+| Daily data refresh (GitHub Actions) | Woosik | Week 8 | ✅ Live 11/17 | Pages source switched to GitHub Actions 11/17. Runs daily and on every push to `main`. See section 3. |
+| Sources and methods on the site | Woosik | Week 8 | ✅ Done 11/17 | Source line under every chart, a "Sources and methods" section, and contact and maintenance in the footer |
+| Record type filter (with or without study phase) | Woosik | Week 8 | ✅ Done 11/17 | Changes stats, charts, and table. Does not change PPR (see section 5) |
+| PPR with the largest trial left out | Woosik | Week 8 | ✅ Done 11/17 | Shown as a hollow marker next to each PPR value |
+| Status line instead of "Prototype" | Woosik | Week 8 | ✅ Done 11/17 | Built from the PPR data, so it updates itself when patient data arrives |
+| Accessibility and phone check | Woosik | Week 8 | ✅ Done 11/17 | Link contrast, phone width, keyboard focus, and condition button roles fixed. Automated check (axe) finds no issues |
 | Invite instructor and TA as repo collaborators | Woosik | Week 8 | ❓ To check | Required for the final submission |
 | Progress Update #4 | All | Week 8 | ⚠️ Draft | Gantt chart and text are drafted. Decide who submits. |
 | Group Reflection #1 | All | Due 11/22 | ⚠️ Skeleton | [GROUP_REFLECTION_1.md](GROUP_REFLECTION_1.md). Sections due 11/20, one per member. |
@@ -107,6 +112,13 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/16: Built a daily data refresh with safety checks (see section 3). It publishes the site without committing data, so the commit history is not filled with daily data commits.
 - 11/16: Added [GROUP_REFLECTION_1.md](GROUP_REFLECTION_1.md) with the prompt, one section per member, and the Week 9 readings.
 - 11/16: Drafted Progress Update #4 with an updated Gantt chart.
+- 11/17: Switched the Pages source to GitHub Actions, so the daily refresh now publishes the live site.
+- 11/17: Added a source line under every chart, a "Sources and methods" section, and contact and maintenance notes in the site footer.
+- 11/17: Added a record type filter. About 27% of records list no study phase, and in breast cancer and heart failure those records hold close to half of all participants. The intro now describes what is included without saying trials decide which treatments reach the public.
+- 11/17: Added PPR with the largest trial left out. For example, one breast cancer trial supplies 55.7% of American Indian or Alaska Native participants, and leaving it out moves that PPR from 3.1 to 1.38. The largest contributor to three breast cancer groups is a screening study with no phase listed (NCT06177795).
+- 11/17: Replaced "Prototype" in the banner with a status line built from the data.
+- 11/17: Documented Saurabi's two hand picked CSV files in the README. The site does not use them.
+- 11/17: Fixed link contrast, phone width, and keyboard focus. Marked slots in `docs/index.html` for Sneha's explainer text and Sanjana's FDA comparison.
 
 ---
 
@@ -233,6 +245,11 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 - **Daily refresh:** the live site refreshes daily and the repo keeps a manual snapshot. Figures in our reflections and presentation cite the snapshot date.
 - **Contact person:** Woosik Kim.
 
+**Decisions made (11/17)**
+- **PPR and the filters:** PPR uses every US record, whatever the record type and phase filters say. This keeps the values fixed and matching `ppr_by_condition.csv`, and stops groups from shrinking to a handful of people.
+- **How much one trial matters:** for each group, `build_ppr.py` leaves out the trial that contributed the most participants to that group and computes the share and PPR again. The site shows both values and labels no group.
+- **Teammates' text:** the slots for Sneha's explainers and Sanjana's comparison are marked in `docs/index.html`. They write and commit the text themselves.
+
 **Next step on these decisions**
 - **Are there enough `us_only` trials?** Counts are in section 4. Decide on a rule for small groups before seeing any PPR values. Keeping only `us_only` trials leaves 18.8% of type 2 diabetes participants with known race, 25.6% for heart failure, 45.3% for prostate cancer, and 53.8% for breast cancer, compared with the global totals.
 - **Small groups:** the smallest counts are NHPI in prostate cancer (69), breast cancer (139), and heart failure (161), and AI/AN in prostate cancer (149). In some cases one trial supplies most of a group: NCT03270436 holds 76.7% of NHPI participants in type 2 diabetes, and NCT04259762 holds 55.7% of AI/AN participants in breast cancer. Decide whether the site should flag values like these.
@@ -279,6 +296,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/6 | Sanjana | Claude | Finding and reading sources on FDA Snapshots and existing tools |
 | 11/11 | Woosik | Claude | Fixing records and sources, README sections, PPR calculation and chart, ethnicity and age charts |
 | 11/16 | Woosik | Claude | PPR script fix, AI disclosure, daily data refresh and safety checks, group reflection skeleton, Progress Update #4 draft and Gantt chart |
+| 11/17 | Woosik | Claude | Sources on the site, record type filter, PPR with the largest trial left out, status line, README updates, accessibility pass |
 
 ---
 
