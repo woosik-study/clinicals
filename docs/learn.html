@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn | Who Is in the Trial?</title>
+<meta name="description" content="Study phases, PPR, and the limits of the clinical trial data on this site.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Who Is in the Trial?</a>
+  <nav aria-label="Main"><ul class="nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="explore.html">Explore</a></li>
+    <li><a href="gaps.html">Data gaps</a></li>
+    <li><a href="learn.html" aria-current="page">Learn</a></li>
+    <li><a href="compare.html">Compare</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul></nav>
+</div></header>
+
+<main id="main">
+<div class="wrap">
+  <div class="page-head">
+    <h1>Learn the terms</h1>
+    <p class="lede">A short guide to the words on this site and what the numbers can and cannot tell you.</p>
+    <nav class="toc" aria-label="On this page"><a href="#phases">Study phases</a><a href="#ppr">PPR</a><a href="#limits">Limits of this data</a></nav>
+  </div>
+  <article class="prose card">
+
+    <h2 id="phases">What is a study phase?</h2>
+    <p>Clinical trials evaluate medical treatments in people to understand their safety and effectiveness. Each phase serves a different purpose:</p>
+    <ul>
+      <li><strong>Phase 1:</strong> Tests safety, dosage, and how a treatment interacts with the body, generally in smaller groups.</li>
+      <li><strong>Phase 2:</strong> Evaluates preliminary effectiveness while continuing to monitor safety.</li>
+      <li><strong>Phase 3:</strong> Studies safety and effectiveness in larger patient populations, often comparing treatments with existing care.</li>
+      <li><strong>Phase 4:</strong> Monitors treatments after approval to gather additional information about long-term safety and effectiveness.</li>
+    </ul>
+    <p>Not every study has a phase. Some screening, behavioral, and device studies are classified as "Not Applicable." Use the record type filter to include or exclude studies without a listed phase.</p>
+    <p class="src">Source: <a href="https://www.fda.gov/patients/drug-development-process/step-3-clinical-research">FDA: Step 3, Clinical Research</a>.</p>
+
+    <h2 id="ppr">What is PPR?</h2>
+    <p>The Participation-to-Prevalence Ratio (PPR) measures whether a demographic group's participation in clinical trials is proportional to its share of patients affected by a condition.</p>
+    <p><strong>PPR = (% of trial participants in a group) / (% of patients with the condition in that group).</strong></p>
+    <ul>
+      <li><strong>Below 0.8:</strong> Suggests underrepresentation.</li>
+      <li><strong>0.8 to 1.2:</strong> A commonly suggested range for approximately proportional representation.</li>
+      <li><strong>Above 1.2:</strong> Suggests overrepresentation.</li>
+    </ul>
+    <p>A PPR of 1.0 represents exact proportionality. For example, if a group makes up 10% of trial participants but 20% of patients with the disease, its PPR is 0.5, suggesting underrepresentation.</p>
+    <p>Our chart shows PPR values next to a reference line at 1.0 without assigning ratings to individual groups or trials. The hollow marker shows the PPR after removing the trial that contributed the most participants to that group, helping readers see how much one trial influences the result.</p>
+    <p>PPR uses trials with all sites in the US and excludes participants with unknown race or ethnicity from the corresponding shares. It uses all eligible US records, so the record type and phase filters do not change PPR values.</p>
+    <p>Patient data for breast and prostate cancer comes from NCI SEER. Comparisons for type 2 diabetes and heart failure are pending suitable patient counts. PPR helps identify potential representation gaps but does not independently determine trial quality or fairness.</p>
+    <p class="src">Source: <a href="https://pubmed.ncbi.nlm.nih.gov/39719416/">Who Are We Missing? Reporting of Ethnicity, Race, and Sex-Specific Populations in Clinical Trials</a>.</p>
+
+    <h2 id="limits">Limits of this data</h2>
+    <p>Our dashboard uses publicly available ClinicalTrials.gov records for interventional studies started in 2010 or later that have posted results. However, not every trial reports complete demographic information. Missing race or ethnicity data does not necessarily mean a population was excluded; the information may not have been collected or reported.</p>
+    <p>Trials using customized race categories are counted as reporting race but are excluded from the standard race chart because their categories cannot be combined reliably. About a quarter of records have no study phase, and some are large enough to substantially change the totals. The record type filter lets readers compare results with and without these studies.</p>
+    <p>Trials listed under multiple conditions are counted in each condition, so totals across conditions should not be added together. For PPR, prostate cancer excludes trials also listed under breast cancer.</p>
+    <p>Another limitation is that SEER reports new cancer cases rather than everyone living with a condition. Race and ethnicity classifications also differ between sources. In particular, SEER's non-Hispanic Asian/Pacific Islander and American Indian/Alaska Native groups exclude Hispanic patients, while the corresponding trial race groups include them. These PPR comparisons are therefore approximate.</p>
+    <p>Some PPR values rely on relatively few participants or are heavily influenced by one large trial. Missing patient counts can also prevent reliable comparisons. When these counts are unavailable, the dashboard shows pending values instead of presenting unsupported estimates.</p>
+    <p>Finally, the trial data refreshes daily as new results become available, so displayed figures may change over time. These limitations are important when interpreting demographic representation and should not be treated as definitive judgments about individual trials.</p>
+    <p class="src">Sources: <a href="https://clinicaltrials.gov/study-basics/how-to-read-study-results">ClinicalTrials.gov: How to Read Study Results</a> and <a href="https://github.com/woosik-study/clinicals/blob/main/README.md">Project methods and limitations</a>.</p>
+
+  </article>
+</div>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <ul>
+    <li><a href="index.html">Home</a></li><li><a href="explore.html">Explore</a></li><li><a href="gaps.html">Data gaps</a></li><li><a href="learn.html">Learn</a></li><li><a href="compare.html">Compare</a></li><li><a href="about.html">About and sources</a></li>
+  </ul>
+  <p>Trial data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>, updated <span class="data-updated"></span>. Patient data: <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER</a>.</p>
+  <p>Built by the Clinicals team (Woosik Kim, Sanjana, Saurabi, and Sneha), CSE 194, UC San Diego. Contact: Woosik Kim, <a href="mailto:wok017@ucsd.edu">wok017@ucsd.edu</a>.</p>
+  <p>AI tools (Claude) helped write code and edit text. The team reviewed all work. <a href="about.html#ai">How we used AI</a></p>
+</div></footer>
+<script src="data.js"></script>
+<script src="common.js"></script>
+</body>
+</html>
