@@ -43,7 +43,11 @@ Guiding questions:
 - FDA Drug Trials Snapshots is run by a federal agency and ours is run by four students. How does that change who answers for mistakes?
 - Which point in a Week 9 reading about who governs a technology applies to a small public tool like ours?
 
-[Write here]
+Our site exists because of a gap that no one clearly owns: many clinical trials don't report who took part in them. Sponsors and researchers decide who gets enrolled, and ClinicalTrials.gov lets them report race in standard categories, in their own categories, or not at all. In our data, about one in five trials used their own categories, and about a third of type 2 diabetes trials reported no race. The FDA's Drug Trials Snapshots has a clear owner, since a federal agency publishes it within 30 days of each approval.
+
+For our site, the responsibility is ours. Four students maintain it, and no outside group reviews it. We chose not to rate trials, but we still show participation-to-prevalence ratios (PPR), so we are responsible for how people read them. To reduce the risk of misreading, we added a Data gaps page, show each PPR next to a version with the largest trial removed, and mark values as "pending" when we don't have enough patient data.
+
+The readings helped us see what accountability looks like without a regulator. America's AI Action Plan aims to speed up AI by reducing regulatory requirements, so checking AI-assisted work is up to the people using it. Cleanview shows one way to handle that. It says there is no government database of data centers, so it builds one from public records and saves the source for each campus so anyone can check it. We followed the same approach. Every chart has a source line, our code is public, and we say where AI helped write it. That means readers can catch our mistakes, but it doesn't guarantee anyone will fix them.
 
 ## Section 2: What we included, left out, and automated (Woosik)
 
