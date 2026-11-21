@@ -77,12 +77,8 @@ Guiding questions:
 
 ## Section 4: How we framed it and what oversight we should have (Sneha)
 
-Target: about 240 words.
+One decision we made was to keep the site descriptive instead of telling readers which trials were “good” or which populations were underrepresented. We show each participation-to-prevalence ratio (PPR) next to a 1.0 reference line and define “underrepresented” in the explainer, but do not label individual groups. This avoids suggesting that one number can fully judge a trial’s fairness, especially when demographic categories do not match perfectly or a result depends heavily on one study. At the same time, our neutral framing could make a real disparity seem less urgent. Asking users to draw their own conclusions does not remove our responsibility for how we present the data.
 
-Guiding questions:
-- We show each PPR next to a reference line at 1.0 and define "underrepresented" once instead of labeling groups. What did we gain and what did we give up with that neutral framing?
-- What oversight does our project have today? Think of the named contact person, the limitations and maintenance notes, the source list, and the AI use disclosure.
-- What oversight should a project like ours have that it does not have yet? Think of who reviews the numbers, who fixes errors after the quarter ends, and what happens if nobody maintains the site.
-- Which oversight or accountability idea from a Week 9 reading would fit a project of our size?
+Our current oversight is mostly transparency. We link to sources and methods, explain limitations and maintenance in the README, and disclose that AI helped write code and text. We also name Woosik as a contact and promise replies through finals week. These steps make our decisions visible, but they do not guarantee that someone will catch or fix an error after the quarter ends.
 
-[Write here]
+In America’s AI Action Plan, the section “Promote Mature Federal Capacity for AI Incident Response” argues for planning how to respond when technology fails. We can apply that idea without needing a formal regulator: assign a maintainer, periodically review PPR values, record corrections publicly, and clearly mark the site as archived if nobody can keep checking it. Publishing information creates a responsibility that lasts beyond the assignment.
