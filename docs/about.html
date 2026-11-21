@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About and sources | Who Is in the Trial?</title>
+<meta name="description" content="Where the data comes from, how the numbers are made, and how the team used AI.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Who Is in the Trial?</a>
+  <nav aria-label="Main"><ul class="nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="explore.html">Explore</a></li>
+    <li><a href="gaps.html">Data gaps</a></li>
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="compare.html">Compare</a></li>
+    <li><a href="about.html" aria-current="page">About</a></li>
+  </ul></nav>
+</div></header>
+
+<main id="main">
+<div class="wrap">
+  <div class="page-head">
+    <h1>About this site</h1>
+    <p class="lede">Where the numbers come from, how they are made, and who to contact.</p>
+    <p class="updated">Data updated <span class="data-updated"></span>.</p>
+  </div>
+  <article class="prose card">
+    <h2 id="sources" style="margin-top:0">Sources and methods</h2>
+    <ul class="sources">
+      <li><strong>Trial data:</strong> the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>, a public database of clinical studies. We include interventional studies, which assign participants to a treatment or other intervention, that started in 2010 or later and posted results. Each number comes from a study's baseline table, using the column for all participants.</li>
+      <li><strong>Patient data:</strong> <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER*Explorer</a> from the National Cancer Institute, new cases of breast and prostate cancer from 2019 to 2023.</li>
+      <li><strong>Full list of sources:</strong> <a href="https://github.com/woosik-study/clinicals/blob/main/RESEARCH.md">RESEARCH.md</a>, with the author, title, date, and link for every source we used.</li>
+      <li><strong>How the numbers are made:</strong> the <a href="https://github.com/woosik-study/clinicals/blob/main/README.md">README</a> explains each step, and the <a href="https://github.com/woosik-study/clinicals">code on GitHub</a> lets anyone rerun it.</li>
+    </ul>
+    <h2 id="ai">How we used AI</h2>
+    <p>We used AI tools (Claude) to help write the code for this site and to edit its text. The team reviewed all of the work. Our AI conversations are included in our final project submission.</p>
+    <h2 id="contact">Contact and upkeep</h2>
+    <p>Contact: Woosik Kim, <a href="mailto:wok017@ucsd.edu">wok017@ucsd.edu</a>. We reply within 24 hours through Friday of finals week.</p>
+    <p>The trial data refreshes every day. Whether we keep updating the site after finals week is undecided.</p>
+    <p>Built by Woosik Kim, Sanjana, Saurabi, and Sneha for CSE 194 at UC San Diego, Fall 2026.</p>
+  </article>
+</div>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <ul>
+    <li><a href="index.html">Home</a></li><li><a href="explore.html">Explore</a></li><li><a href="gaps.html">Data gaps</a></li><li><a href="learn.html">Learn</a></li><li><a href="compare.html">Compare</a></li><li><a href="about.html">About and sources</a></li>
+  </ul>
+  <p>Trial data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>, updated <span class="data-updated"></span>. Patient data: <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER</a>.</p>
+  <p>Built by the Clinicals team (Woosik Kim, Sanjana, Saurabi, and Sneha), CSE 194, UC San Diego. Contact: Woosik Kim, <a href="mailto:wok017@ucsd.edu">wok017@ucsd.edu</a>.</p>
+  <p>AI tools (Claude) helped write code and edit text. The team reviewed all work. <a href="about.html#ai">How we used AI</a></p>
+</div></footer>
+<script src="data.js"></script>
+<script src="common.js"></script>
+</body>
+</html>
