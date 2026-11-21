@@ -1,266 +1,88 @@
-# Site Plan and Wireframe
+# Site Plan
 
 **Owner:** Sanjana
-**Status:** Week 6 draft (11/6). Team to review before we split the prototype into pages.
+**Status:** Built 11/21 and waiting for team review. The first plan (11/6) had six pages and a wireframe for each. This version records what was built, the answers to the open questions, and what is still to check.
 
-This file plans the pages of the final site and gives a rough layout for each one. The current prototype at https://woosik-study.github.io/clinicals is a single page. This plan shows where each part of it goes and what still needs to be added.
+The goal for the site: a reader should understand the main point at a glance, find everything easily, and always know which data is missing. Our professor asked for two things in particular. Only present complete data, and make clear which data sets are missing variables or information. Also check and improve the site's accessibility.
 
 ---
 
 ## 1. Site map
 
 ```
-Home
-├── Explore the data          (one page, a tab per condition)
-├── How we compare            (FDA Drug Trials Snapshots and other tools)
-├── How to read this          (study phases, PPR, limits of the data)
-├── Sources                   (resource list, 10+ sources)
-└── About                     (methods, team, AI use)
+Home           index.html     The answer at a glance
+Explore        explore.html   One condition at a time
+Data gaps      gaps.html      What is missing, by condition
+Learn          learn.html     Study phases, PPR, limits of the data
+Compare        compare.html   How this site differs from FDA Drug Trials Snapshots
+About          about.html     Sources, methods, AI use, contact
 ```
 
-Every page shares the same header, navigation bar, and footer:
+All pages share one header with navigation and one short footer (data date, contact, AI disclosure). The pages are plain HTML in `docs/`, so GitHub Pages and the daily refresh work as before.
 
-```
-┌──────────────────────────────────────────────────────────────────────┐
-│ Who Is in the Trial?   Home  Explore  Compare  Learn  Sources  About │
-└──────────────────────────────────────────────────────────────────────┘
-  ...page content...
-┌──────────────────────────────────────────────────────────────────────┐
-│ Data: ClinicalTrials.gov (snapshot 11/4/2026), NCI SEER, CDC.        │
-│ Built by the Clinicals team, CSE 194, UC San Diego.                  │
-└──────────────────────────────────────────────────────────────────────┘
-```
-
-On phones the navigation links wrap onto a second line. No menu button is needed for six links.
-
----
-
-## 2. Pages
-
-| Page | File | Purpose | Main content | Owner of content | Exists in prototype? |
-|---|---|---|---|---|---|
-| Home | `index.html` | Explain the question in under a minute and send readers to the data | Intro, 3 headline numbers, 4 condition cards, links to the other pages | Sanjana (layout), all (wording) | Partly: the intro text |
-| Explore the data | `explore.html` | Let readers look at one condition at a time | Condition tabs, phase filter, summary stats, race chart, race reporting chart, PPR chart, trial table | Woosik | Yes, except PPR |
-| How we compare | `compare.html` | Show what already exists and what our site adds | Comparison table, short write-up, links to each tool | Sanjana (Week 7 to 8) | No |
-| How to read this | `learn.html` | Explain terms a general reader will not know | Study phases, PPR, limits of the data | Sneha | Placeholder text only |
-| Sources | `sources.html` | The required resource list | Sources grouped by topic, each with one line on how we used it | Saurabi | No |
-| About | `about.html` | How the data was built and who built it | Data pipeline in plain language, team, AI tool usage | All | No (lives in README) |
-
-### Where the prototype's sections go
-
-| Prototype section | New home |
+| File | What it does |
 |---|---|
-| Banner and intro | Home (intro), all pages (snapshot date in footer) |
-| Condition tabs and phase filter | Explore |
-| Summary stats | Explore, plus 3 headline numbers on Home |
-| Race of trial participants | Explore |
-| How often do trials report participants' race? | Explore |
-| Trials table | Explore |
-| "How to read this" card | How to read this page, with a short "What does this mean?" link next to each chart on Explore |
+| `style.css` | Look and layout for every page |
+| `common.js` | Condition names, race colors, number formatting, the "data updated" text, and the completeness counts |
+| `home.js` | Key numbers, the race chart for all four conditions, condition cards, the reporting bar |
+| `explore.js` | Condition buttons, filters, and every chart and table on Explore |
+| `gaps.js` | The two tables on Data gaps |
+| `data.js`, `ppr.js` | Data from the pipeline (unchanged) |
 
 ---
 
-## 3. Wireframes
+## 2. What each page has
 
-Boxes are rough. Sizes and wording are placeholders.
+**Home.** A dark header with the question, three big numbers, and a colored race chart for all four conditions straight away. Next come four condition cards, a bar showing how many trials reported race in standard categories, in their own categories, or not at all, and three links to keep going. The chart has a table version.
 
-### Home
+**Explore.**
+1. Condition buttons, and a collapsed "Refine" box for record type and study phase.
+2. Four summary numbers.
+3. "How complete is this data?": how many trials reported race (standard, own categories, not reported), ethnicity, average age, and all-US sites.
+4. Race, patient comparison (PPR), ethnicity, age, and the largest trials.
+5. Each chart has a plain headline, a note saying how many trials it uses and what was left out, and a collapsed "About this chart" with the notes and sources.
+6. The patient comparison shows only groups that have both a trial share and a patient share. The rest are listed as "Not shown yet" with the reason.
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [nav]                                                        │
-├──────────────────────────────────────────────────────────────┤
-│  Who Is in the Trial?                                        │
-│  One paragraph: why it matters who takes part in trials,     │
-│  what this site shows, and that we do not rate trials.       │
-│                                                              │
-│  [ Explore the data → ]                                      │
-├──────────────────────────────────────────────────────────────┤
-│  ┌────────────┐  ┌────────────┐  ┌────────────┐              │
-│  │  4,415     │  │  1.6M      │  │  X%        │              │
-│  │  trials    │  │  people    │  │ reported   │              │
-│  │            │  │            │  │ race       │              │
-│  └────────────┘  └────────────┘  └────────────┘              │
-│  (numbers come from data.js so they update on refresh)       │
-├──────────────────────────────────────────────────────────────┤
-│  Pick a condition                                            │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-│  │Breast cancer │ │Prostate      │ │Type 2        │ │Heart failure │
-│  │N trials      │ │cancer        │ │diabetes      │ │N trials      │
-│  │  [View →]    │ │  [View →]    │ │  [View →]    │ │  [View →]    │
-│  └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
-│  Each card opens explore.html#<condition>                    │
-├──────────────────────────────────────────────────────────────┤
-│  What makes this different?                                  │
-│  2 to 3 sentences, then [ How we compare → ]                 │
-│                                                              │
-│  New to clinical trials?  [ How to read this → ]             │
-├──────────────────────────────────────────────────────────────┤
-│ [footer]                                                     │
-└──────────────────────────────────────────────────────────────┘
-```
+**Data gaps.** A table of how much of each condition's trial data has each piece of information, and a table of which patient comparisons are shown or still waiting.
 
-### Explore the data
+**Learn.** Sneha's text on study phases, PPR, and limits, moved over unchanged.
 
-This is the prototype page with a PPR section added. The selected condition goes in the URL (`explore.html#heart_failure`) so a link opens the same view.
+**Compare.** A table and four short blocks comparing this site with FDA Drug Trials Snapshots, plus ICER's diversity rating and GSK's study, with sources.
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [nav]                                                        │
-├──────────────────────────────────────────────────────────────┤
-│  Explore the data                                            │
-│  ( Breast cancer ) ( Prostate ) ( Type 2 diabetes ) ( HF )   │
-│                                      Study phase [All  ▾]    │
-├──────────────────────────────────────────────────────────────┤
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐             │
-│  │ trials  │ │ people  │ │% race   │ │% female │             │
-│  └─────────┘ └─────────┘ └─────────┘ └─────────┘             │
-├──────────────────────────────────────────────────────────────┤
-│  Race of trial participants                 [What is this?]  │
-│  White      ████████████████████████  75%                    │
-│  Black      ████                      11%                    │
-│  Asian      ████                      11%                    │
-│  ...                                                         │
-│  X% of participants had unknown race. Based on N trials.     │
-├──────────────────────────────────────────────────────────────┤
-│  Trial participants compared with patients (PPR)  [What is PPR?]
-│                      0     0.5    1.0    1.5    2.0          │
-│  White               ├──────┼──────●──┼──────┤               │
-│  Black               ├──────●──────┼──────┼──────┤           │
-│  ...                              ┆ reference line at 1.0    │
-│  US-only trials. Patient data from SEER or CDC (year).       │
-│  Groups are not labeled. Small groups get a note (rule TBD). │
-├──────────────────────────────────────────────────────────────┤
-│  How often do trials report participants' race?              │
-│  Standard categories  ████████████████  60%                  │
-│  Own categories       █████             20%                  │
-│  Not reported         █████             20%                  │
-├──────────────────────────────────────────────────────────────┤
-│  Trials (50 largest)                                         │
-│  ┌──────────────┬───────┬───────┬──────────────┬──────────┐  │
-│  │ Trial        │ Phase │ Start │ Participants │ Race     │  │
-│  ├──────────────┼───────┼───────┼──────────────┼──────────┤  │
-│  │ NCT… title   │       │       │              │          │  │
-│  └──────────────┴───────┴───────┴──────────────┴──────────┘  │
-├──────────────────────────────────────────────────────────────┤
-│ [footer]                                                     │
-└──────────────────────────────────────────────────────────────┘
-```
-
-Open question: should PPR sit above or below the race reporting chart? Above puts the two race charts together. Below keeps the "what we have" charts before the comparison.
-
-### How we compare
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [nav]                                                        │
-├──────────────────────────────────────────────────────────────┤
-│  How we compare                                              │
-│  Short intro: other tools already show trial demographics.   │
-│  Here is what each one covers and what this site adds.       │
-├──────────────────────────────────────────────────────────────┤
-│  ┌───────────────────┬─────────────────┬──────────────────┐  │
-│  │                   │ FDA Snapshots   │ This site        │  │
-│  ├───────────────────┼─────────────────┼──────────────────┤  │
-│  │ Which trials      │                 │                  │  │
-│  │ Compared with     │                 │                  │  │
-│  │ patients?         │                 │                  │  │
-│  │ Missing data shown│                 │                  │  │
-│  │ ...               │                 │                  │  │
-│  └───────────────────┴─────────────────┴──────────────────┘  │
-│  (scrolls sideways on phones)                                │
-├──────────────────────────────────────────────────────────────┤
-│  What FDA Drug Trials Snapshots does well        (1 para)    │
-│  What it does not cover                          (1 para)    │
-│  What this site adds                             (1 para)    │
-│  What this site does not do                      (1 para)    │
-├──────────────────────────────────────────────────────────────┤
-│  Other tools (short cards, 1 to 2 lines each)                │
-├──────────────────────────────────────────────────────────────┤
-│ [footer]                                                     │
-└──────────────────────────────────────────────────────────────┘
-```
-
-### How to read this
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [nav]                                                        │
-├──────────────────────────────────────────────────────────────┤
-│  How to read this                                            │
-│  On this page: Study phases · PPR · Limits of the data       │
-├──────────────────────────────────────────────────────────────┤
-│  What is a study phase?        (Sneha's text)                │
-├──────────────────────────────────────────────────────────────┤
-│  What is PPR?                  (Sneha's text + worked        │
-│                                 example with made-up numbers)│
-├──────────────────────────────────────────────────────────────┤
-│  Limits of the data            (Sneha's text)                │
-├──────────────────────────────────────────────────────────────┤
-│ [footer]                                                     │
-└──────────────────────────────────────────────────────────────┘
-```
-
-Each heading gets an anchor (`learn.html#ppr`) so the "What is this?" links on Explore jump straight to it.
-
-### Sources
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [nav]                                                        │
-├──────────────────────────────────────────────────────────────┤
-│  Sources                                                     │
-│  Trial data · Patient data · Trial diversity research ·      │
-│  Existing tools                                              │
-├──────────────────────────────────────────────────────────────┤
-│  • Title (link). Type. One line on how we used it.           │
-│  • ...                                                       │
-├──────────────────────────────────────────────────────────────┤
-│ [footer]                                                     │
-└──────────────────────────────────────────────────────────────┘
-```
-
-Content comes from [RESEARCH.md](RESEARCH.md).
-
-### About
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [nav]                                                        │
-├──────────────────────────────────────────────────────────────┤
-│  About this project                                          │
-│  How we built the data   (plain-language version of the      │
-│                           README's Data section)             │
-│  Data snapshot date and how to refresh it                    │
-│  Team                                                        │
-│  How we used AI tools                                        │
-│  Code on GitHub →                                            │
-├──────────────────────────────────────────────────────────────┤
-│ [footer]                                                     │
-└──────────────────────────────────────────────────────────────┘
-```
+**About.** Sources and methods, how we used AI, and contact and upkeep, moved over unchanged.
 
 ---
 
-## 4. How to build it
+## 3. Answers to the four open questions
 
-- Keep it static: plain HTML pages in `docs/` sharing `style.css`. No framework, so GitHub Pages keeps working as it does now.
-- Only `explore.html` loads `data.js` and `app.js`. Home loads `data.js` too if we want its headline numbers to update on their own.
-- Copy the nav and footer into each page by hand. Six pages is few enough that this is simpler than a build step.
-- Keep the wording rules from BACKLOG.md section 5 on every page: no group is labeled as underrepresented, and PPR values sit next to a reference line at 1.0.
-
-Suggested order:
-
-1. Move the prototype to `explore.html` and make `index.html` the new Home page.
-2. Add the shared nav and footer.
-3. Add empty `compare.html`, `learn.html`, `sources.html`, and `about.html` so each owner has a page to fill.
-4. Add the PPR section to Explore once the prevalence data is ready.
+1. **Is six pages too many?** Six pages are what we built, because each one has one job and the nav shows all of them. The first plan had the same six, and the build matched it.
+2. **One Explore page with tabs, or a page per condition?** One page with condition buttons. The charts are the same for every condition, and the choice is kept in the address (`explore.html?c=heart_failure`) so a link opens the same view.
+3. **Where does PPR go on Explore?** Directly after the race chart, because the patient comparison uses the same race groups.
+4. **Should Home show a chart?** Yes. Home shows the race chart for all four conditions, and a bar for how often race is reported. The prototype's single page could not do both a short first view and the full detail, which is why it was split.
 
 ---
 
-## 5. Questions for the team
+## 4. Design and accessibility choices
 
-1. Is six pages too many? Sources and About could be one page.
-2. One Explore page with tabs, or a separate page per condition? This plan uses one page because the charts are the same for every condition.
-3. Where should PPR go on Explore (see the open question above)?
-4. Should Home show any chart, or only numbers and links?
+- **Plain language first.** Short intro, one headline per chart, long notes collapsed.
+- **Missing data is visible.** Each chart says how many trials it uses and what was left out. Data gaps shows the full picture.
+- **No hover-only information.** Counts are always visible. Home and the patient comparison have table versions.
+- **Color is never the only signal.** Every bar and segment has a text label and value.
+- **Structure for screen readers and keyboards.** A skip link, one main heading per page, labeled regions, a live message when filters change, and visible focus rings.
+- **Readable at any size.** Body text is 18 px, tap targets are at least 44 px, and the pages reflow on a phone and when zoomed.
+- **Motion.** Bars animate in a little and stop if the reader's device asks for reduced motion.
+- **Neutral wording.** No group is labeled as underrepresented. PPR sits next to a reference line at 1.0, as the team decided.
+
+---
+
+## 5. Checks done and still to do
+
+Done on 11/21, with a script that checks contrast (text at least 4.5:1), headings, labels, duplicate IDs, tap target size, and sideways scrolling. It found no problems on the six pages at desktop width or at a phone-sized view (375 px wide). This is not a full audit.
+
+Still to do:
+- Run a free checker, such as WAVE or axe, on each page. The Harvard accessibility page lists free ones: https://accessibility.huit.harvard.edu/auto-tools-testing
+- Use each page with the keyboard only (Tab, Enter, Space).
+- Try a screen reader such as NVDA, which is free on Windows.
+- Check the pages again on the live site after the data refreshes, since local testing used older data.
+- Look at the site on a real phone.
+- Check each claim on the Compare page against the FDA's own reports.
