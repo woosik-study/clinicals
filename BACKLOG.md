@@ -41,10 +41,11 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 | Decide if there are enough `us_only` trials for PPR | All | Week 6 to 7 | ❌ Not started | Counts are in section 4 |
 | Build charts and filters | Woosik | Week 7 to 8 | ✅ First version 11/4 | Ethnicity and average age charts added 11/11. Record type filter added 11/17. |
 | Host site on GitHub Pages | Woosik | Week 6 | ✅ Done 11/4 | |
-| Site pages and wireframe (rough layout) | Sanjana | Week 6 | ✅ Draft 11/6 | See [SITE_PLAN.md](SITE_PLAN.md): 6 pages, a wireframe for each, and where the prototype's sections go. Team to review the questions in its section 5. |
+| Site pages and wireframe (rough layout) | Sanjana | Week 6 | ✅ Done 11/21 | [SITE_PLAN.md](SITE_PLAN.md) has the page structure, layouts, and the team's open questions with answers. The plan was built (next row). |
+| Redesign the site into six pages, easier to read and more accessible | Sanjana | Week 9 | ⚠️ Built 11/21, not merged | Home, Explore, Data gaps, Learn, Compare, About. Every chart says how many trials it uses and what is missing. Still to do: team review, a free accessibility checker (WAVE or axe), keyboard and screen reader check, and a look at the live data after deploy. See [SITE_PLAN.md](SITE_PLAN.md). |
 | Collect patient demographics per condition | Saurabi | Week 6, moved to Week 9 | ⚠️ Partial 11/14 | **Blocking PPR charts.** SEER counts for breast and prostate cancer are in `prevalence.csv` and feed 3 PPR groups each. Still needed: counts for White (includes Hispanic) and Black (includes Hispanic), patient counts or shares for type 2 diabetes and heart failure (the current rows are rates inside each group), and a check of the 29 rows marked verify. |
 | Resource list (10+ sources) | Saurabi | Through Week 9 | ⚠️ Partial | [RESEARCH.md](RESEARCH.md) has 25 unique sources with full citations. Still to do: put the list on the site. |
-| FDA Snapshots comparison section | Sanjana | Week 7 to 8, moved to Week 9 | ⚠️ Draft | A draft comparison table is in [RESEARCH.md](RESEARCH.md). A hidden, marked slot for the section is ready in `docs/index.html`. Sanjana writes the text, removes `hidden`, and commits it herself. |
+| FDA Snapshots comparison section | Sanjana | Week 7 to 8, moved to Week 9 | ⚠️ Written 11/21, not merged | The section is now the Compare page, `docs/compare.html`, built from the draft table in [RESEARCH.md](RESEARCH.md). Still to do: check each claim against the FDA's own reports, which we could not open as PDFs. |
 | Explainer text (phases, PPR, data limits) | Sneha | Week 7 to 8, moved to Week 9 | ⚠️ Draft | Draft text is in Sneha's section of [RESEARCH.md](RESEARCH.md). The site still shows short placeholder text, now marked in `docs/index.html` for Sneha to replace and commit herself. |
 | PPR charts | Woosik | Week 7 to 9 | ⚠️ Partial 11/11 | Breast and prostate cancer are on the site. White and Black wait on two SEER counts per cancer. Type 2 diabetes and heart failure wait on patient data. |
 | Make `build_ppr.py` read the new `prevalence.csv` format | Woosik | Week 8 | ✅ Done 11/16 | It crashed after the format change on 11/12. PPR values for breast and prostate cancer are unchanged. Groups and conditions without a usable patient share come out as pending. |
@@ -119,6 +120,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - 11/17: Replaced "Prototype" in the banner with a status line built from the data.
 - 11/17: Documented Saurabi's two hand picked CSV files in the README. The site does not use them.
 - 11/17: Fixed link contrast, phone width, and keyboard focus. Marked slots in `docs/index.html` for Sneha's explainer text and Sanjana's FDA comparison.
+- 11/21: Sanjana redesigned the site as six pages (Home, Explore, Data gaps, Learn, Compare, About) to make it easier to read at a glance and more accessible. The professor asked us to show only complete data and make clear which data is missing, so each chart now says how many trials it uses and what was left out, and a new Data gaps page shows what is missing for each condition. Sneha's explainer text and the sources and AI sections moved unchanged to Learn and About. Wrote the Compare page for the FDA Snapshots comparison. Checked each page on desktop and a phone-sized view with a script that tests contrast, headings, labels, and tap target size. This is not a full accessibility audit.
 
 ---
 
@@ -148,7 +150,7 @@ This file tracks what we have done, how we did it, and what is left. Update it w
 - A group or condition with no usable patient share comes out as **pending**, with a trial share but no PPR.
 
 **Step 5: Website (`docs/`)**
-- `index.html` (structure), `style.css` (look), `app.js` (filters and recalculation in the browser).
+- Six pages: `index.html` (home), `explore.html`, `gaps.html`, `learn.html`, `compare.html`, `about.html`. They share `style.css` and `common.js`. `home.js`, `explore.js`, and `gaps.js` draw each page's charts in the browser, and `explore.js` also handles the filters.
 - The site shows sex, race, ethnicity, average age, and PPR.
 
 **Step 6: Publish and refresh daily (`.github/workflows/daily-refresh.yml`)**
@@ -248,7 +250,7 @@ A few large trials carry a lot of weight in these totals. The 10 largest trials 
 **Decisions made (11/17)**
 - **PPR and the filters:** PPR uses every US record, whatever the record type and phase filters say. This keeps the values fixed and matching `ppr_by_condition.csv`, and stops groups from shrinking to a handful of people.
 - **How much one trial matters:** for each group, `build_ppr.py` leaves out the trial that contributed the most participants to that group and computes the share and PPR again. The site shows both values and labels no group.
-- **Teammates' text:** the slots for Sneha's explainers and Sanjana's comparison are marked in `docs/index.html`. They write and commit the text themselves.
+- **Teammates' text:** Sneha's explainers are on `docs/learn.html` and Sanjana's comparison is on `docs/compare.html`. They write and commit the text themselves.
 
 **Next step on these decisions**
 - **Are there enough `us_only` trials?** Counts are in section 4. Decide on a rule for small groups before seeing any PPR values. Keeping only `us_only` trials leaves 18.8% of type 2 diabetes participants with known race, 25.6% for heart failure, 45.3% for prostate cancer, and 53.8% for breast cancer, compared with the global totals.
@@ -297,6 +299,7 @@ The course requires us to submit AI conversations with the final deliverables. L
 | 11/11 | Woosik | Claude | Fixing records and sources, README sections, PPR calculation and chart, ethnicity and age charts |
 | 11/16 | Woosik | Claude | PPR script fix, AI disclosure, daily data refresh and safety checks, group reflection skeleton, Progress Update #4 draft and Gantt chart |
 | 11/17 | Woosik | Claude | Sources on the site, record type filter, PPR with the largest trial left out, status line, README updates, accessibility pass |
+| 11/21 | Sanjana | Claude | Site redesign into six pages, Data gaps page, FDA Snapshots Compare page, accessibility checks, site plan and backlog updates |
 
 ---
 

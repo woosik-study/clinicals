@@ -83,7 +83,7 @@ Each trial's race reporting is labeled `omb` (standard categories), `customized`
 | `prevalence.csv` | Patient data by condition, sex, and group. `build_ppr.py` uses only rows that have a patient count and are not marked for checking |
 | `build_ppr.py` | Computes PPR from `trials_clean.csv` and `prevalence.csv`, and writes `ppr_by_condition.csv` and `docs/ppr.js` |
 | `ppr_by_condition.csv` | PPR, trial share, patient share, and participant counts for each condition and group, plus the same share and PPR with the largest trial left out |
-| `docs/` | The website, published by GitHub Pages: `index.html`, `style.css`, `app.js`, `data.js`, `ppr.js` |
+| `docs/` | The website, published by GitHub Pages: six pages (`index.html`, `explore.html`, `gaps.html`, `learn.html`, `compare.html`, `about.html`), `style.css`, the scripts `common.js`, `home.js`, `explore.js`, `gaps.js`, and the data files `data.js` and `ppr.js` |
 | `data_updated.txt` | When the trial data was last downloaded. The site shows it as "Data last updated" |
 | `check_refresh.py` | Safety checks that the daily refresh runs before it publishes the site |
 | `.github/workflows/daily-refresh.yml` | The daily refresh job, run by GitHub Actions (GitHub's service for running scripts on a schedule) |
@@ -117,7 +117,7 @@ python3 build_site_data.py
 python3 build_ppr.py
 ```
 
-On Windows, type `python` instead of `python3`. The download can take a few minutes and prints its progress. Then open `docs/index.html` in a browser. The banner at the top shows the time of your download. If you skip the download, the last two commands still work on the snapshot in the repo.
+On Windows, type `python` instead of `python3`. The download can take a few minutes and prints its progress. Then open `docs/index.html` in a browser. The "Data updated" line near the top of each page shows the time of your download. If you skip the download, the last two commands still work on the snapshot in the repo.
 
 When new patient counts are added to `prevalence.csv`, run only `python3 build_ppr.py`.
 
