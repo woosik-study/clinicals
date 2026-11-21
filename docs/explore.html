@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore the data | Who Is in the Trial?</title>
+<meta name="description" content="Race, ethnicity, age, and patient comparison for clinical trial participants, one condition at a time.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Who Is in the Trial?</a>
+  <nav aria-label="Main"><ul class="nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="explore.html" aria-current="page">Explore</a></li>
+    <li><a href="gaps.html">Data gaps</a></li>
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="compare.html">Compare</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul></nav>
+</div></header>
+
+<main id="main">
+<div class="wrap">
+  <div class="page-head">
+    <h1>Explore the data</h1>
+    <p class="lede">Pick a condition to see who took part in its trials. We don't rate any trial. Draw your own conclusions.</p>
+    <p class="updated">Data updated <span class="data-updated"></span>.</p>
+  </div>
+
+  <div class="picker" id="conds" role="group" aria-label="Condition"></div>
+
+  <details class="refine">
+    <summary>Refine by record type or study phase <span class="muted" id="refine-now"></span></summary>
+    <div class="fields">
+      <label>Record type
+        <select id="kind">
+          <option value="">All records</option>
+          <option value="phased">Trials with a study phase</option>
+          <option value="nophase">No phase listed (screening, behavioral, device)</option>
+        </select>
+      </label>
+      <label>Study phase
+        <select id="phase">
+          <option value="">All phases</option>
+          <option value="PHASE1">Phase 1</option>
+          <option value="PHASE2">Phase 2</option>
+          <option value="PHASE3">Phase 3</option>
+          <option value="PHASE4">Phase 4</option>
+        </select>
+      </label>
+    </div>
+    <p class="src">These filters change everything on this page except the patient comparison, which always uses trials with all sites in the US.</p>
+  </details>
+
+  <p class="sr" id="live" role="status" aria-live="polite"></p>
+
+  <section class="stats" id="stats" aria-label="Summary"></section>
+
+  <section class="card" id="complete" aria-labelledby="complete-h">
+    <h2 id="complete-h">How complete is this data?</h2>
+    <p class="sub">The charts below only use trials that have the information they show. Here is how much each one covers.</p>
+    <h3 class="groupname">Race reporting</h3>
+    <ul class="bars" id="cover-race"></ul>
+    <h3 class="groupname">Other information</h3>
+    <ul class="bars" id="cover-other"></ul>
+    <p class="cover"><a href="gaps.html">See data gaps for all four conditions</a></p>
+  </section>
+
+  <nav class="onpage" aria-label="On this page"><span>Jump to:</span>
+    <a href="#race">Race</a><a href="#ppr">Compared with patients</a><a href="#ethnicity">Ethnicity</a><a href="#age">Age</a><a href="#trials">Trials</a>
+  </nav>
+
+  <section class="card" id="race" aria-labelledby="race-h">
+    <h2 id="race-h">Race of participants</h2>
+    <p class="sub" id="race-head"></p>
+    <ul class="bars" id="race-chart"></ul>
+    <p class="cover" id="race-cover"></p>
+    <details>
+      <summary>About this chart</summary>
+      <div class="body">
+        <p>Share of participants with known race, in trials that reported race in the standard NIH/OMB categories. Participants with unknown race are left out of the bars and shown in the note above.</p>
+        <p class="src">Source: the baseline table (the table of who enrolled) of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="card" id="ppr" aria-labelledby="ppr-h">
+    <h2 id="ppr-h">Trial participants compared with patients</h2>
+    <p class="sub">PPR is a group's share of trial participants divided by its share of people diagnosed with the condition. At 1.0 the two shares are equal.</p>
+    <div id="ppr-chart"></div>
+    <p class="cover" id="ppr-cover"></p>
+    <details>
+      <summary>About this chart</summary>
+      <div class="body">
+        <p>The dashed line marks 1.0, where the two shares are equal. The hollow marker shows the same value with the single trial that contributed the most participants to that group left out, so you can see how much one trial moves the result. It uses every record with all sites in the US, whatever the record type and phase filters are set to. <a href="learn.html#ppr">What is PPR?</a></p>
+        <p class="src">Sources: trial shares from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>, using trials with all sites in the US. Patient shares from <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER*Explorer</a>, new cases from 2019 to 2023. Method: <a href="https://github.com/woosik-study/clinicals/blob/main/build_ppr.py">build_ppr.py</a>.</p>
+      </div>
+    </details>
+    <details id="ppr-numbers" hidden>
+      <summary>See the numbers behind each group</summary>
+      <div class="tablewrap" tabindex="0" role="region" aria-label="PPR numbers by group"><table id="ppr-table"></table></div>
+    </details>
+  </section>
+
+  <section class="card" id="ethnicity" aria-labelledby="eth-h">
+    <h2 id="eth-h">Ethnicity of participants</h2>
+    <p class="sub" id="eth-head"></p>
+    <ul class="bars" id="eth-chart"></ul>
+    <p class="cover" id="eth-cover"></p>
+    <details>
+      <summary>About this chart</summary>
+      <div class="body">
+        <p>Share of participants with known ethnicity, in trials that reported ethnicity in the standard NIH/OMB categories. Ethnicity is recorded separately from race, so Hispanic participants also appear in the race chart.</p>
+        <p class="src">Source: the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="card" id="age" aria-labelledby="age-h">
+    <h2 id="age-h">Average age of participants</h2>
+    <p class="sub" id="age-head"></p>
+    <ul class="bars" id="age-chart"></ul>
+    <p class="cover" id="age-cover"></p>
+    <details>
+      <summary>About this chart</summary>
+      <div class="body">
+        <p>Each trial reports one average age for its participants. Most report a mean, some report a median, and the two are combined here.</p>
+        <p class="src">Source: the average age in the baseline table of each trial in this view, from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Uses the condition, record type, and phase filters.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="card" id="trials" aria-labelledby="trials-h">
+    <h2 id="trials-h">Largest trials</h2>
+    <p class="sub" id="trials-head"></p>
+    <div class="tablewrap" tabindex="0" role="region" aria-label="Largest trials in this view"><table id="trials-table"><caption class="sr">The largest trials in this view</caption><thead><tr><th scope="col">Trial</th><th scope="col">Phase</th><th scope="col">Start</th><th scope="col" class="num">Participants</th><th scope="col">Race reported</th></tr></thead><tbody></tbody></table></div>
+    <button type="button" class="btn" id="more-trials" hidden>Show the 50 largest</button>
+    <p class="src">Source: the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API</a>. Each trial links to its page there. Participants is the number in the baseline table, or the enrollment count if the table has none.</p>
+  </section>
+</div>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <ul>
+    <li><a href="index.html">Home</a></li><li><a href="explore.html">Explore</a></li><li><a href="gaps.html">Data gaps</a></li><li><a href="learn.html">Learn</a></li><li><a href="compare.html">Compare</a></li><li><a href="about.html">About and sources</a></li>
+  </ul>
+  <p>Trial data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>, updated <span class="data-updated"></span>. Patient data: <a href="https://seer.cancer.gov/statistics-network/explorer/">NCI SEER</a>.</p>
+  <p>Built by the Clinicals team (Woosik Kim, Sanjana, Saurabi, and Sneha), CSE 194, UC San Diego. Contact: Woosik Kim, <a href="mailto:wok017@ucsd.edu">wok017@ucsd.edu</a>.</p>
+  <p>AI tools (Claude) helped write code and edit text. The team reviewed all work. <a href="about.html#ai">How we used AI</a></p>
+</div></footer>
+<script src="data.js"></script>
+<script src="ppr.js"></script>
+<script src="common.js"></script>
+<script src="explore.js"></script>
+</body>
+</html>
