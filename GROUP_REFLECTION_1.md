@@ -77,7 +77,6 @@ Small groups are also the easiest to over-read. Only 902 American Indian or Alas
 
 This connects to Cleanview, which exists because no government database tracks data centers. When no official record exists, the people with the most at stake rely on someone else's compilation. In our project, the groups with the least data bear the same cost, because errors about them are hardest to notice.
 
-[Write here]
 
 ## Section 4: How we framed it and what oversight we should have (Sneha)
 
