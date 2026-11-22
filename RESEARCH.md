@@ -174,7 +174,7 @@ Each team member adds their own research to their own section.
 
 #### Diabetes and heart failure research, 2026-11-21
 
-The former diabetes percentages were not type-2-specific patient counts. `prevalence.csv` now contains weighted NHIS 2022–2024 diagnosed type 2 estimates and matching denominators. Heart failure uses NHANES August 2021–August 2023 estimates, with unsupported cells left blank. These counts were calculated from public-use survey data. The [research notes](research/prevalence_2026-11-21/README.md) contain the estimates, group definitions, sources, uncertainty, and reproduction steps. Chart integration remains pending.
+The former diabetes percentages were not type-2-specific patient counts. `prevalence.csv` now contains weighted NHIS 2022–2024 diagnosed type 2 estimates and matching denominators. Heart failure uses NHANES August 2021–August 2023 estimates, with unsupported cells left blank. These counts were calculated from public-use survey data. Chart integration remains pending.
 
 | Title | Author or organization | Period | Link | Used for |
 |---|---|---|---|---|
@@ -185,7 +185,9 @@ The former diabetes percentages were not type-2-specific patient counts. `preval
 | NHANES weighting tutorial | CDC/NCHS | Current guidance, accessed 2026-11-21 | https://wwwn.cdc.gov/nchs/nhanes/tutorials/weighting.aspx | Interview weights; limits on combining recent and older cycles |
 | Sex, Race, Ethnicity, and CVD Fact Sheet | American Heart Association | 2025 | https://professional.heart.org/en/-/media/phd-files-2/science-news/2/2025-heart-and-stroke-stat-update/factsheets/2025-stats-update-fact-sheet-sex-and-race-and-cvd.pdf | Independent confirmation that separate AI/AN NHANES prevalence is unavailable |
 
-Hispanic ethnicity overlaps NHIS race categories. NHIS White/Black counts include Hispanic patients, while NHANES White/Black counts are non-Hispanic. Asian excludes NHPI in both surveys. Exact condition-specific mapping and compatible adult/known-race denominators are required before enabling PPR. Four HF sex cells fail this research's conservative precision screen; separate AI/AN HF counts cannot be identified in the public source. See the handoff before using the data.
+Hispanic ethnicity overlaps NHIS race categories. NHIS White/Black counts include Hispanic patients, while NHANES White/Black counts are non-Hispanic. Asian excludes NHPI in both surveys. Exact condition-specific mapping and compatible adult/known-race denominators are required before enabling PPR. Four HF sex cells fail the precision screen; separate AI/AN HF counts cannot be identified in the public source.
+
+NHIS counts sum `WTFA_A / 3` across 2022–2024 for adults age 18+ with `DIBEV_A=1` and either `DIBTYPE_A=2` or `DIBTYPE_A=1` with `DIBINS_A=2`, following the CDC definition. NHANES counts sum `WTINT2YR` for adults age 20+ with `MCQ160B=1`. The research screen required at least 10 observed cases, Kish effective cases of at least 10, count relative standard error no greater than 30%, and overall design degrees of freedom of at least 8. This screen does not implement the full NCHS presentation standards.
 
 ### Key findings
 
