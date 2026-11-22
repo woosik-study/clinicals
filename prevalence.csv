@@ -1,20 +1,20 @@
 condition,sex,race_ethnicity,measure,case_count,prevalence_pct,incidence_per_100000,years,source,status
 breast_cancer,all,All,incidence,603016,,,2019-2023,SEER*Explorer,transcribed
-breast_cancer,female,White,incidence,379654,,141.3,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,White,incidence,379654,,141.3,2019-2023,SEER*Explorer,transcribed
 breast_cancer,male,White,incidence,3481,,1.3,2019-2023,SEER*Explorer,verify_group_label
-breast_cancer,female,Black,incidence,70327,,132.4,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,Black,incidence,70327,,132.4,2019-2023,SEER*Explorer,transcribed
 breast_cancer,male,Black,incidence,804,,2,2019-2023,SEER*Explorer,verify_group_label
 breast_cancer,female,Hispanic,incidence,93516,,107.9,2019-2023,SEER*Explorer,transcribed
 breast_cancer,male,Hispanic,incidence,480,,0.7,2019-2023,SEER*Explorer,transcribed
-breast_cancer,female,Asian,incidence,51954,,116.5,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,Asian,incidence,51954,,116.5,2019-2023,SEER*Explorer,transcribed
 breast_cancer,male,Asian,incidence,251,,0.7,2019-2023,SEER*Explorer,verify_group_label
-breast_cancer,female,American Indian / Alaska Native,incidence,1966,,199.4,2019-2023,SEER*Explorer,verify_group_label
+breast_cancer,female,American Indian / Alaska Native,incidence,1966,,119.4,2019-2023,SEER*Explorer,verify_group_label
 prostate_cancer,male,All,incidence,553816,,,2019-2023,SEER*Explorer,transcribed
-prostate_cancer,male,White,incidence,354834,,122.2,2019-2023,SEER*Explorer,verify_group_label
-prostate_cancer,male,Black,incidence,90538,,200.1,2019-2023,SEER*Explorer,verify_group_label
+prostate_cancer,male,White,incidence,354834,,122.2,2019-2023,SEER*Explorer,transcribed
+prostate_cancer,male,Black,incidence,90538,,200.1,2019-2023,SEER*Explorer,transcribed
 prostate_cancer,male,Hispanic,incidence,65222,,92.6,2019-2023,SEER*Explorer,transcribed
-prostate_cancer,male,Asian,incidence,25900,,66.6,2019-2023,SEER*Explorer,verify_group_label
-prostate_cancer,male,American Indian / Alaska Native,incidence,1241,,86.7,2019-2023,SEER*Explorer,verify_group_label
+prostate_cancer,male,Asian,incidence,25900,,66.6,2019-2023,SEER*Explorer,transcribed
+prostate_cancer,male,American Indian / Alaska Native,incidence,1241,,86.7,2019-2023,SEER*Explorer,transcribed
 heart_failure,all,All,prevalence,7700000,2.5,,2021-2023,American Heart Association,source_checked
 heart_failure,male,All,prevalence,4300000,3.0,,2021-2023,American Heart Association,source_checked
 heart_failure,female,All,prevalence,3400000,2.1,,2021-2023,American Heart Association,source_checked
