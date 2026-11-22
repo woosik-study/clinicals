@@ -23,10 +23,10 @@ It covers breast cancer, prostate cancer, type 2 diabetes, and heart failure. A 
 
 ## PPR comparison
 
-The site compares trial participants with real patient populations using the **Participation to Prevalence Ratio (PPR)**. Breast and prostate cancer are on the site now. White and Black PPR are waiting on two SEER counts, and type 2 diabetes and heart failure are waiting on patient data. For each group, the site shows two numbers side by side:
+The site compares trial participants with real patient populations using the **Participation to Prevalence Ratio (PPR)**. Breast cancer, prostate cancer, and type 2 diabetes are on the site now, and heart failure is waiting on patient counts. For each group, the site shows two numbers side by side:
 
 1. The group's share of trial participants, from ClinicalTrials.gov
-2. The group's share of people who have the condition, from NCI SEER for the cancers (CDC planned for diabetes and heart failure)
+2. The group's share of people who have the condition, from NCI SEER for the cancers and from CDC estimated counts of adults with diagnosed diabetes (all types, a stand-in for type 2) for diabetes. Heart failure is pending
 
 PPR is (1) divided by (2). A value below 1 means the group makes up a smaller share of trial participants than of patients. PPR uses only trials with all sites in the US and leaves participants with unknown race or ethnicity out of the shares. Each value appears next to a reference line at 1.0, and individual groups are not labeled. The participant charts stay global.
 

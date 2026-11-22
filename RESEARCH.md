@@ -145,7 +145,7 @@ Each team member adds their own research to their own section.
 |---|---|---|---|
 | Breast Cancer | 2019-2023 | 603016 | SEER Incidence Data |
 | Prostate Cancer | 2019-2023 | 553816 | SEER Incidence Data |
-| Type II Diabetes | | | |
+| Type II Diabetes | 2021 | 29400000 (adults with diagnosed diabetes, all types, used as a stand-in for type 2) | CDC National Diabetes Statistics Report, Table 1b |
 | Heart Failure | | | |
 
 | Conditions | Sex | Race/Ethnicity | Patient Percentage | Patient Count | Rate per 100,000 |
@@ -171,6 +171,8 @@ Each team member adds their own research to their own section.
 |---|---|---|---|---|---|---|---|
 | SEER Incidence Data, Breast Cancer, 2019 to 2023 (SEER*Explorer) | National Cancer Institute, Surveillance Research Program | [data release date] | https://seer.cancer.gov/statistics-network/explorer/ | official data | Breast cancer cases by sex and race for PPR | Saurabi | 2026-11-06 |
 | SEER Incidence Data, Prostate Cancer, 2019 to 2023 (SEER*Explorer) | National Cancer Institute, Surveillance Research Program | [data release date] | https://seer.cancer.gov/statistics-network/explorer/ | official data | Prostate cancer cases by race for PPR | Saurabi | 2026-11-06 |
+| National Diabetes Statistics Report, Table 1b (adults with diagnosed diabetes, 2021) | Centers for Disease Control and Prevention | Last reviewed 2023-11-29 | https://stacks.cdc.gov/view/cdc/148231/cdc_148231_DS1.pdf | official data | Estimated counts of adults with diagnosed diabetes by race and ethnicity for PPR. Estimates apply NHANES 2017 to March 2020 percentages to 2021 Census population counts. Adults 18 and older, all diabetes types, rounded to 0.1 million. American Indian or Alaska Native is not shown | Saurabi | 2026-11-21 |
+| 2026 Heart Disease and Stroke Statistics: A Report of US and Global Data From the American Heart Association | American Heart Association | 2026 | https://pubmed.ncbi.nlm.nih.gov/41562125/ | official data | Heart failure prevalence percentages by sex and race, 2021 to 2023, adults 20 and older. Checked against the 2026 Stats Update fact sheets. Percentages only, no counts by group, and American Indian or Alaska Native is not available | Saurabi | 2026-11-21 |
 
 ### Key findings
 

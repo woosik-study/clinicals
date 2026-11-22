@@ -36,8 +36,16 @@ but no PPR.
 Sensitivity check: for each group, the trial that contributed the most participants to
 that group is found and left out (from both the group count and the denominator), and
 the trial share and PPR are computed again. Readers can compare the two values to see
-how much one trial drives the result. Type 2 diabetes and heart failure are pending until prevalence.csv has
-patient counts by group for them.
+how much one trial drives the result.
+
+Type 2 diabetes uses CDC's estimated counts of adults with diagnosed diabetes in 2021
+(prevalence.csv condition "diabetes", measure "diagnosed_adults"). The CDC report does not
+separate type 2 from other diabetes for adults, so the team uses diagnosed diabetes as a
+stand-in for type 2. CDC's White, Black, and Asian groups exclude Hispanic adults while the
+trial groups include them, so those comparisons are approximate. American Indian or Alaska
+Native adults are not shown in the CDC table, so that group has no patient group.
+
+Heart failure is pending until prevalence.csv has patient counts by group for it.
 
 Writes ppr_by_condition.csv and docs/ppr.js (for the website).
 Run:  python3 build_ppr.py
@@ -62,7 +70,21 @@ GROUPS = [
 ]
 ETHNICITY = ("Hispanic or Latino", "Hispanic", "Hispanic (any race)")
 # Conditions whose patient groups are matched above, with the measure to read.
-PATIENT_MEASURE = {"breast_cancer": "incidence", "prostate_cancer": "incidence"}
+PATIENT_MEASURE = {"breast_cancer": "incidence", "prostate_cancer": "incidence",
+                   "type_2_diabetes": "diagnosed_adults"}
+# Condition name in prevalence.csv when it differs from the name above.
+PATIENT_CONDITION = {"type_2_diabetes": "diabetes"}
+# Conditions whose patient groups differ from GROUPS and ETHNICITY above:
+# trial group -> (label in prevalence.csv, group name to show). (None, None) = no patient group.
+PATIENT_GROUPS = {
+    "type_2_diabetes": {
+        "White": ("White (non-Hispanic)", "CDC: White, non-Hispanic"),
+        "Black or African American": ("Black (non-Hispanic)", "CDC: Black, non-Hispanic"),
+        "Asian or Pacific Islander": ("Asian (non-Hispanic)", "CDC: Asian, non-Hispanic"),
+        "American Indian or Alaska Native": (None, None),  # not shown in the CDC table
+        "Hispanic or Latino": ("Hispanic", "CDC: Hispanic"),
+    },
+}
 LEAVE_OUT = {"prostate_cancer": "breast_cancer"}  # condition -> leave out trials also listed here
 
 # The status column in prevalence.csv. Rows not yet checked against their source are never used.
@@ -140,16 +162,18 @@ def main():
 
         # Patient rows for this condition, same measure as its "All" row.
         measure = PATIENT_MEASURE.get(cond)
-        cond_patients = [p for p in patients if p["condition"] == cond and p["measure"] == measure] if measure else []
+        pcond = PATIENT_CONDITION.get(cond, cond)
+        cond_patients = [p for p in patients if p["condition"] == pcond and p["measure"] == measure] if measure else []
         total = patient_count(cond_patients, "All", used)
         total_years = {p["years"] for p in cond_patients if p["race_ethnicity"] == "All" and usable(p)}
         cond_patients = [p for p in cond_patients if p["years"] in total_years]
 
+        over = PATIENT_GROUPS.get(cond, {})
         specs = [(label, race_trials, race_den, lambda r, cols=cols: sum(num(r["race_" + c]) for c in cols),
-                  known_race, plabel, sg)
+                  known_race, *over.get(label, (plabel, sg)))
                  for label, cols, plabel, sg in GROUPS]
         specs.append((ETHNICITY[0], eth_trials, eth_den, lambda r: num(r["eth_Hispanic or Latino"]),
-                      known_eth, ETHNICITY[1], ETHNICITY[2]))
+                      known_eth, *over.get(ETHNICITY[0], (ETHNICITY[1], ETHNICITY[2]))))
 
         for label, trials, den, count, known, plabel, sg in specs:
             per_trial = sorted((count(r) for r in trials), reverse=True)
