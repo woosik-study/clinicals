@@ -172,6 +172,21 @@ Each team member adds their own research to their own section.
 | SEER Incidence Data, Breast Cancer, 2019 to 2023 (SEER*Explorer) | National Cancer Institute, Surveillance Research Program | [data release date] | https://seer.cancer.gov/statistics-network/explorer/ | official data | Breast cancer cases by sex and race for PPR | Saurabi | 2026-11-06 |
 | SEER Incidence Data, Prostate Cancer, 2019 to 2023 (SEER*Explorer) | National Cancer Institute, Surveillance Research Program | [data release date] | https://seer.cancer.gov/statistics-network/explorer/ | official data | Prostate cancer cases by race for PPR | Saurabi | 2026-11-06 |
 
+#### Diabetes and heart failure research, 2026-11-21
+
+The former diabetes percentages were not type-2-specific patient counts. `prevalence.csv` now contains weighted NHIS 2022–2024 diagnosed type 2 estimates and matching denominators. Heart failure uses NHANES August 2021–August 2023 estimates, with unsupported cells left blank. These counts were calculated from public-use survey data. The [research notes](research/prevalence_2026-11-21/README.md) contain the estimates, group definitions, sources, uncertainty, and reproduction steps. Chart integration remains pending.
+
+| Title | Author or organization | Period | Link | Used for |
+|---|---|---|---|---|
+| NHIS Sample Adult public-use files and dictionaries | CDC/NCHS | 2022, 2023, 2024 | [2022](https://www.cdc.gov/nchs/nhis/documentation/2022-nhis.html), [2023](https://www.cdc.gov/nchs/nhis/documentation/2023-nhis.html), [2024](https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html) | Type 2 counts by sex and race/ethnicity |
+| Diabetes Atlas national methods | CDC | Current methods, accessed 2026-11-21 | https://usdss.cdc.gov/diabetes/data/socrata/National_Burden_Magnitude_methods.html | Diabetes type classification |
+| NHIS Survey Description | CDC/NCHS | 2024 | https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/NHIS/2024/srvydesc-508.pdf | Three-year weight scaling and variance design |
+| NHANES DEMO_L and MCQ_L public-use data | CDC/NCHS | August 2021–August 2023 | [Demographics](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm), [Medical conditions](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm) | Diagnosed-ever congestive HF counts, age 20+ |
+| NHANES weighting tutorial | CDC/NCHS | Current guidance, accessed 2026-11-21 | https://wwwn.cdc.gov/nchs/nhanes/tutorials/weighting.aspx | Interview weights; limits on combining recent and older cycles |
+| Sex, Race, Ethnicity, and CVD Fact Sheet | American Heart Association | 2025 | https://professional.heart.org/en/-/media/phd-files-2/science-news/2/2025-heart-and-stroke-stat-update/factsheets/2025-stats-update-fact-sheet-sex-and-race-and-cvd.pdf | Independent confirmation that separate AI/AN NHANES prevalence is unavailable |
+
+Hispanic ethnicity overlaps NHIS race categories. NHIS White/Black counts include Hispanic patients, while NHANES White/Black counts are non-Hispanic. Asian excludes NHPI in both surveys. Exact condition-specific mapping and compatible adult/known-race denominators are required before enabling PPR. Four HF sex cells fail this research's conservative precision screen; separate AI/AN HF counts cannot be identified in the public source. See the handoff before using the data.
+
 ### Key findings
 
 #### Prevalence data

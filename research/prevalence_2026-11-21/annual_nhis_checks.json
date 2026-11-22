@@ -1,0 +1,23 @@
+[
+  {
+    "year": 2022,
+    "sample_adults": 27651,
+    "type2_sample_cases": 2580,
+    "type2_weighted_count": 21242849.774000004,
+    "type2_unknown_race_weighted_count": 1492510.998
+  },
+  {
+    "year": 2023,
+    "sample_adults": 29522,
+    "type2_sample_cases": 2881,
+    "type2_weighted_count": 21793089.196000002,
+    "type2_unknown_race_weighted_count": 1783236.071
+  },
+  {
+    "year": 2024,
+    "sample_adults": 32629,
+    "type2_sample_cases": 3240,
+    "type2_weighted_count": 22538778.583,
+    "type2_unknown_race_weighted_count": 1597788.364
+  }
+]

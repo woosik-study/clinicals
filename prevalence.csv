@@ -15,26 +15,51 @@ prostate_cancer,male,Asian,incidence,25900,,66.6,2019-2023,SEER*Explorer,transcr
 prostate_cancer,male,American Indian / Alaska Native,incidence,1241,,86.7,2019-2023,SEER*Explorer,transcribed
 prostate_cancer,male,White (includes Hispanic),incidence,410794,,,2019-2023,SEER*Explorer,transcribed
 prostate_cancer,male,Black (includes Hispanic),incidence,93160,,,2019-2023,SEER*Explorer,transcribed
-heart_failure,all,All,prevalence,7700000,2.5,,2021-2023,American Heart Association,source_checked
-heart_failure,male,All,prevalence,4300000,3.0,,2021-2023,American Heart Association,source_checked
-heart_failure,female,All,prevalence,3400000,2.1,,2021-2023,American Heart Association,source_checked
-heart_failure,male,White,prevalence,,3.0,,2021-2023,American Heart Association,verify_source
-heart_failure,male,Black,prevalence,,3.6,,2021-2023,American Heart Association,verify_source
-heart_failure,male,Hispanic,prevalence,,2.3,,2021-2023,American Heart Association,verify_source
-heart_failure,male,Asian,prevalence,,1.3,,2021-2023,American Heart Association,verify_source
-heart_failure,female,White,prevalence,,1.9,,2021-2023,American Heart Association,verify_source
-heart_failure,female,Black,prevalence,,3.5,,2021-2023,American Heart Association,verify_source
-heart_failure,female,Hispanic,prevalence,,2.2,,2021-2023,American Heart Association,verify_source
-heart_failure,female,Asian,prevalence,,0.9,,2021-2023,American Heart Association,verify_source
-diabetes,all,All,diagnosed_prevalence,28800000,,,2023,CDC National Diabetes Statistics Report,source_checked
-diabetes,all,All,diagnosed_incidence,1500000,,640,2023,CDC National Diabetes Statistics Report,source_checked
-diabetes,male,White,prevalence,,11.9,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,female,White,prevalence,,18.9,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,male,Hispanic,prevalence,,12.3,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,female,Hispanic,prevalence,,6.4,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,male,Black,prevalence,,11.9,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,female,Black,prevalence,,12.4,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,male,Asian,prevalence,,10.8,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,female,Asian,prevalence,,8.7,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,male,American Indian / Alaska Native,prevalence,,11.5,,,CDC National Diabetes Statistics Report,verify_source
-diabetes,female,American Indian / Alaska Native,prevalence,,18.9,,,CDC National Diabetes Statistics Report,verify_source
+type_2_diabetes,all,All,diagnosed_prevalence,21858239,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,All,diagnosed_prevalence,10999847,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,All,diagnosed_prevalence,10858393,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,White (includes Hispanic),diagnosed_prevalence,14574851,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,White (includes Hispanic),diagnosed_prevalence,7762572,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,White (includes Hispanic),diagnosed_prevalence,6812279,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,Black (includes Hispanic),diagnosed_prevalence,3493066,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,Black (includes Hispanic),diagnosed_prevalence,1481753,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,Black (includes Hispanic),diagnosed_prevalence,2011313,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,Asian only (includes Hispanic; excludes NHPI),diagnosed_prevalence,1493010,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,Asian only (includes Hispanic; excludes NHPI),diagnosed_prevalence,742120,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,Asian only (includes Hispanic; excludes NHPI),diagnosed_prevalence,750890,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,American Indian / Alaska Native only (includes Hispanic),diagnosed_prevalence,275102,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,American Indian / Alaska Native only (includes Hispanic),diagnosed_prevalence,86952,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,American Indian / Alaska Native only (includes Hispanic),diagnosed_prevalence,188150,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,Hispanic (any race),diagnosed_prevalence,4065507,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,Hispanic (any race),diagnosed_prevalence,1976054,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,Hispanic (any race),diagnosed_prevalence,2089453,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,AIAN and any other group (includes Hispanic),diagnosed_prevalence,203900,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,AIAN and any other group (includes Hispanic),diagnosed_prevalence,106657,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,AIAN and any other group (includes Hispanic),diagnosed_prevalence,97242,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,Other single and multiple races,diagnosed_prevalence,193798,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,Other single and multiple races,diagnosed_prevalence,83038,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,Other single and multiple races,diagnosed_prevalence,110760,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,all,Unknown race,diagnosed_prevalence,1624512,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,male,Unknown race,diagnosed_prevalence,736754,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+type_2_diabetes,female,Unknown race,diagnosed_prevalence,887757,,,2022-2024,CDC/NCHS NHIS 2022-2024; author calculation; https://www.cdc.gov/nchs/nhis/documentation/2024-nhis.html,derived_estimate
+heart_failure,all,All,diagnosed_prevalence,7554730,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,male,All,diagnosed_prevalence,4191695,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,female,All,diagnosed_prevalence,3363035,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,all,Non-Hispanic White,diagnosed_prevalence,5012657,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,male,Non-Hispanic White,diagnosed_prevalence,2818885,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,female,Non-Hispanic White,diagnosed_prevalence,2193771,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,all,Non-Hispanic Black,diagnosed_prevalence,950087,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,male,Non-Hispanic Black,diagnosed_prevalence,,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm; HOLD: low precision; see patient_count_audit.csv,verify_source
+heart_failure,female,Non-Hispanic Black,diagnosed_prevalence,486703,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,all,Non-Hispanic Asian (excludes NHPI),diagnosed_prevalence,,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm; HOLD: low precision; see patient_count_audit.csv,verify_source
+heart_failure,male,Non-Hispanic Asian (excludes NHPI),diagnosed_prevalence,,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm; HOLD: low precision; see patient_count_audit.csv,verify_source
+heart_failure,female,Non-Hispanic Asian (excludes NHPI),diagnosed_prevalence,,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm; HOLD: low precision; see patient_count_audit.csv,verify_source
+heart_failure,all,Hispanic (any race),diagnosed_prevalence,827982,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,male,Hispanic (any race),diagnosed_prevalence,,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm; HOLD: low precision; see patient_count_audit.csv,verify_source
+heart_failure,female,Hispanic (any race),diagnosed_prevalence,430342,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,all,Other non-Hispanic races (includes multiracial),diagnosed_prevalence,589111,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,male,Other non-Hispanic races (includes multiracial),diagnosed_prevalence,392672,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm,derived_estimate
+heart_failure,female,Other non-Hispanic races (includes multiracial),diagnosed_prevalence,,,,2021-2023,CDC/NCHS NHANES Aug 2021-Aug 2023; author calculation; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/MCQ_L.htm; HOLD: low precision; see patient_count_audit.csv,verify_source
+heart_failure,all,American Indian / Alaska Native,diagnosed_prevalence,,,,2021-2023,Not separately identifiable in public NHANES RIDRETH3; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm,verify_source
+heart_failure,male,American Indian / Alaska Native,diagnosed_prevalence,,,,2021-2023,Not separately identifiable in public NHANES RIDRETH3; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm,verify_source
+heart_failure,female,American Indian / Alaska Native,diagnosed_prevalence,,,,2021-2023,Not separately identifiable in public NHANES RIDRETH3; https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm,verify_source
