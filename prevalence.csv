@@ -1,13 +1,9 @@
 condition,sex,race_ethnicity,measure,case_count,prevalence_pct,incidence_per_100000,years,source,status
-breast_cancer,all,All,incidence,603016,,,2019-2023,SEER*Explorer,transcribed
+breast_cancer,female,All,incidence,603016,,,2019-2023,SEER*Explorer,transcribed
 breast_cancer,female,White,incidence,379654,,141.3,2019-2023,SEER*Explorer,transcribed
-breast_cancer,male,White,incidence,3481,,1.3,2019-2023,SEER*Explorer,verify_group_label
 breast_cancer,female,Black,incidence,70327,,132.4,2019-2023,SEER*Explorer,transcribed
-breast_cancer,male,Black,incidence,804,,2,2019-2023,SEER*Explorer,verify_group_label
 breast_cancer,female,Hispanic,incidence,93516,,107.9,2019-2023,SEER*Explorer,transcribed
-breast_cancer,male,Hispanic,incidence,480,,0.7,2019-2023,SEER*Explorer,transcribed
 breast_cancer,female,Asian,incidence,51954,,116.5,2019-2023,SEER*Explorer,transcribed
-breast_cancer,male,Asian,incidence,251,,0.7,2019-2023,SEER*Explorer,verify_group_label
 breast_cancer,female,American Indian / Alaska Native,incidence,1966,,119.4,2019-2023,SEER*Explorer,transcribed
 breast_cancer,female,White (includes Hispanic),incidence,464852,,,2019-2023,SEER*Explorer,transcribed
 breast_cancer,female,Black (includes Hispanic),incidence,73486,,,2019-2023,SEER*Explorer,transcribed
