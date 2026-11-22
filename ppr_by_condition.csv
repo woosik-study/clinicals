@@ -1,10 +1,10 @@
 condition,trial_group,trials_used,trial_participants,trial_denominator,trial_share_pct,largest_trial_share_pct,seer_group,seer_share_pct,ppr,largest_trial_id,trial_share_without_largest_pct,ppr_without_largest
 breast_cancer,White,677,65481,85512,76.6,20.1,White (includes Hispanic),77.1,0.99,NCT06177795,79.2,1.03
 breast_cancer,Black or African American,677,14853,85512,17.4,37.2,Black (includes Hispanic),12.2,1.43,NCT06177795,14.1,1.16
-breast_cancer,Asian or Pacific Islander,677,3572,85512,4.2,20.8,Non-Hispanic Asian / Pacific Islander,8.7,0.48,NCT06177795,4.3,0.5
+breast_cancer,Asian or Pacific Islander,677,3572,85512,4.2,20.8,Non-Hispanic Asian / Pacific Islander,8.6,0.48,NCT06177795,4.3,0.5
 breast_cancer,American Indian or Alaska Native,677,864,85512,1.0,55.7,Non-Hispanic American Indian / Alaska Native,0.3,3.1,NCT04259762,0.5,1.38
 breast_cancer,More than one race,677,742,85512,0.9,10.9,,,,NCT01943916,0.8,
-breast_cancer,Hispanic or Latino,607,8525,65307,13.1,18.7,Hispanic (any race),15.6,0.84,NCT02943265,11.2,0.72
+breast_cancer,Hispanic or Latino,607,8525,65307,13.1,18.7,Hispanic (any race),15.5,0.84,NCT02943265,11.2,0.73
 prostate_cancer,White,429,20363,25364,80.3,5.2,White (includes Hispanic),74.2,1.08,NCT03396874,79.8,1.08
 prostate_cancer,Black or African American,429,4052,25364,16.0,7.3,Black (includes Hispanic),16.8,0.95,NCT01346839,15.2,0.91
 prostate_cancer,Asian or Pacific Islander,429,648,25364,2.6,6.2,Non-Hispanic Asian / Pacific Islander,4.7,0.55,NCT04815876,2.5,0.53
