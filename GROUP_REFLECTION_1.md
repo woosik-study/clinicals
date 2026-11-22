@@ -69,13 +69,13 @@ America's AI Action Plan, in its section Build an AI Evaluations Ecosystem, says
 
 ## Section 3: Who could be affected by errors or gaps (Saurabi)
 
-Target: about 240 words.
+The patient counts I collected and the trial data we use do not describe people the same way. SEER and CDC treat Hispanic as its own group, but trials record race and ethnicity separately, so a Hispanic participant also appears in a race group. I think this mostly misrepresents Hispanic patients who are also Black or Asian, who disappear into one group in the patient data, and it can make White PPR look higher than it is. We lined the groups up for breast and prostate cancer, but our diabetes comparisons stay approximate.
 
-Guiding questions:
-- Our patient data counts new cases and treats Hispanic as its own group, while trials record race and ethnicity separately. Who could be misrepresented by that mismatch?
-- Some groups and conditions show as pending because we only have rates and not patient counts. What could a reader wrongly conclude from a missing value?
-- Some PPR values rest on very few participants or mostly on one trial. Who could be harmed if a reader treats those values as solid?
-- Which point in a Week 9 reading about who bears the costs of a technology connects to these gaps?
+Missing values can mislead readers too. Heart failure has no patient counts by group yet, and American Indian or Alaska Native has no patient group for diabetes or heart failure. We mark these as pending, but a reader could still take a blank to mean nothing is wrong, when these are among the smallest groups in the trials.
+
+Small groups are also the easiest to over-read. Only 902 American Indian or Alaska Native participants appear in our diabetes trials, and the Asian or Pacific Islander PPR of 0.62 falls to 0.51 without the largest trial. One study can swing these values, so readers could feel falsely reassured about a group that is missing, or alarmed by noise.
+
+This connects to Cleanview, which exists because no government database tracks data centers. When no official record exists, the people with the most at stake rely on someone else's compilation. In our project, the groups with the least data bear the same cost, because errors about them are hardest to notice.
 
 [Write here]
 
